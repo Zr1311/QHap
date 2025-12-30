@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
 """
-合并phasing数据文件模块
+合并phasing数据文件脚本
 功能：合并两个hapcut2输出文件及其对应的VCF文件，保持位点索引对应关系
 核心处理：当两个文件存在相同位点但ref/alt（参考碱基/变异碱基）不同时，
          根据质量值（QUAL）选择保留质量更高的记录，并同步更新hapcut2文件中的索引
-
-修改说明：
-1. 将原main函数改为merge_files函数，可被外部调用
-2. 支持传入自定义的输入输出文件路径
-3. 返回合并后的文件路径，便于后续处理
 """
 
 import sys
@@ -92,19 +87,23 @@ def read_hapcut2_file_detailed(hapcut2_file):
     参数：
         hapcut2_file: hapcut2输出文件路径（字符串）
     返回：
-        列表，每个元素为一个区块字典：
-            'block_id': 区块ID（原始文件中的第一个字段）
-            'read_id': 读段ID（原始文件中的第二个字段）
-            'snp_data': 列表，每个元素为元组 (snp_idx, allele_str, quality_str)
-                        snp_idx: SNP索引（整数）
-                        allele_str: 该索引开始的连续碱基字符串
-                        quality_str: 对应碱基的质量值字符串（与allele_str长度相同，可能为None）
-            'original_line': 原始行字符串（用于调试或备份）
+        元组 (blocks, line_count)
+            blocks: 列表，每个元素为一个区块字典
+                'block_id': 区块ID（原始文件中的第一个字段）
+                'read_id': 读段ID（原始文件中的第二个字段）
+                'snp_data': 列表，每个元素为元组 (snp_idx, allele_str, quality_str)
+                            snp_idx: SNP索引（整数）
+                            allele_str: 该索引开始的连续碱基字符串
+                            quality_str: 对应碱基的质量值字符串（与allele_str长度相同，可能为None）
+                'original_line': 原始行字符串（用于调试或备份）
+            line_count: 文件的行数
     """
     blocks = []  # 存储所有解析后的区块
+    line_count = 0  # 统计文件行数
 
     with open(hapcut2_file, 'r') as f:
         for line in f:
+            line_count += 1  # 计数行数
             line = line.strip()
             if line:  # 跳过空行
                 parts = line.split()  # 按空格分割字段
@@ -147,7 +146,7 @@ def read_hapcut2_file_detailed(hapcut2_file):
 
                     blocks.append(block_data)
 
-    return blocks
+    return blocks, line_count
 
 
 def merge_vcf_with_conflict_resolution(vcf1_data, vcf2_data):
@@ -417,117 +416,120 @@ def write_merged_hapcut2(output_file, blocks1, blocks2):
     print(f"合并后的hapcut2文件已保存到: {output_file}")
 
 
-def merge_files(vcf1_file, hapcut2_1_file, vcf2_file, hapcut2_2_file,
-                output_vcf_file=None, output_hapcut2_file=None):
+def merge_files(vcf1_file, hapcut2_1_file, vcf2_file, hapcut2_2_file, output_vcf_file, output_hapcut2_file):
     """
-    合并两个VCF文件和对应的hapcut2文件
+    合并两个VCF文件和对应的hapcut2文件的主函数
 
     参数：
         vcf1_file: 第一个VCF文件路径
-        hapcut2_1_file: 第一个hapcut2文件路径（extractHAIRS格式）
+        hapcut2_1_file: 第一个hapcut2文件路径
         vcf2_file: 第二个VCF文件路径
-        hapcut2_2_file: 第二个hapcut2文件路径（extractHAIRS格式）
-        output_vcf_file: 输出的合并VCF文件路径（可选，默认在第一个文件目录下）
-        output_hapcut2_file: 输出的合并hapcut2文件路径（可选，默认在第一个文件目录下）
+        hapcut2_2_file: 第二个hapcut2文件路径
+        output_vcf_file: 输出的合并后VCF文件路径
+        output_hapcut2_file: 输出的合并后hapcut2文件路径
 
     返回：
-        (merged_vcf_file, merged_hapcut2_file): 合并后的文件路径
+        元组 (bool, int): 成功返回(True, 第一个文件的行数)，失败返回(False, 0)
     """
-    # 设置默认输出路径
-    if output_vcf_file is None:
-        output_dir = Path(vcf1_file).parent
-        output_vcf_file = output_dir / "merged.vcf"
-    if output_hapcut2_file is None:
-        output_dir = Path(vcf1_file).parent
-        output_hapcut2_file = output_dir / "merged_extractHAIRS.txt"
+    try:
+        print("开始合并文件...")
 
-    # 确保输出路径是Path对象
-    output_vcf_file = Path(output_vcf_file)
-    output_hapcut2_file = Path(output_hapcut2_file)
+        # 1. 读取并解析两个VCF文件
+        print("读取VCF文件...")
+        vcf1_data = read_vcf_file_detailed(vcf1_file)
+        vcf2_data = read_vcf_file_detailed(vcf2_file)
 
-    print("开始处理文件合并...")
+        positions1, _, records1 = vcf1_data
+        positions2, _, records2 = vcf2_data
 
-    # 1. 读取并解析两个VCF文件
-    print("读取VCF文件...")
-    vcf1_data = read_vcf_file_detailed(vcf1_file)  # (positions, headers, records)
-    vcf2_data = read_vcf_file_detailed(vcf2_file)
+        print(f"VCF文件1包含 {len(positions1)} 个位点")
+        print(f"VCF文件2包含 {len(positions2)} 个位点")
 
-    positions1, _, records1 = vcf1_data
-    positions2, _, records2 = vcf2_data
+        # 2. 合并VCF文件，处理ref/alt冲突
+        print("\n合并VCF文件，处理ref/alt冲突...")
+        merged_positions, merged_headers, merged_lines, removed_from_file1, removed_from_file2 = \
+            merge_vcf_with_conflict_resolution(vcf1_data, vcf2_data)
 
-    print(f"第一个VCF文件包含 {len(positions1)} 个位点")
-    print(f"第二个VCF文件包含 {len(positions2)} 个位点")
+        print(f"合并后的VCF文件包含 {len(merged_positions)} 个位点")
+        print(f"从文件1删除 {len(removed_from_file1)} 个冲突位点")
+        print(f"从文件2删除 {len(removed_from_file2)} 个冲突位点")
 
-    # 2. 合并VCF文件，处理ref/alt冲突
-    print("\n合并VCF文件，处理ref/alt冲突...")
-    merged_positions, merged_headers, merged_lines, removed_from_file1, removed_from_file2 = \
-        merge_vcf_with_conflict_resolution(vcf1_data, vcf2_data)
+        # 3. 创建旧索引到新索引的映射（考虑被删除的位点）
+        print("\n创建索引映射...")
+        mapping1, mapping2, removed_indices1, removed_indices2 = \
+            create_position_mapping_with_removals(positions1, positions2, merged_positions,
+                                                  removed_from_file1, removed_from_file2)
 
-    print(f"合并后的VCF文件包含 {len(merged_positions)} 个位点")
-    print(f"从第一个文件删除 {len(removed_from_file1)} 个冲突位点")
-    print(f"从第二个文件删除 {len(removed_from_file2)} 个冲突位点")
+        # 4. 读取并解析两个hapcut2文件
+        print("读取hapcut2文件...")
+        blocks1, hapcut2_1_line_count = read_hapcut2_file_detailed(hapcut2_1_file)  # 获取第一个文件的行数
+        blocks2, _ = read_hapcut2_file_detailed(hapcut2_2_file)
 
-    # 3. 创建旧索引到新索引的映射（考虑被删除的位点）
-    print("\n创建索引映射...")
-    mapping1, mapping2, removed_indices1, removed_indices2 = \
-        create_position_mapping_with_removals(positions1, positions2, merged_positions,
-                                              removed_from_file1, removed_from_file2)
+        print(f"hapcut2文件1包含 {len(blocks1)} 个blocks，共 {hapcut2_1_line_count} 行")
+        print(f"hapcut2文件2包含 {len(blocks2)} 个blocks")
 
-    # 4. 读取并解析两个hapcut2文件
-    print("读取hapcut2/extractHAIRS文件...")
-    blocks1 = read_hapcut2_file_detailed(hapcut2_1_file)
-    blocks2 = read_hapcut2_file_detailed(hapcut2_2_file)
+        # 5. 更新hapcut2文件的索引，删除冲突位点对应的碱基
+        print("更新hapcut2文件索引，删除冲突位点...")
+        updated_blocks1 = update_hapcut2_with_removals(blocks1, mapping1, removed_indices1)
+        updated_blocks2 = update_hapcut2_with_removals(blocks2, mapping2, removed_indices2)
 
-    print(f"第一个hapcut2文件包含 {len(blocks1)} 个blocks")
-    print(f"第二个hapcut2文件包含 {len(blocks2)} 个blocks")
+        print(f"更新后文件1包含 {len(updated_blocks1)} 个有效blocks")
+        print(f"更新后文件2包含 {len(updated_blocks2)} 个有效blocks")
 
-    # 5. 更新hapcut2文件的索引，删除冲突位点对应的碱基
-    print("更新hapcut2文件索引，删除冲突位点...")
-    updated_blocks1 = update_hapcut2_with_removals(blocks1, mapping1, removed_indices1)
-    updated_blocks2 = update_hapcut2_with_removals(blocks2, mapping2, removed_indices2)
+        # 6. 写入合并后的文件
+        print("\n写入合并后的文件...")
+        write_merged_vcf(output_vcf_file, merged_headers, merged_lines)
+        write_merged_hapcut2(output_hapcut2_file, updated_blocks1, updated_blocks2)
 
-    print(f"更新后第一个文件包含 {len(updated_blocks1)} 个有效blocks")
-    print(f"更新后第二个文件包含 {len(updated_blocks2)} 个有效blocks")
+        # 7. 验证结果（输出统计信息）
+        print("\n验证结果:")
+        print(f"原始VCF文件总位点数: {len(positions1) + len(positions2)}")
+        print(f"合并后VCF文件位点数: {len(merged_positions)}")
+        print(f"去重和冲突处理后减少的位点数: {len(positions1) + len(positions2) - len(merged_positions)}")
 
-    # 6. 写入合并后的文件
-    print("\n写入合并后的文件...")
-    write_merged_vcf(output_vcf_file, merged_headers, merged_lines)
-    write_merged_hapcut2(output_hapcut2_file, updated_blocks1, updated_blocks2)
+        # 显示部分被删除的位点（便于检查）
+        if removed_from_file1:
+            print(f"\n从文件1删除的位点位置（前5个）: {list(removed_from_file1)[:5]}")
+        if removed_from_file2:
+            print(f"从文件2删除的位点位置（前5个）: {list(removed_from_file2)[:5]}")
 
-    # 7. 验证结果（输出统计信息）
-    print("\n验证结果:")
-    print(f"原始VCF文件总位点数: {len(positions1) + len(positions2)}")
-    print(f"合并后VCF文件位点数: {len(merged_positions)}")
-    print(f"去重和冲突处理后减少的位点数: {len(positions1) + len(positions2) - len(merged_positions)}")
+        print("\n文件合并完成！")
+        return True, hapcut2_1_line_count  # 返回成功状态和第一个文件的行数
 
-    # 显示部分被删除的位点（便于检查）
-    if removed_from_file1:
-        print(f"\n从第一个文件删除的位点位置（前5个）: {list(removed_from_file1)[:5]}")
-    if removed_from_file2:
-        print(f"从第二个文件删除的位点位置（前5个）: {list(removed_from_file2)[:5]}")
-
-    print("\n文件合并完成！")
-
-    return str(output_vcf_file), str(output_hapcut2_file)
+    except Exception as e:
+        print(f"合并过程中出现错误: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return False, 0
 
 
 def main():
-    """独立运行时的主函数（用于测试）"""
+    """独立运行时的主函数：执行文件合并的完整流程"""
     # 输入文件路径（可根据实际情况修改）
     hapcut2_porec_file = r"/mnt/e/my_work/phasing/phasing_v11_GPU/phasing_v13_GPU_porec/data_WT_porec/data_WT_porec/mhc/data_snps/hapcut2_output_porec_filtered.txt"
     vcf_porec_file = r"/mnt/e/my_work/phasing/phasing_v11_GPU/phasing_v13_GPU_porec/data_WT_porec/data_WT_porec/mhc/data_snps/chr6_snp_filter_porec.vcf"
     hapcut2_wt_file = r"/mnt/e/my_work/phasing/phasing_v11_GPU/phasing_v13_GPU_porec/data_WT_porec/data_WT_porec/mhc/data_snps/hapcut2_output_WT.txt"
     vcf_wt_file = r"/mnt/e/my_work/phasing/phasing_v11_GPU/phasing_v13_GPU_porec/data_WT_porec/data_WT_porec/mhc/data_snps/chr6_snp_filter_WT.vcf"
 
+    # 输出文件路径（与输入文件同目录）
+    output_dir = Path(hapcut2_porec_file).parent  # 获取输入文件的父目录
+    merged_hapcut2_file = output_dir / "hapcut2_output_merged.txt"  # 合并后的hapcut2文件
+    merged_vcf_file = output_dir / "chr6_snp_filter_merged.vcf"  # 合并后的VCF文件
+
+    print("开始处理文件...")
+
     # 调用合并函数
-    merged_vcf, merged_hapcut2 = merge_files(
+    success, line_count = merge_files(
         vcf_porec_file, hapcut2_porec_file,
-        vcf_wt_file, hapcut2_wt_file
+        vcf_wt_file, hapcut2_wt_file,
+        str(merged_vcf_file), str(merged_hapcut2_file)
     )
 
-    print(f"\n合并完成:")
-    print(f"  VCF文件: {merged_vcf}")
-    print(f"  extractHAIRS文件: {merged_hapcut2}")
+    if success:
+        print(f"\n处理完成！第一个hapcut2文件包含 {line_count} 行")
+    else:
+        print("\n处理失败！")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

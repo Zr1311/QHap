@@ -1,58 +1,85 @@
-import random
-
-
-def process_sparse_matrices(matrix, pos_map, init_haplotype):
+def process_sparse_matrices(matrix, pos_map, init_haplotype, correct_rates):
     """
-    从内存中的稀疏矩阵和初始化单倍型数据生成三元稀疏矩阵
+    处理稀疏矩阵数据，生成加权三元稀疏矩阵
 
     参数:
-    matrix (list of tuples): 内存中的稀疏矩阵列表，每项格式为 (row_idx, col_idx, base)
+    matrix (list): 稀疏矩阵数据 [(row_idx, col_idx, base), ...]
     pos_map (dict): 位置到列索引的映射 {pos: col_idx}
-    init_haplotype (dict): 包含 'positions', 'sequence1', 'sequence2'
+    init_haplotype (dict): 初始单倍型数据 {'positions': [...], 'sequence1': [...], 'sequence2': [...]}
+    correct_rates (list): 正确率数据 [(row_idx, col_idx, rate), ...]
 
     返回:
-    list: 三元稀疏矩阵列表 [(row_idx, col_idx, value), ...]
-             value 为 1 表示匹配单倍型1, -1 表示匹配单倍型2
+    list: 加权三元稀疏矩阵数据 [(row_idx, col_idx, weighted_value), ...]
     """
-    # 构建列索引到位点的映射
-    col_idx_to_pos = {col: pos for pos, col in pos_map.items()}
 
-    # 从 init_haplotype 中提取数据
-    positions = init_haplotype.get('positions', [])
-    seq1 = init_haplotype.get('sequence1', [])
-    seq2 = init_haplotype.get('sequence2', [])
+    # 创建列索引到位置的反向映射
+    col_idx_to_pos = {col_idx: pos for pos, col_idx in pos_map.items()}
 
-    # 构建位点到各单倍型碱基的映射
-    h1_map = {pos: base for pos, base in zip(positions, seq1)}
-    h2_map = {pos: base for pos, base in zip(positions, seq2)}
+    # 创建位点到单倍型值的映射
+    h1_map = {}  # 位点到单倍型1值的映射
+    h2_map = {}  # 位点到单倍型2值的映射
 
-    matrix_triple = []  # 修改为列表存储
+    positions = init_haplotype['positions']
+    sequence1 = init_haplotype['sequence1']
+    sequence2 = init_haplotype['sequence2']
+
+    for i, pos in enumerate(positions):
+        h1_map[pos] = sequence1[i]
+        h2_map[pos] = sequence2[i]
+
+    # 将SNP矩阵数据转换为字典格式
+    snp_data = {}  # {(row_idx, col_idx): base}
     for row_idx, col_idx, base in matrix:
-        # 获取对应位点
-        pos = col_idx_to_pos.get(col_idx)
-        if pos is None:
+        snp_data[(row_idx, col_idx)] = base
+
+    # 将正确率数据转换为字典格式
+    correct_rate_data = {}  # {(row_idx, col_idx): rate}
+    for row_idx, col_idx, rate in correct_rates:
+        correct_rate_data[(row_idx, col_idx)] = rate
+
+    # 处理并生成三元稀疏矩阵（只保留非零值）
+    ternary_matrix = {}  # {(row_idx, col_idx): value}
+    for (row_idx, col_idx), base in snp_data.items():
+        # 获取对应的位点
+        if col_idx not in col_idx_to_pos:
             continue
-        # 检查位点是否在单倍型中
+
+        pos = col_idx_to_pos[col_idx]
+
+        # 检查该位点是否在单倍型中
         if pos not in h1_map or pos not in h2_map:
             continue
+
         h1_base = h1_map[pos]
         h2_base = h2_map[pos]
-        # 判断匹配并赋值
+
+        # 确定基因型
         if base == h1_base:
-            matrix_triple.append((row_idx, col_idx, 1))  # 添加元组到列表
+            ternary_matrix[(row_idx, col_idx)] = 1  # 与单倍型1匹配
         elif base == h2_base:
-            matrix_triple.append((row_idx, col_idx, -1))  # 添加元组到列表
-        # 其他情况视为 0，不保存
+            ternary_matrix[(row_idx, col_idx)] = -1  # 与单倍型2匹配
+        # 不保存值为0的项
 
-    return matrix_triple  # 返回列表
+    # 生成加权三元矩阵（只保留非零值）
+    weighted_matrix_data = []
+    for (row_idx, col_idx), value in ternary_matrix.items():
+        rate = correct_rate_data.get((row_idx, col_idx), 1.0)  # 如果没有正确率信息，默认为1.0
+        weighted_value = value * rate
+        # 只保存非零值
+        if weighted_value != 0:
+            weighted_matrix_data.append((row_idx, col_idx, weighted_value))
 
-# 示例调用
-# matrix_triple = process_sparse_matrices(
-#     matrix=[(0,1,'A'), (0,2,'G'), ...],
-#     pos_map={100:1, 200:2, ...},
-#     init_haplotype={
-#         'positions':[100,200,...],
-#         'sequence1':['A','T',...],
-#         'sequence2':['G','C',...]
-#     }
-# )
+    return weighted_matrix_data
+
+# 使用示例:
+# 假设已经通过代码1获得了result
+# result = build_haplotype_in_memory("path/to/input.vcf", "path/to/hapcut_output.txt")
+# matrix = result['sparse_matrix']
+# pos_map = result['position_to_column']
+# correct_rates = result['sparse_correct_rate']
+
+# 假设已经通过代码2获得了init_haplotype
+# init_haplotype, all_nodes = generate_haplotype_data(vcf_file, matrix, pos_map)
+
+# 调用修改后的代码3
+# matrix_weight = process_sparse_matrices(matrix, pos_map, init_haplotype, correct_rates)

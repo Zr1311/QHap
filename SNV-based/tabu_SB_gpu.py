@@ -34,8 +34,8 @@ class SB():
                 self.xi = 0.7 * np.sqrt(self.N-1) / np.sqrt((self.A ** 2).sum())
             else:
                 self.xi = 1 / np.abs(self.A.sum(axis=1)).max()
-        
-        
+
+
         self.initialize()
 
     def initialize(self):
@@ -69,7 +69,7 @@ class SB():
 
             self.y += self.xi * self.dt * self.A@self.x
 
-    
+
     def update_b(self,beta=1):
         # beta = beta
         for i in range(self.n_iter):
@@ -82,19 +82,19 @@ class SB():
                     tabu_index = np.random.randint(0, num_tabu_sample, num_tabu)
                     # tabu_index = np.random.choice(num_tabu_sample,num_tabu,replace=False) ### 这里能重复关不关键
                     t = beta*(self.tabu[:, tabu_index].sum(dim=1, keepdim=True)/num_tabu)
-                    
+
                     self.y += (-(1 - self.p[i])*self.x + self.xi * (torch.sparse.mm(self.A,self.x)+self.h-t)) * self.dt
                 else:
                     self.y += (-(1 - self.p[i])*self.x + self.xi * (torch.sparse.mm(self.A,self.x)+self.h-self.tabu)) * self.dt
-            self.x += self.dt * self.y 
+            self.x += self.dt * self.y
 
             cond = torch.abs(self.x) > 1
             self.x = torch.where(cond, torch.sign(self.x), self.x)
             self.y = torch.where(cond, torch.zeros_like(self.y), self.y)
             # self.y += -h* self.dt
-            
-        
-    def update_d(self,beta):
+
+
+    def update_d(self,beta=1):
         # beta = beta
         for i in range(self.n_iter):
             if self.tabu is None:
@@ -106,18 +106,18 @@ class SB():
                     tabu_index = np.random.randint(0, num_tabu_sample, num_tabu)
                     # tabu_index = np.random.choice(num_tabu_sample,num_tabu,replace=False)
                     tabu = beta *(self.tabu[:, tabu_index].sum(dim=1, keepdim=True)/num_tabu)
-                    
+
                     self.y += (-(1- self.p[i])*self.x + self.xi * (torch.sparse.mm(self.A, torch.sign(self.x))+self.h-tabu)) * self.dt
                 else:
                     self.y += (-(1 - self.p[i])*self.x + self.xi * (torch.sparse.mm(self.A, torch.sign(self.x))+self.h-self.tabu)) * self.dt
-            self.x += self.dt * self.y 
+            self.x += self.dt * self.y
 
-            
+
             cond = torch.abs(self.x) > 1
             self.x = torch.where(cond, torch.sign(self.x), self.x)
             self.y = torch.where(cond, torch.zeros_like(self.y), self.y)
-            
-            
+
+
 
 
 def read_gset(filename, negate=True):
@@ -131,7 +131,7 @@ def read_gset(filename, negate=True):
     assert n_e == graph.shape[0], 'The number of edges is not matched'
 
     G = csr_matrix((graph.iloc[:,-1], (graph.iloc[:, 0]-1, graph.iloc[:, 1]-1)), shape=(n_v, n_v))
-    G = G+G.T       
+    G = G+G.T
     if negate:
         return -G
     else:
