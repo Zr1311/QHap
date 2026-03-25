@@ -19,22 +19,22 @@ warnings.filterwarnings('ignore')
 np.random.seed(42)
 
 
-class HapCUT2PostProcessorOptimized:
-    """优化的HapCUT2后处理器，确保结果的确定性和可重复性"""
+class PhasingPostProcessorOptimized:
+    """优化的后处理器，确保结果的确定性和可重复性"""
 
-    def __init__(self, vcf_file, extractHAIRS_file, phased_vcf_file, matrix_data, pos_map):
+    def __init__(self, vcf_file, fragment_reads_file, phased_vcf_file, matrix_data, pos_map):
         """
         初始化后处理器
 
         参数:
         - vcf_file: 原始VCF文件路径
-        - extractHAIRS_file: extractHAIRS reads文件路径
+        - fragment_reads_file: fragment reads文件路径
         - phased_vcf_file: 初始phasing结果VCF文件路径
         - matrix_data: 稀疏矩阵数据
         - pos_map: 位置映射字典
         """
         self.vcf_file = vcf_file
-        self.extractHAIRS_file = extractHAIRS_file
+        self.fragment_reads_file = fragment_reads_file
         self.phased_vcf_file = phased_vcf_file
         self.matrix_data = matrix_data
         self.pos_map = pos_map
@@ -44,7 +44,7 @@ class HapCUT2PostProcessorOptimized:
 
         # 顺序读取数据，避免并行带来的不确定性
         self.vcf_data = self._read_vcf_data_optimized()
-        self.reads_data = self._parse_extractHAIRS_optimized()
+        self.reads_data = self._parse_fragment_reads_optimized()
         self.phasing_result = self._read_phased_vcf_optimized()
 
         # 预处理reads数据为更高效的格式
@@ -81,11 +81,11 @@ class HapCUT2PostProcessorOptimized:
             }
         return vcf_data
 
-    def _parse_extractHAIRS_optimized(self) -> List[Dict]:
-        """优化的extractHAIRS文件解析 - 保持原始顺序"""
+    def _parse_fragment_reads_optimized(self) -> List[Dict]:
+        """优化的fragment reads文件解析 - 保持原始顺序"""
         reads_data = []
 
-        with open(self.extractHAIRS_file, 'r') as f:
+        with open(self.fragment_reads_file, 'r') as f:
             lines = f.readlines()
 
         # 批量处理 - 保持原始顺序
@@ -186,7 +186,7 @@ class HapCUT2PostProcessorOptimized:
             self.position_to_reads[pos].sort()
 
         # 创建read pairs索引用于phase switch检测
-        self.read_pairs = defaultdict(list)  # 使用list而不是set
+        self.read_pairs = defaultdict(list)
         for read_idx, read in enumerate(self.reads_data):
             positions = read['positions']
             for i in range(len(positions) - 1):
@@ -200,13 +200,13 @@ class HapCUT2PostProcessorOptimized:
 
     def _initialize_position_stats(self):
         """初始化位置统计数据"""
-        for pos in sorted(self.phasing_result.keys()):  # 排序确保顺序
+        for pos in sorted(self.phasing_result.keys()):
             self.position_stats[pos] = {
                 'support_0': 0,
                 'support_1': 0,
                 'quality_0': [],
                 'quality_1': [],
-                'reads': [],  # 使用list而不是set
+                'reads': [],
                 'conflicts': 0
             }
 
@@ -220,7 +220,7 @@ class HapCUT2PostProcessorOptimized:
 
             stats = self.position_stats[pos]
 
-            for read_idx in sorted(read_indices):  # 排序确保顺序
+            for read_idx in sorted(read_indices):
                 read = self.reads_data[read_idx]
                 # 使用NumPy的where函数快速查找
                 pos_idx = np.where(read['positions'] == pos)[0]
@@ -257,12 +257,12 @@ class HapCUT2PostProcessorOptimized:
 
         # 按phase block组织位点
         blocks = defaultdict(list)
-        for pos in sorted(self.phasing_result.keys()):  # 排序
+        for pos in sorted(self.phasing_result.keys()):
             phase_info = self.phasing_result[pos]
             blocks[phase_info['phase_set']].append(pos)
 
-        # 顺序处理每个block（不使用并行）
-        for block_id in sorted(blocks.keys()):  # 排序block ID
+        # 顺序处理每个block
+        for block_id in sorted(blocks.keys()):
             positions = sorted(blocks[block_id])
 
             for i in range(len(positions) - 1):
@@ -275,7 +275,7 @@ class HapCUT2PostProcessorOptimized:
                 # 获取连接这两个位点的reads
                 connecting_reads = self.read_pairs.get((pos1, pos2), [])
 
-                for read_idx in sorted(connecting_reads):  # 排序确保顺序
+                for read_idx in sorted(connecting_reads):
                     read = self.reads_data[read_idx]
 
                     # 使用NumPy快速查找
@@ -328,7 +328,7 @@ class HapCUT2PostProcessorOptimized:
                 phase_info['hap1'], phase_info['hap2'] = phase_info['hap2'], phase_info['hap1']
                 corrected_positions.append(pos)
 
-        return sorted(corrected_positions)  # 排序返回
+        return sorted(corrected_positions)
 
     def calculate_phasing_confidence_vectorized(self) -> Dict[int, float]:
         """向量化的置信度计算 - 确保顺序一致"""
@@ -375,7 +375,7 @@ class HapCUT2PostProcessorOptimized:
             phase_info = self.phasing_result[pos]
             blocks[phase_info['phase_set']].append(pos)
 
-        sorted_blocks = sorted(blocks.items(), key=lambda x: (min(x[1]), x[0]))  # 双重排序
+        sorted_blocks = sorted(blocks.items(), key=lambda x: (min(x[1]), x[0]))
         merged_blocks = []
 
         # 预计算block间的连接
@@ -394,7 +394,7 @@ class HapCUT2PostProcessorOptimized:
                 if positions_set & block1_set and positions_set & block2_set:
                     connecting_reads.append(read)
 
-                if len(connecting_reads) >= 10:  # 早停优化
+                if len(connecting_reads) >= 10:
                     break
 
             block_connections[(block1_id, block2_id)] = connecting_reads
@@ -402,8 +402,7 @@ class HapCUT2PostProcessorOptimized:
         # 评估合并 - 按顺序处理
         for (block1_id, block2_id), connecting_reads in block_connections.items():
             if len(connecting_reads) >= 3:
-                # 简化的一致性检查
-                consistent_count = len(connecting_reads)  # 简化计算
+                consistent_count = len(connecting_reads)
 
                 if consistent_count >= 3:
                     merged_blocks.append((block1_id, block2_id))
@@ -444,7 +443,7 @@ class HapCUT2PostProcessorOptimized:
                 break
 
         # 添加处理信息
-        processing_header = '##hapcut2_post_processing=True'
+        processing_header = '##phasing_post_processing=True'
         if processing_header not in header_lines:
             for i in range(len(header_lines) - 1, -1, -1):
                 if header_lines[i].startswith('##'):
@@ -499,7 +498,7 @@ class HapCUT2PostProcessorOptimized:
         confidence_array = np.array([confidence_scores[k] for k in sorted(confidence_scores.keys())])
 
         with open(report_file, 'w') as f:
-            f.write("HapCUT2 Post-Processing Report\n")
+            f.write("Phasing Post-Processing Report\n")
             f.write("=" * 60 + "\n\n")
 
             f.write("Basic Statistics:\n")
@@ -519,7 +518,7 @@ class HapCUT2PostProcessorOptimized:
 
     def run_post_processing(self) -> Dict:
         """运行完整的后处理流程（确定性版本）"""
-        print("开始HapCUT2后处理（确定性版本）...")
+        print("开始后处理（确定性版本）...")
 
         # 1. 计算reads支持
         print("  1. 计算reads支持情况...")
@@ -556,20 +555,20 @@ class HapCUT2PostProcessorOptimized:
         return {
             'phase_switches_detected': len(phase_switches),
             'positions_corrected': len(corrected_positions),
-            'average_confidence': float(avg_confidence),  # 确保是标准float
+            'average_confidence': float(avg_confidence),
             'blocks_merged': len(merged_blocks),
             'low_confidence_positions': len(filtered_positions)
         }
 
 
-def apply_hapcut2_post_processing_optimized(vcf_file, extractHAIRS_file, phased_vcf_file,
+def apply_phasing_post_processing_optimized(vcf_file, fragment_reads_file, phased_vcf_file,
                                             matrix_data, pos_map, output_dir):
     """
-    应用优化的HapCUT2后处理来提高phasing准确率 - 确定性版本
+    应用优化的后处理来提高phasing准确率 - 确定性版本
 
     参数:
     - vcf_file: 原始VCF文件路径
-    - extractHAIRS_file: extractHAIRS文件路径
+    - fragment_reads_file: fragment reads文件路径
     - phased_vcf_file: 初始phasing结果文件路径
     - matrix_data: 稀疏矩阵数据
     - pos_map: 位置映射
@@ -580,9 +579,9 @@ def apply_hapcut2_post_processing_optimized(vcf_file, extractHAIRS_file, phased_
     """
 
     # 创建优化的后处理器实例
-    processor = HapCUT2PostProcessorOptimized(
+    processor = PhasingPostProcessorOptimized(
         vcf_file,
-        extractHAIRS_file,
+        fragment_reads_file,
         phased_vcf_file,
         matrix_data,
         pos_map
@@ -605,10 +604,10 @@ def apply_hapcut2_post_processing_optimized(vcf_file, extractHAIRS_file, phased_
 
 
 # 保留向后兼容性
-def apply_hapcut2_post_processing(vcf_file, extractHAIRS_file, phased_vcf_file,
+def apply_phasing_post_processing(vcf_file, fragment_reads_file, phased_vcf_file,
                                   matrix_data, pos_map, output_dir):
     """向后兼容的接口，调用优化版本"""
-    return apply_hapcut2_post_processing_optimized(
-        vcf_file, extractHAIRS_file, phased_vcf_file,
+    return apply_phasing_post_processing_optimized(
+        vcf_file, fragment_reads_file, phased_vcf_file,
         matrix_data, pos_map, output_dir
     )
