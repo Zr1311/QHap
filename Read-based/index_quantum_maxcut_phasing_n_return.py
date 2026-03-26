@@ -9,24 +9,16 @@ import time
 import pandas as pd
 import get_init_matrix
 from init_haplotype import generate_haplotype_data
-# 导入自定义模块
 from get_matrix import process_sparse_matrices
 import get_Snps_Map_reads_block
 from BSB_get_haplotype_and_combine import process_blocks
-# 导入合并模块（新代码2：merge_vcf_extractHAIRS）
 import merge_phasing_files
 
 
-# 新增：保存连通分量的函数（适配代码2的components_graphs结构）
 def save_connected_components(components_graphs, output_dir):
-    """
-    将连通分量保存到文件中
-    在输出目录下创建connected_components目录，保存各个blockn.txt文件
-    """
     components_dir = output_dir
     os.makedirs(components_dir, exist_ok=True)
 
-    # 遍历每个连通分量并保存
     for i, graph in enumerate(components_graphs.values(), 1):
         filename = f"block{i}.txt"
         filepath = os.path.join(components_dir, filename)
@@ -37,25 +29,20 @@ def save_connected_components(components_graphs, output_dir):
             for u, v, weight in edges:
                 f.write(f"{u}\t{v}\t{weight:.15f}\n")
 
-        print(f"已保存连通分量 {i} 到 {filepath}，包含 {len(edges)} 条边")
-
     return components_dir
 
 
-# 函数计时装饰器
 def time_function(func):
     def wrapper(*args, **kwargs):
         start_time = time.time()
         result = func(*args, **kwargs)
         end_time = time.time()
         run_time = end_time - start_time
-        print(f"{func.__name__} 运行时间: {run_time:.2f} 秒")
         return result, run_time
 
     return wrapper
 
 
-# 使用装饰器包装需要计时的函数
 build_snp_sparse_matrix = time_function(get_init_matrix.build_snp_sparse_matrix)
 generate_haplotype_data = time_function(generate_haplotype_data)
 process_sparse_matrices = time_function(process_sparse_matrices)
@@ -64,10 +51,7 @@ process_blocks = time_function(process_blocks)
 merge_files = time_function(merge_phasing_files.merge_files)
 
 
-def process_phasing(vcf_file, extractHAIRS_file, overall_start_time=None):
-    """
-    执行phasing处理的核心函数
-    """
+def process_phasing(vcf_file, fragment_reads_file, overall_start_time=None):  # extractHAIRS_file → fragment_reads_file
     matrix_file_dir = os.path.join(os.path.dirname(vcf_file))
 
     if overall_start_time is None:
@@ -75,33 +59,29 @@ def process_phasing(vcf_file, extractHAIRS_file, overall_start_time=None):
 
     function_times = {}
 
-    # 初始化稀疏矩阵
-    print("开始生成碱基矩阵...")
-    result, matrix_time = build_snp_sparse_matrix(vcf_file, extractHAIRS_file)
+    print("Generating base matrix...")
+    result, matrix_time = build_snp_sparse_matrix(vcf_file, fragment_reads_file)  # 同上
     matrix = result['sparse_matrix']
     pos_map = result['position_to_column']
     fragment_map = result['fragment_to_index']
     function_times["build_snp_sparse_matrix"] = matrix_time
 
-    # 初始化haplotype
-    print("开始生成初始化单体型...")
-    (init_haplotype, all_nodes), haplotype_time = generate_haplotype_data(vcf_file, matrix, pos_map, extractHAIRS_file)
+    print("Generating initial haplotype...")
+    (init_haplotype, all_nodes), haplotype_time = generate_haplotype_data(vcf_file, matrix, pos_map, fragment_reads_file)  # 同上
     function_times["generate_haplotype_data"] = haplotype_time
 
-    # 保存矩阵
-    print("开始生成三元矩阵...")
+    print("Generating triple matrix...")
     matrix_triple, matrix_process_time = process_sparse_matrices(matrix, pos_map, init_haplotype)
     function_times["process_sparse_matrices"] = matrix_process_time
 
-    print("开始构建子图...")
+    print("Building subgraphs...")
     components_graphs, graph_time = main_get_Snps_Map_reads_block(matrix_triple, fragment_map, all_nodes)
     function_times["get_Snps_Map_reads_block.main"] = graph_time
 
-    # 输出目录
     haplotype_output_dir = os.path.join(os.path.dirname(vcf_file), 'phasing_output')
     save_output_dir = os.path.join(os.path.dirname(vcf_file), 'connected_components')
 
-    print("开始处理模块...")
+    print("Processing blocks...")
     _, process_blocks_time = process_blocks(components_graphs, init_haplotype, matrix_triple, pos_map, fragment_map,
                                             haplotype_output_dir, vcf_file=vcf_file)
     function_times["process_blocks"] = process_blocks_time
@@ -109,120 +89,75 @@ def process_phasing(vcf_file, extractHAIRS_file, overall_start_time=None):
     return function_times
 
 
-# 主函数
 def main():
-    # 检查是否使用--porec参数（合并模式）
     if len(sys.argv) > 1 and sys.argv[1] == '--porec':
-        # 合并模式
         if len(sys.argv) != 6:
-            sys.exit(
-                'Usage: python3 %s --porec <vcf1.tab> <extractHAIRS1.txt> <vcf2.tab> <extractHAIRS2.txt>' % (sys.argv[0]))
+            sys.exit('Usage: python3 %s --porec <vcf1.tab> <fragment_reads1.txt> <vcf2.tab> <fragment_reads2.txt>' % (sys.argv[0]))  # 更新usage提示
 
         vcf1_file = sys.argv[2]
-        extractHAIRS1_file = sys.argv[3]
+        fragment_reads1_file = sys.argv[3]   # extractHAIRS1_file → fragment_reads1_file
         vcf2_file = sys.argv[4]
-        extractHAIRS2_file = sys.argv[5]
+        fragment_reads2_file = sys.argv[5]   # extractHAIRS2_file → fragment_reads2_file
 
-        # 记录开始的时间
         overall_start_time = time.time()
         function_times = {}
 
-        # 调用合并函数
-        print("=" * 60)
-        print("开始合并VCF和extractHAIRS文件...")
-        print("=" * 60)
+        print("Merging VCF and fragment reads files...")  # 更新提示文字
 
         try:
-            # 设置输出文件路径
             output_dir = os.path.dirname(vcf1_file)
-            merged_vcf_file = os.path.join(output_dir, "merged.vcf")
-            merged_extractHAIRS_file = os.path.join(output_dir, "merged_extractHAIRS.txt")
+            merged_vcf_file = os.path.join(output_dir, "merged.tab")                          # merged.vcf → merged.tab
+            merged_phasing_file = os.path.join(output_dir, "merged_fragment_reads.txt")       # merged_extractHAIRS.txt → merged_fragment_reads.txt
 
-            # 执行合并（代码2固定返回 (True/False, 行数)）
             merge_result, merge_time = merge_files(
-                vcf1_file, extractHAIRS1_file,
-                vcf2_file, extractHAIRS2_file,
-                merged_vcf_file, merged_extractHAIRS_file
+                vcf1_file, fragment_reads1_file,
+                vcf2_file, fragment_reads2_file,
+                merged_vcf_file, merged_phasing_file   # 变量名同步更新
             )
 
-            # 直接使用我们传入的输出路径（代码2已经把文件写在这里）
-            merged_vcf, merged_extractHAIRS = merged_vcf_file, merged_extractHAIRS_file
+            merged_vcf, merged_fragment_reads = merged_vcf_file, merged_phasing_file   # merged_extractHAIRS → merged_fragment_reads
 
-            # 增加失败判断
             if not merge_result:
-                print("合并文件失败，程序退出")
                 sys.exit(1)
 
             function_times["merge_files"] = merge_time
 
-            print(f"\n合并完成:")
-            print(f"  合并后的VCF文件: {merged_vcf}")
-            print(f"  合并后的extractHAIRS文件: {merged_extractHAIRS}")
-            print("=" * 60)
-            print("\n开始处理合并后的文件...")
-            print("=" * 60)
-
-            # 处理合并后的文件
-            phasing_times = process_phasing(merged_vcf, merged_extractHAIRS, overall_start_time)
+            print("Processing merged files...")
+            phasing_times = process_phasing(merged_vcf, merged_fragment_reads, overall_start_time)   # 同步更新
             function_times.update(phasing_times)
 
         except Exception as e:
-            print(f"合并文件时出错: {e}")
             sys.exit(1)
 
-        # 计算总运行时间
         overall_end_time = time.time()
         overall_run_time = overall_end_time - overall_start_time
 
-        # 保存运行时间
         run_time_file = os.path.join(output_dir, 'run_time.txt')
         with open(run_time_file, 'w') as f:
-            f.write(f"从合并文件开始到程序结束，总运行时间为：{overall_run_time:.2f} 秒\n")
-            f.write("\n各函数运行时间:\n")
+            f.write(f"Total runtime from merging to completion: {overall_run_time:.2f} seconds\n")
+            f.write("\nFunction runtimes:\n")
             for func_name, time_taken in function_times.items():
-                f.write(f"{func_name}: {time_taken:.2f} 秒\n")
-
-        print(f"\n从合并文件开始到程序结束，总运行时间为：{overall_run_time:.2f} 秒")
-        print(f"各函数运行时间已保存到 {run_time_file}")
-
-        print("\n各函数运行时间汇总:")
-        for func_name, time_taken in function_times.items():
-            print(f"{func_name}: {time_taken:.2f} 秒")
+                f.write(f"{func_name}: {time_taken:.2f} seconds\n")
 
     else:
-        # 原始模式（单文件处理）
         if len(sys.argv) != 3:
-            sys.exit(
-                'Usage: python3 %s <vcf.tab> <extractHAIRS.txt>\n       或: python3 %s --porec <vcf1.tab> <extractHAIRS1.txt> <vcf2.tab> <extractHAIRS2.txt>' % (
+            sys.exit('Usage: python3 %s <vcf.tab> <fragment_reads.txt>\n       or: python3 %s --porec <vcf1.tab> <fragment_reads1.txt> <vcf2.tab> <fragment_reads2.txt>' % (  # 更新usage提示
                     sys.argv[0], sys.argv[0]))
 
         vcf_file = sys.argv[1]
-        extractHAIRS_file = sys.argv[2]
+        fragment_reads_file = sys.argv[2]   # extractHAIRS_file → fragment_reads_file
 
-        # 记录开始的时间
         overall_start_time = time.time()
-
-        # 执行phasing处理
-        function_times = process_phasing(vcf_file, extractHAIRS_file, overall_start_time)
-
-        # 计算总运行时间
+        function_times = process_phasing(vcf_file, fragment_reads_file, overall_start_time)   # 同步更新
         overall_end_time = time.time()
         overall_run_time = overall_end_time - overall_start_time
 
-        # 保存运行时间
         run_time_file = os.path.join(os.path.dirname(vcf_file), 'run_time.txt')
         with open(run_time_file, 'w') as f:
-            f.write(f"从过滤开始到程序结束，总运行时间为：{overall_run_time:.2f} 秒\n")
-            f.write("\n各函数运行时间:\n")
+            f.write(f"Total runtime from filtering to completion: {overall_run_time:.2f} seconds\n")
+            f.write("\nFunction runtimes:\n")
             for func_name, time_taken in function_times.items():
-                f.write(f"{func_name}: {time_taken:.2f} 秒\n")
-
-        print(f"\n从过滤开始到程序结束，总运行时间为：{overall_run_time:.2f} 秒")
-        print(f"各函数运行时间已保存到 {run_time_file}")
-
-        print("\n各函数运行时间汇总:")
-        for func_name, time_taken in function_times.items():
-            print(f"{func_name}: {time_taken:.2f} 秒")
+                f.write(f"{func_name}: {time_taken:.2f} seconds\n")
 
 
 if __name__ == '__main__':

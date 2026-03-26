@@ -10,7 +10,7 @@ def process_fragment_file(fragment_output_file):
                     read_names.add(parts[1])
         return sorted(read_names)
     except Exception as e:
-        print(f"处理片段文件时出错: {e}")
+        print(f"Error processing fragment file: {e}")
         return []
 
 def generate_haplotype(snp_dict, sorted_positions):

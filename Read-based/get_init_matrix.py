@@ -58,9 +58,9 @@ def build_snp_sparse_matrix(vcf_path, fragment_path):
     pos_to_col_idx, col_idx_to_pos = create_mapping(sorted_pos)
     processed = process_fragment_file(fragment_path, pos_info_list, sorted_pos, pos_to_col_idx)
 
-    print(f"稀疏矩阵构建完成，共处理 {len(processed['sparse_matrix'])} 个有效位点")
-    print(f"片段数量: {len(processed['fragment_to_index'])}")
-    print(f"位置数量: {len(sorted_pos)}")
+    print("Sparse matrix constructed successfully, total valid loci processed:", len(processed['sparse_matrix']))
+    print("Number of fragments:", len(processed['fragment_to_index']))
+    print("Number of positions:", len(sorted_pos))
 
     result = {
         'sorted_positions': sorted_pos,
