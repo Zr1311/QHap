@@ -82,6 +82,6 @@ For HLA allele typing based on QHap-phased haplotypes, please refer to:
 
 ## Citation
 
-
+> Zhang, Rui, et al. "QHap: Quantum-Inspired Haplotype Phasing." arXiv preprint arXiv:2603.25762 (2026).
 
 Source code: [https://github.com/Zr1311/QHap](https://github.com/Zr1311/QHap)
