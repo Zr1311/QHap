@@ -328,7 +328,6 @@ def process_blocks(components_data, initial_haplotype, output_dir, vcf_file,
 
     print("\nAll components processed.")
 
-    # 如果启用后处理，初始VCF只作为中间文件
     if enable_post_processing and fragment_reads_file and matrix_data and pos_map:
         initial_output_vcf_path = os.path.join(output_dir, '_phased_tmp.vcf')
         save_phased_vcf(vcf_file, all_phasing_results, initial_output_vcf_path)
@@ -357,7 +356,6 @@ def process_blocks(components_data, initial_haplotype, output_dir, vcf_file,
             import shutil
             shutil.move(initial_output_vcf_path, final_vcf_path)
         finally:
-            # 清理所有中间文件
             for tmp in [initial_output_vcf_path,
                         os.path.join(output_dir, 'phased_improved.vcf')]:
                 if os.path.exists(tmp):
