@@ -7,7 +7,6 @@ import get_Snps_Map_n_block
 import get_init_matrix
 from init_haplotype import generate_haplotype_data
 from get_matrix import process_sparse_matrices
-from BSB_get_haplotype import process_blocks
 import merge_phasing_files
 
 
@@ -33,26 +32,43 @@ def save_connected_components(components_graphs, output_dir):
 def main():
     if len(sys.argv) < 3:
         sys.exit(
-            'Usage: python3 %s <vcf.tab> <fragment_reads.txt>\nOR: python3 %s --porec <vcf.tab> <fragment_reads.txt> <porec_vcf.tab> <porec_fragment_reads.txt> a=<value>\nOR: python3 %s --no-post <vcf.tab> <fragment_reads.txt>' % (
-                sys.argv[0], sys.argv[0], sys.argv[0]))
+            'Usage: python3 %s [--mindquantum] [--no-post] <vcf.tab> <fragment_reads.txt>\n'
+            'OR: python3 %s [--mindquantum] [--no-post] --porec <vcf.tab> <fragment_reads.txt> '
+            '<porec_vcf.tab> <porec_fragment_reads.txt> a=<value>' % (
+                sys.argv[0], sys.argv[0]))
+
+    # ── Parse flags ──
+    argv = list(sys.argv)
+
+    use_mindquantum = False
+    if '--mindquantum' in argv:
+        use_mindquantum = True
+        argv.remove('--mindquantum')
+        print("[MindQuantum BSB mode enabled]")
 
     enable_post_processing = True
-    if '--no-post' in sys.argv:
+    if '--no-post' in argv:
         enable_post_processing = False
-        sys.argv.remove('--no-post')
+        argv.remove('--no-post')
         print("Note: Post-processing disabled")
 
-    if sys.argv[1] == '--porec':
-        if len(sys.argv) != 7:
-            sys.exit(
-                'Usage: python3 %s --porec <vcf.tab> <fragment_reads.txt> <porec_vcf.tab> <porec_fragment_reads.txt> a=<value>' %
-                sys.argv[0])
+    # ── Select process_blocks implementation ──
+    if use_mindquantum:
+        from mindquantum_BSB_get_haplotype import process_blocks
+    else:
+        from BSB_get_haplotype import process_blocks
 
-        vcf1_file = sys.argv[2]
-        fragment_reads1_file = sys.argv[3]
-        vcf2_file = sys.argv[4]
-        fragment_reads2_file = sys.argv[5]
-        a_param = sys.argv[6]
+    if len(argv) > 1 and argv[1] == '--porec':
+        if len(argv) != 7:
+            sys.exit(
+                'Usage: python3 %s [--mindquantum] --porec <vcf.tab> <fragment_reads.txt> '
+                '<porec_vcf.tab> <porec_fragment_reads.txt> a=<value>' % argv[0])
+
+        vcf1_file = argv[2]
+        fragment_reads1_file = argv[3]
+        vcf2_file = argv[4]
+        fragment_reads2_file = argv[5]
+        a_param = argv[6]
 
         if not a_param.startswith('a='):
             sys.exit("Error: Invalid a parameter format")
@@ -82,10 +98,10 @@ def main():
         vcf_file = merged_vcf_file
         fragment_reads_file = merged_phasing_file
     else:
-        if len(sys.argv) != 3:
-            sys.exit('Usage: python3 %s <vcf.tab> <fragment_reads.txt>' % sys.argv[0])
-        vcf_file = sys.argv[1]
-        fragment_reads_file = sys.argv[2]
+        if len(argv) != 3:
+            sys.exit('Usage: python3 %s [--mindquantum] [--no-post] <vcf.tab> <fragment_reads.txt>' % argv[0])
+        vcf_file = argv[1]
+        fragment_reads_file = argv[2]
         merge_time = 0
         fragment_reads_1_line_count = 0
         a = 1
@@ -93,6 +109,7 @@ def main():
     output_dir = os.path.dirname(vcf_file)
     print(f"Output directory: {output_dir}")
     print(f"Post-processing: {'Enabled' if enable_post_processing else 'Disabled'}")
+    print(f"Solver: {'MindQuantum BSB' if use_mindquantum else 'tabu_SB_gpu'}")
 
     start_time = time.time()
     timing_results = []
@@ -131,13 +148,6 @@ def main():
     timing_results.append(("Get SNP blocks", get_components_time))
     print("SNP mapping and blocks processed")
 
-    # func_start = time.time()
-    # if components_graphs:
-    #     components_dir = save_connected_components(components_graphs, output_dir)
-    # save_components_time = time.time() - func_start
-    # timing_results.append(("Save components", save_components_time))
-    # print("Connected components saved")
-
     func_start = time.time()
     phasing_output_dir = os.path.join(os.path.dirname(vcf_file), 'phasing_output')
     process_blocks(
@@ -156,6 +166,7 @@ def main():
     with open(run_time_file, 'w') as f:
         f.write(f"Runtime statistics\n")
         f.write("=" * 60 + "\n")
+        f.write(f"Solver: {'MindQuantum BSB' if use_mindquantum else 'tabu_SB_gpu'}\n")
         if '--porec' in sys.argv:
             f.write("Input (merged mode):\n")
             f.write(

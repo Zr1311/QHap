@@ -11,7 +11,6 @@ import get_init_matrix
 from init_haplotype import generate_haplotype_data
 from get_matrix import process_sparse_matrices
 import get_Snps_Map_reads_block
-from BSB_get_haplotype_and_combine import process_blocks
 import merge_phasing_files
 
 
@@ -47,11 +46,10 @@ build_snp_sparse_matrix = time_function(get_init_matrix.build_snp_sparse_matrix)
 generate_haplotype_data = time_function(generate_haplotype_data)
 process_sparse_matrices = time_function(process_sparse_matrices)
 main_get_Snps_Map_reads_block = time_function(get_Snps_Map_reads_block.main)
-process_blocks = time_function(process_blocks)
 merge_files = time_function(merge_phasing_files.merge_files)
 
 
-def process_phasing(vcf_file, fragment_reads_file, overall_start_time=None):  # extractHAIRS_file → fragment_reads_file
+def process_phasing(vcf_file, fragment_reads_file, overall_start_time=None, use_mindquantum=False):
     matrix_file_dir = os.path.join(os.path.dirname(vcf_file))
 
     if overall_start_time is None:
@@ -59,15 +57,24 @@ def process_phasing(vcf_file, fragment_reads_file, overall_start_time=None):  # 
 
     function_times = {}
 
+    # Choose the block processor based on solver selection
+    if use_mindquantum:
+        from mindquantum_BSB_get_haplotype_and_combine import process_blocks as _process_blocks
+        print("[MindQuantum BSB mode enabled]")
+    else:
+        from BSB_get_haplotype_and_combine import process_blocks as _process_blocks
+
+    _process_blocks_timed = time_function(_process_blocks)
+
     print("Generating base matrix...")
-    result, matrix_time = build_snp_sparse_matrix(vcf_file, fragment_reads_file)  # 同上
+    result, matrix_time = build_snp_sparse_matrix(vcf_file, fragment_reads_file)
     matrix = result['sparse_matrix']
     pos_map = result['position_to_column']
     fragment_map = result['fragment_to_index']
     function_times["build_snp_sparse_matrix"] = matrix_time
 
     print("Generating initial haplotype...")
-    (init_haplotype, all_nodes), haplotype_time = generate_haplotype_data(vcf_file, matrix, pos_map, fragment_reads_file)  # 同上
+    (init_haplotype, all_nodes), haplotype_time = generate_haplotype_data(vcf_file, matrix, pos_map, fragment_reads_file)
     function_times["generate_haplotype_data"] = haplotype_time
 
     print("Generating triple matrix...")
@@ -82,40 +89,52 @@ def process_phasing(vcf_file, fragment_reads_file, overall_start_time=None):  # 
     save_output_dir = os.path.join(os.path.dirname(vcf_file), 'connected_components')
 
     print("Processing blocks...")
-    _, process_blocks_time = process_blocks(components_graphs, init_haplotype, matrix_triple, pos_map, fragment_map,
-                                            haplotype_output_dir, vcf_file=vcf_file)
+    _, process_blocks_time = _process_blocks_timed(
+        components_graphs, init_haplotype, matrix_triple, pos_map, fragment_map,
+        haplotype_output_dir, vcf_file=vcf_file
+    )
     function_times["process_blocks"] = process_blocks_time
 
     return function_times
 
 
 def main():
-    if len(sys.argv) > 1 and sys.argv[1] == '--porec':
-        if len(sys.argv) != 6:
-            sys.exit('Usage: python3 %s --porec <vcf1.tab> <fragment_reads1.txt> <vcf2.tab> <fragment_reads2.txt>' % (sys.argv[0]))  # 更新usage提示
+    # ── Parse --mindquantum flag ──
+    use_mindquantum = False
+    argv = list(sys.argv)
+    if '--mindquantum' in argv:
+        use_mindquantum = True
+        argv.remove('--mindquantum')
 
-        vcf1_file = sys.argv[2]
-        fragment_reads1_file = sys.argv[3]   # extractHAIRS1_file → fragment_reads1_file
-        vcf2_file = sys.argv[4]
-        fragment_reads2_file = sys.argv[5]   # extractHAIRS2_file → fragment_reads2_file
+    if len(argv) > 1 and argv[1] == '--porec':
+        if len(argv) != 6:
+            sys.exit(
+                'Usage: python3 %s [--mindquantum] --porec <vcf1.tab> <fragment_reads1.txt> '
+                '<vcf2.tab> <fragment_reads2.txt>' % (argv[0])
+            )
+
+        vcf1_file = argv[2]
+        fragment_reads1_file = argv[3]
+        vcf2_file = argv[4]
+        fragment_reads2_file = argv[5]
 
         overall_start_time = time.time()
         function_times = {}
 
-        print("Merging VCF and fragment reads files...")  # 更新提示文字
+        print("Merging VCF and fragment reads files...")
 
         try:
             output_dir = os.path.dirname(vcf1_file)
-            merged_vcf_file = os.path.join(output_dir, "merged.tab")                          # merged.vcf → merged.tab
-            merged_phasing_file = os.path.join(output_dir, "merged_fragment_reads.txt")       # merged_extractHAIRS.txt → merged_fragment_reads.txt
+            merged_vcf_file = os.path.join(output_dir, "merged.tab")
+            merged_phasing_file = os.path.join(output_dir, "merged_fragment_reads.txt")
 
             merge_result, merge_time = merge_files(
                 vcf1_file, fragment_reads1_file,
                 vcf2_file, fragment_reads2_file,
-                merged_vcf_file, merged_phasing_file   # 变量名同步更新
+                merged_vcf_file, merged_phasing_file
             )
 
-            merged_vcf, merged_fragment_reads = merged_vcf_file, merged_phasing_file   # merged_extractHAIRS → merged_fragment_reads
+            merged_vcf, merged_fragment_reads = merged_vcf_file, merged_phasing_file
 
             if not merge_result:
                 sys.exit(1)
@@ -123,7 +142,10 @@ def main():
             function_times["merge_files"] = merge_time
 
             print("Processing merged files...")
-            phasing_times = process_phasing(merged_vcf, merged_fragment_reads, overall_start_time)   # 同步更新
+            phasing_times = process_phasing(
+                merged_vcf, merged_fragment_reads, overall_start_time,
+                use_mindquantum=use_mindquantum
+            )
             function_times.update(phasing_times)
 
         except Exception as e:
@@ -135,26 +157,36 @@ def main():
         run_time_file = os.path.join(output_dir, 'run_time.txt')
         with open(run_time_file, 'w') as f:
             f.write(f"Total runtime from merging to completion: {overall_run_time:.2f} seconds\n")
+            if use_mindquantum:
+                f.write("Solver: MindQuantum BSB\n")
             f.write("\nFunction runtimes:\n")
             for func_name, time_taken in function_times.items():
                 f.write(f"{func_name}: {time_taken:.2f} seconds\n")
 
     else:
-        if len(sys.argv) != 3:
-            sys.exit('Usage: python3 %s <vcf.tab> <fragment_reads.txt>\n       or: python3 %s --porec <vcf1.tab> <fragment_reads1.txt> <vcf2.tab> <fragment_reads2.txt>' % (  # 更新usage提示
-                    sys.argv[0], sys.argv[0]))
+        if len(argv) != 3:
+            sys.exit(
+                'Usage: python3 %s [--mindquantum] <vcf.tab> <fragment_reads.txt>\n'
+                '       or: python3 %s [--mindquantum] --porec <vcf1.tab> <fragment_reads1.txt> '
+                '<vcf2.tab> <fragment_reads2.txt>' % (argv[0], argv[0])
+            )
 
-        vcf_file = sys.argv[1]
-        fragment_reads_file = sys.argv[2]   # extractHAIRS_file → fragment_reads_file
+        vcf_file = argv[1]
+        fragment_reads_file = argv[2]
 
         overall_start_time = time.time()
-        function_times = process_phasing(vcf_file, fragment_reads_file, overall_start_time)   # 同步更新
+        function_times = process_phasing(
+            vcf_file, fragment_reads_file, overall_start_time,
+            use_mindquantum=use_mindquantum
+        )
         overall_end_time = time.time()
         overall_run_time = overall_end_time - overall_start_time
 
         run_time_file = os.path.join(os.path.dirname(vcf_file), 'run_time.txt')
         with open(run_time_file, 'w') as f:
             f.write(f"Total runtime from filtering to completion: {overall_run_time:.2f} seconds\n")
+            if use_mindquantum:
+                f.write("Solver: MindQuantum BSB\n")
             f.write("\nFunction runtimes:\n")
             for func_name, time_taken in function_times.items():
                 f.write(f"{func_name}: {time_taken:.2f} seconds\n")
