@@ -13,6 +13,8 @@ QHap provides two complementary strategies:
 
 Both methods support optional **Pore-C** data integration, which improves haplotype block contiguity.
 
+All numerical simulations presented in this work were implemented using the **MindSpore Quantum framework** (`mindquantum`), which provides a powerful environment for quantum computation simulation. QHap can optionally invoke the ballistic simulated bifurcation (BSB) solver from `mindquantum.algorithm.qaia` via the `--mindquantum` flag.
+
 ---
 
 ## Installation
@@ -20,6 +22,14 @@ Both methods support optional **Pore-C** data integration, which improves haplot
 ```bash
 git clone https://github.com/Zr1311/QHap.git
 cd QHap
+```
+
+### Optional: MindSpore Quantum backend
+
+To use the `--mindquantum` flag, install the MindSpore Quantum framework:
+
+```bash
+pip install mindquantum
 ```
 
 ---
@@ -54,6 +64,15 @@ python3 Read-based/index_quantum_maxcut_phasing_n_return.py <input.vcf> <fragmen
 python3 Read-based/index_quantum_maxcut_phasing_n_return.py --porec \
     <input.vcf> <fragment.txt> \
     <input_porec.vcf> <fragment_porec.txt>
+
+# Using MindSpore Quantum BSB solver
+python3 Read-based/index_quantum_maxcut_phasing_n_return.py --mindquantum \
+    <input.vcf> <fragment.txt>
+
+# Combining --mindquantum with --porec
+python3 Read-based/index_quantum_maxcut_phasing_n_return.py --mindquantum --porec \
+    <input.vcf> <fragment.txt> \
+    <input_porec.vcf> <fragment_porec.txt>
 ```
 
 #### SNP-based Method
@@ -66,6 +85,16 @@ python3 SNP-based/index_quantum_maxcut_phasing_n_return.py <input.vcf> <fragment
 
 # With Pore-C integration (a controls Pore-C weight, default 0.1)
 python3 SNP-based/index_quantum_maxcut_phasing_n_return.py --porec \
+    <input.vcf> <fragment.txt> \
+    <input_porec.vcf> <fragment_porec.txt> \
+    a
+
+# Using MindSpore Quantum BSB solver
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py --mindquantum \
+    <input.vcf> <fragment.txt>
+
+# Combining --mindquantum with --porec
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py --mindquantum --porec \
     <input.vcf> <fragment.txt> \
     <input_porec.vcf> <fragment_porec.txt> \
     a
