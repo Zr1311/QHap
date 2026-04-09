@@ -107,7 +107,7 @@ def create_snp_graph(sparse_data, mapping, spans):
 
     num_cols = snp_data.shape[1]
     column_indices = list(range(num_cols))
-    pool_size = cpu_count()
+    pool_size = min(cpu_count(), 8)
 
     start_time = time.time()
 

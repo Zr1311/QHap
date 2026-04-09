@@ -812,7 +812,7 @@ def main():
     parser.add_argument('--use_supplementary', action='store_true', help='Use supplementary alignments')
     parser.add_argument('--sample_col', type=int, default=10, help='VCF sample column')
     parser.add_argument('--threads', '-t', type=int,
-                        default=min(mp.cpu_count(), 16),
+                        default=min(mp.cpu_count(), 8),
                         help='Number of threads')
 
     args = parser.parse_args()
