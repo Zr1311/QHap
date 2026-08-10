@@ -1,116 +1,552 @@
 # QHap: Quantum-Inspired Haplotype Phasing
 
-QHap is a haplotype phasing tool that reformulates phasing as a **Max-Cut problem**, solved via a GPU-accelerated **ballistic simulated bifurcation (bSB)** algorithm. It supports Pore-C integration for extended phase block contiguity.
+QHap is a haplotype phasing tool that reformulates haplotype phasing as a weighted Max-Cut problem and solves the resulting combinatorial optimization problem using the ballistic simulated bifurcation (bSB) algorithm.
+
+QHap provides two complementary phasing strategies:
+
+* **Read-based QHap**: sequencing reads are represented as graph vertices, and pairwise allelic relationships between reads are encoded as weighted edges.
+* **SNP-based QHap**: heterozygous SNP loci are represented as graph vertices, and edges represent read-supported relationships between SNPs.
+
+Both strategies support optional **Pore-C integration** to improve long-range haplotype block contiguity.
+
+QHap provides a GPU-accelerated PyTorch implementation of simulated bifurcation and optionally supports the BSB solver provided by `mindquantum.algorithm.qaia` through the `--mindquantum` option.
 
 ---
 
-## Methods
+## Contents
 
-QHap provides two complementary strategies:
-
-- **Read-based**: Vertices are sequencing reads; edges encode pairwise allelic conflicts. Best suited for regional phasing or moderate-coverage data.
-- **SNP-based**: Vertices are SNP loci; edges are weighted by quality-adjusted log-likelihood ratios. Scales efficiently to chromosome-scale tasks.
-
-Both methods support optional **Pore-C** data integration, which improves haplotype block contiguity.
-
-All numerical simulations presented in this work were implemented using the **MindSpore Quantum framework** (`mindquantum`), which provides a powerful environment for quantum computation simulation. QHap can optionally invoke the ballistic simulated bifurcation (BSB) solver from `mindquantum.algorithm.qaia` via the `--mindquantum` flag.
+* [Methods](#methods)
+* [System Requirements](#system-requirements)
+* [Installation Guide](#installation-guide)
+* [Input Data](#input-data)
+* [Usage](#usage)
+* [Demo](#demo)
+* [Output Files](#output-files)
+* [HLA Typing](#hla-typing)
+* [Citation](#citation)
+* [License](#license)
 
 ---
 
-## Installation
+# Methods
+
+QHap provides two complementary haplotype phasing strategies.
+
+## Read-based Method
+
+In the read-based strategy, sequencing reads are treated as graph vertices, while edges encode pairwise allelic relationships between reads.
+
+The resulting weighted graph is formulated as a Max-Cut optimization problem. The graph partition obtained using simulated bifurcation is subsequently used to reconstruct the two haplotypes.
+
+This strategy is suitable for regional haplotype phasing and read-level optimization.
+
+## SNP-based Method
+
+In the SNP-based strategy, heterozygous SNP loci are treated as graph vertices. Weighted relationships between SNPs are constructed using haplotype-informative sequencing fragments.
+
+The resulting weighted graph is converted into a Max-Cut optimization problem and solved using simulated bifurcation. The optimized spin configuration is then mapped back to phased SNP states.
+
+This strategy is designed to efficiently process larger genomic regions.
+
+## Pore-C Integration
+
+Both read-based and SNP-based strategies support optional Pore-C data integration.
+
+Pore-C-derived haplotype information can be combined with conventional sequencing information to improve long-range haplotype block connectivity.
+
+For SNP-based Pore-C phasing, the parameter
+
+```text
+a=<value>
+```
+
+controls the relative contribution of Pore-C information during graph construction.
+
+## Simulated Bifurcation Backend
+
+QHap includes a PyTorch-based ballistic simulated bifurcation implementation.
+
+The alternative BSB implementation provided by MindQuantum can be enabled using:
+
+```text
+--mindquantum
+```
+
+---
+
+# System Requirements
+
+## Hardware Requirements
+
+QHap can be executed on a standard x86_64 workstation.
+
+For GPU-accelerated execution, the following hardware is recommended:
+
+* NVIDIA CUDA-capable GPU
+* Sufficient system RAM for sequencing data processing
+* Sufficient GPU memory for the constructed Max-Cut graph
+
+Memory requirements depend on sequencing depth, the number of heterozygous variants, and graph size.
+
+---
+
+## Software Requirements
+
+QHap has been tested using the following environment:
+
+| Component        | Tested Version                                               |
+| ---------------- | ------------------------------------------------------------ |
+| Operating system | Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39 |
+| Python           | 3.9.25                                                       |
+| CUDA             | 12.8                                                         |
+| PyTorch          | 2.8.0+cu128                                                  |
+| MindQuantum      | 0.11.0                                                       |
+
+The tested operating system runs under Windows Subsystem for Linux 2 (WSL2).
+
+---
+
+## Python Dependencies
+
+QHap has been tested with the following Python packages:
+
+| Package     |     Version |
+| ----------- | ----------: |
+| NumPy       |      1.26.4 |
+| pandas      |       2.3.3 |
+| SciPy       |      1.13.1 |
+| pysam       |      0.23.3 |
+| pyfaidx     |     0.9.0.4 |
+| Numba       |      0.60.0 |
+| PyTorch     | 2.8.0+cu128 |
+| MindQuantum |      0.11.0 |
+
+MindQuantum is required only when the optional `--mindquantum` backend is used.
+
+---
+
+# Installation Guide
+
+## 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Zr1311/QHap.git
 cd QHap
 ```
 
-### Optional: MindSpore Quantum backend
+## 2. Create a Python Environment
 
-To use the `--mindquantum` flag, install the MindSpore Quantum framework:
+A dedicated Conda environment is recommended:
 
 ```bash
-pip install mindquantum
+conda create -n qhap python=3.9.25 -y
+conda activate qhap
+```
+
+## 3. Install Python Dependencies
+
+Install the dependencies used in the tested environment:
+
+```bash
+python3 -m pip install \
+    numpy==1.26.4 \
+    pandas==2.3.3 \
+    scipy==1.13.1 \
+    pysam==0.23.3 \
+    pyfaidx==0.9.0.4 \
+    numba==0.60.0
+```
+
+Install the CUDA 12.8-compatible PyTorch version:
+
+```bash
+python3 -m pip install torch==2.8.0 \
+    --index-url https://download.pytorch.org/whl/cu128
+```
+
+For the optional MindQuantum backend:
+
+```bash
+python3 -m pip install mindquantum==0.11.0
 ```
 
 ---
 
-## Usage
+## Verify the Installation
 
-### Step 1 — Fragment Extraction
+The installed environment can be checked using:
+
+```bash
+python3 - <<'PY'
+import numpy
+import pandas
+import scipy
+import pysam
+import pyfaidx
+import numba
+import torch
+
+print("numpy:", numpy.__version__)
+print("pandas:", pandas.__version__)
+print("scipy:", scipy.__version__)
+print("pysam:", pysam.__version__)
+print("pyfaidx:", pyfaidx.__version__)
+print("numba:", numba.__version__)
+print("torch:", torch.__version__)
+print("CUDA:", torch.version.cuda)
+print("CUDA available:", torch.cuda.is_available())
+
+try:
+    import mindquantum
+    print("mindquantum:", mindquantum.__version__)
+except ImportError:
+    print("mindquantum: not installed")
+PY
+```
+
+The tested environment reports:
+
+```text
+numpy: 1.26.4
+pandas: 2.3.3
+scipy: 1.13.1
+pysam: 0.23.3
+pyfaidx: 0.9.0.4
+numba: 0.60.0
+torch: 2.8.0+cu128
+CUDA: 12.8
+mindquantum: 0.11.0
+```
+
+---
+
+## Typical Installation Time
+
+Installation of QHap and its required dependencies typically takes approximately **3–5 minutes** on the tested system.
+
+The exact installation time may vary depending on network speed, package availability, and whether required packages have previously been cached.
+
+---
+
+# Input Data
+
+QHap requires the following input files:
+
+1. A VCF file containing heterozygous variants.
+2. A BAM file containing sequencing reads aligned to the corresponding reference genome.
+3. The corresponding BAM index (`.bai`) file.
+
+The BAM and VCF files are first processed using `extractHAIRS.py` to generate a haplotype-informative fragment file.
+
+The resulting VCF and fragment files are subsequently used by either the read-based or SNP-based QHap workflow.
+
+For Pore-C integration, an additional Pore-C VCF file and Pore-C fragment file are required.
+
+---
+
+# Usage
+
+The following commands assume that they are executed from the root directory of the QHap repository.
+
+## Step 1 — Fragment Extraction
+
+### Standard Long-read Data
 
 Extract haplotype-informative fragments from a BAM and VCF file:
 
 ```bash
-# Standard long-read data
-python3 extractHAIRS.py --bam <input.bam> --VCF <input.vcf> --out fragment.txt
+python3 extractHAIRS.py \
+    --bam <input.bam> \
+    --VCF <input.vcf> \
+    --out <fragment.txt>
+```
 
-# Pore-C data
-python3 extractHAIRS.py --bam <input.bam> --VCF <input.vcf> --out fragment.txt --porec
+### Pore-C Data
+
+For Pore-C sequencing data:
+
+```bash
+python3 extractHAIRS.py \
+    --bam <input_porec.bam> \
+    --VCF <input_porec.vcf> \
+    --out <fragment_porec.txt> \
+    --porec
 ```
 
 ---
 
-### Step 2 — Haplotype Phasing
+# Read-based Haplotype Phasing
 
-#### Read-based Method
+## Standard Mode
 
 ```bash
-cd Read-based
-
-# Without Pore-C
-python3 Read-based/index_quantum_maxcut_phasing_n_return.py <input.vcf> <fragment.txt>
-
-# With Pore-C integration
-python3 Read-based/index_quantum_maxcut_phasing_n_return.py --porec \
-    <input.vcf> <fragment.txt> \
-    <input_porec.vcf> <fragment_porec.txt>
-
-# Using MindSpore Quantum BSB solver
-python3 Read-based/index_quantum_maxcut_phasing_n_return.py --mindquantum \
-    <input.vcf> <fragment.txt>
-
-# Combining --mindquantum with --porec
-python3 Read-based/index_quantum_maxcut_phasing_n_return.py --mindquantum --porec \
-    <input.vcf> <fragment.txt> \
-    <input_porec.vcf> <fragment_porec.txt>
+python3 Read-based/index_quantum_maxcut_phasing_n_return.py \
+    <input.vcf> \
+    <fragment.txt>
 ```
 
-#### SNP-based Method
+## Pore-C Integration
 
 ```bash
-cd SNP-based
+python3 Read-based/index_quantum_maxcut_phasing_n_return.py \
+    --porec \
+    <input.vcf> \
+    <fragment.txt> \
+    <input_porec.vcf> \
+    <fragment_porec.txt>
+```
 
-# Without Pore-C
-python3 SNP-based/index_quantum_maxcut_phasing_n_return.py <input.vcf> <fragment.txt>
+## MindQuantum Backend
 
-# With Pore-C integration (a controls Pore-C weight, default 0.1)
-python3 SNP-based/index_quantum_maxcut_phasing_n_return.py --porec \
-    <input.vcf> <fragment.txt> \
-    <input_porec.vcf> <fragment_porec.txt> \
-    a
+```bash
+python3 Read-based/index_quantum_maxcut_phasing_n_return.py \
+    --mindquantum \
+    <input.vcf> \
+    <fragment.txt>
+```
 
-# Using MindSpore Quantum BSB solver
-python3 SNP-based/index_quantum_maxcut_phasing_n_return.py --mindquantum \
-    <input.vcf> <fragment.txt>
+## MindQuantum + Pore-C
 
-# Combining --mindquantum with --porec
-python3 SNP-based/index_quantum_maxcut_phasing_n_return.py --mindquantum --porec \
-    <input.vcf> <fragment.txt> \
-    <input_porec.vcf> <fragment_porec.txt> \
-    a
+```bash
+python3 Read-based/index_quantum_maxcut_phasing_n_return.py \
+    --mindquantum \
+    --porec \
+    <input.vcf> \
+    <fragment.txt> \
+    <input_porec.vcf> \
+    <fragment_porec.txt>
 ```
 
 ---
 
-## HLA Typing
+# SNP-based Haplotype Phasing
+
+## Standard Mode
+
+```bash
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py \
+    <input.vcf> \
+    <fragment.txt>
+```
+
+## Pore-C Integration
+
+For SNP-based Pore-C integration, specify the relative Pore-C contribution using:
+
+```text
+a=<value>
+```
+
+For example:
+
+```bash
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py \
+    --porec \
+    <input.vcf> \
+    <fragment.txt> \
+    <input_porec.vcf> \
+    <fragment_porec.txt> \
+    a=0.1
+```
+
+The parameter `a` controls the relative contribution of Pore-C-derived information during SNP graph construction.
+
+## MindQuantum Backend
+
+```bash
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py \
+    --mindquantum \
+    <input.vcf> \
+    <fragment.txt>
+```
+
+## MindQuantum + Pore-C
+
+```bash
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py \
+    --mindquantum \
+    --porec \
+    <input.vcf> \
+    <fragment.txt> \
+    <input_porec.vcf> \
+    <fragment_porec.txt> \
+    a=0.1
+```
+
+## Disable Post-processing
+
+Post-processing is enabled by default in the SNP-based workflow.
+
+To disable it:
+
+```bash
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py \
+    --no-post \
+    <input.vcf> \
+    <fragment.txt>
+```
+
+The `--no-post` option can also be combined with `--mindquantum`.
+
+---
+
+# Demo
+
+A small demonstration dataset is provided in the `demo/` directory to allow users to verify the installation and QHap workflow without downloading the complete benchmark datasets.
+
+The demo directory contains:
+
+```text
+demo/
+├── chr6_MHC.bam
+├── chr6_MHC.bam.bai
+├── chr6_snp_PASS_filter.vcf
+└── README.md
+```
+
+The provided dataset contains sequencing data from the MHC region of chromosome 6 and is intended only as a small example for testing the QHap workflow.
+
+---
+
+## Run the Demo
+
+All commands should be executed from the QHap repository root directory.
+
+### Step 1 — Extract Haplotype-informative Fragments
+
+```bash
+python3 extractHAIRS.py \
+    --bam demo/chr6_MHC.bam \
+    --VCF demo/chr6_snp_PASS_filter.vcf \
+    --out demo/fragment.txt
+```
+
+A successful fragment extraction produces:
+
+```text
+demo/fragment.txt
+```
+
+---
+
+### Step 2 — Run Read-based QHap
+
+```bash
+python3 Read-based/index_quantum_maxcut_phasing_n_return.py \
+    demo/chr6_snp_PASS_filter.vcf \
+    demo/fragment.txt
+```
+
+Alternatively, the SNP-based workflow can be tested using:
+
+```bash
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py \
+    demo/chr6_snp_PASS_filter.vcf \
+    demo/fragment.txt
+```
+
+---
+
+## Expected Demo Output
+
+A successful QHap run generates a phased VCF file:
+
+```text
+phasing_output/phased.vcf
+```
+
+The phased VCF contains phased genotypes such as:
+
+```text
+0|1
+1|0
+```
+
+together with phase-set (`PS`) information where applicable.
+
+Runtime information is recorded in:
+
+```text
+run_time.txt
+```
+
+Depending on the selected workflow, additional intermediate files may also be generated.
+
+---
+
+## Expected Demo Runtime
+
+The provided demo typically completes within approximately **1 minute** on the tested system.
+
+Runtime may vary depending on hardware, graph size, selected phasing strategy, and selected simulated bifurcation backend.
+
+---
+
+# Output Files
+
+The principal QHap output is:
+
+```text
+phasing_output/phased.vcf
+```
+
+This file contains the final phased variants.
+
+Runtime information is recorded in:
+
+```text
+run_time.txt
+```
+
+For Pore-C analyses, additional intermediate merged files may be generated, including:
+
+```text
+merged.tab
+merged_fragment_reads.txt
+```
+
+---
+
+# Running QHap on Your Own Data
+
+To apply QHap to a new dataset:
+
+1. Prepare an aligned BAM file.
+2. Generate the corresponding BAM index (`.bai`).
+3. Prepare a VCF file containing heterozygous variants.
+4. Run `extractHAIRS.py` to generate haplotype-informative fragments.
+5. Run either the read-based or SNP-based QHap workflow.
+6. Use `--porec` when integrating Pore-C data.
+7. Use `--mindquantum` when using the MindQuantum BSB backend.
+8. Inspect `phasing_output/phased.vcf` for the final phased variants.
+9. Inspect `run_time.txt` for runtime information.
+
+---
+
+# HLA Typing
 
 For HLA allele typing based on QHap-phased haplotypes, please refer to:
-[https://github.com/Roick-Leo/Aster_WGS.git](https://github.com/Roick-Leo/Aster_WGS.git)
+
+https://github.com/Roick-Leo/Aster_WGS
 
 ---
 
-## Citation
+# Citation
 
-> Zhang, Rui, et al. "QHap: Quantum-Inspired Haplotype Phasing." arXiv preprint arXiv:2603.25762 (2026).
+If you use QHap in your research, please cite:
 
-Source code: [https://github.com/Zr1311/QHap](https://github.com/Zr1311/QHap)
+> Zhang, Rui, et al.
+> **QHap: Quantum-Inspired Haplotype Phasing.**
+> arXiv preprint arXiv:2603.25762 (2026).
+
+Source code:
+
+https://github.com/Zr1311/QHap
+
+---
+
+# License
+
+QHap is distributed under the **Apache License 2.0**.
+
+See the [`LICENSE`](LICENSE) file for the complete license terms.
