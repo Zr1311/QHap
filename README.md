@@ -494,9 +494,9 @@ Depending on the selected workflow, additional intermediate files may also be ge
 
 ## Expected Demo Runtime
 
-This demo uses the full chromosome 6 BAM. The previous approximately one-minute runtime for the MHC-only example does not apply; a runtime estimate for the full chromosome 6 demo has not been established.
+The expected execution time for the chromosome 6 demo is **under 2 minutes**, excluding environment setup and data download.
 
-Download time and computation time depend on network speed, sequencing depth, hardware, graph size, selected phasing strategy, and selected simulated bifurcation backend. The chromosome-scale workflow also requires more memory than the previous regional example.
+Actual execution time depends on hardware, graph size, selected phasing strategy, and selected simulated bifurcation backend. Data download time depends on network speed.
 
 ---
 

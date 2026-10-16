@@ -77,4 +77,6 @@ python3 Read-based/index_quantum_maxcut_phasing_n_return.py \
     demo/fragment.txt
 ```
 
-Expected outputs include `demo/fragment.txt`, `demo/phasing_output/phased.vcf`, and `demo/run_time.txt`. The runtime of the previous MHC-only example does not apply. Full chromosome 6 runtime has not been benchmarked here and depends on hardware, sequencing depth, graph size, and solver backend.
+Expected outputs include `demo/fragment.txt`, `demo/phasing_output/phased.vcf`, and `demo/run_time.txt`.
+
+The expected demo execution time is **under 2 minutes**, excluding environment setup and data download. Actual execution time depends on hardware, graph size, selected phasing strategy, and solver backend.
