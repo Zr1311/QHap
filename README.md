@@ -392,19 +392,35 @@ The `--no-post` option can also be combined with `--mindquantum`.
 
 # Demo
 
-A small demonstration dataset is provided in the `demo/` directory to allow users to verify the installation and QHap workflow without downloading the complete benchmark datasets.
+A chromosome-scale demonstration dataset is available for chromosome 6. It pairs the existing `demo/chr6_snp_PASS_filter.vcf` with the full chromosome 6 HiFi alignment file, `chr6.bam`, and its matching index, `chr6.bam.bai`.
 
-The demo directory contains:
+The BAM is **3,189,874,315 bytes (approximately 2.97 GiB)**. The BAM and index are distributed through the [chromosome 6 demo release](https://github.com/Zr1311/QHap/releases/tag/demo-chr6-v1); they are downloaded separately from the Git repository. The BAM is split into three binary parts, which must be concatenated in numerical order.
+
+After downloading and restoring the data, the demo directory contains:
 
 ```text
 demo/
-├── chr6_MHC.bam
-├── chr6_MHC.bam.bai
+├── chr6.bam
+├── chr6.bam.bai
 ├── chr6_snp_PASS_filter.vcf
+├── download_chr6.py
+├── SHA256SUMS
 └── README.md
 ```
 
-The provided dataset contains sequencing data from the MHC region of chromosome 6 and is intended only as a small example for testing the QHap workflow.
+The BAM contains alignments across chromosome 6, replacing the previous MHC-only example. The VCF is unchanged and contains 155,860 chromosome 6 variant records.
+
+## Download and Restore the Demo Data
+
+From the repository root, run:
+
+```bash
+python3 demo/download_chr6.py
+```
+
+On Windows, use `python demo/download_chr6.py`. The script uses only the Python standard library, downloads the three BAM parts and the matching index, verifies their SHA-256 checksums, and restores `demo/chr6.bam`. Successfully restored parts are removed by default; use `--keep-parts` to retain them. Re-running the command reuses files whose checksums already match.
+
+Allow at least **7 GB of free disk space** for the download and restoration, plus space for phasing outputs. See [`demo/README.md`](demo/README.md) for manual download, concatenation, and verification commands.
 
 ---
 
@@ -416,7 +432,7 @@ All commands should be executed from the QHap repository root directory.
 
 ```bash
 python3 extractHAIRS.py \
-    --bam demo/chr6_MHC.bam \
+    --bam demo/chr6.bam \
     --VCF demo/chr6_snp_PASS_filter.vcf \
     --out demo/fragment.txt
 ```
@@ -429,18 +445,20 @@ demo/fragment.txt
 
 ---
 
-### Step 2 — Run Read-based QHap
+### Step 2 — Run SNP-based QHap
+
+For this chromosome-scale dataset, start with the SNP-based workflow:
 
 ```bash
-python3 Read-based/index_quantum_maxcut_phasing_n_return.py \
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py \
     demo/chr6_snp_PASS_filter.vcf \
     demo/fragment.txt
 ```
 
-Alternatively, the SNP-based workflow can be tested using:
+Alternatively, the read-based workflow can be tested using:
 
 ```bash
-python3 SNP-based/index_quantum_maxcut_phasing_n_return.py \
+python3 Read-based/index_quantum_maxcut_phasing_n_return.py \
     demo/chr6_snp_PASS_filter.vcf \
     demo/fragment.txt
 ```
@@ -452,7 +470,7 @@ python3 SNP-based/index_quantum_maxcut_phasing_n_return.py \
 A successful QHap run generates a phased VCF file:
 
 ```text
-phasing_output/phased.vcf
+demo/phasing_output/phased.vcf
 ```
 
 The phased VCF contains phased genotypes such as:
@@ -467,7 +485,7 @@ together with phase-set (`PS`) information where applicable.
 Runtime information is recorded in:
 
 ```text
-run_time.txt
+demo/run_time.txt
 ```
 
 Depending on the selected workflow, additional intermediate files may also be generated.
@@ -476,9 +494,9 @@ Depending on the selected workflow, additional intermediate files may also be ge
 
 ## Expected Demo Runtime
 
-The provided demo typically completes within approximately **1 minute** on the tested system.
+This demo uses the full chromosome 6 BAM. The previous approximately one-minute runtime for the MHC-only example does not apply; a runtime estimate for the full chromosome 6 demo has not been established.
 
-Runtime may vary depending on hardware, graph size, selected phasing strategy, and selected simulated bifurcation backend.
+Download time and computation time depend on network speed, sequencing depth, hardware, graph size, selected phasing strategy, and selected simulated bifurcation backend. The chromosome-scale workflow also requires more memory than the previous regional example.
 
 ---
 
