@@ -24,7 +24,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--platform',choices=['HiFi','ONT','CycloneSEQ'],required=True)
     p.add_argument('--region','--chromosome',dest='region',choices=['MHC','chr6','chr22'],required=True,
-                   help='MHC subsets or full chr22; full chr6 is available for HiFi in the existing demo release')
+                   help='Select a verified manifest entry: MHC is a derived overlap subset; chr6/chr22 are complete supplied chromosome inputs')
     p.add_argument('--output',type=Path,required=True)
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=True)
     manifest=json.loads((HERE/'HG002_CHM13v2/ALIGNMENTS.json').read_text())
