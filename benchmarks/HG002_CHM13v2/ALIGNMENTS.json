@@ -1,33 +1,493 @@
 {
   "reference": "CHM13v2",
-  "release_url": "https://github.com/Zr1311/QHap/releases/tag/demo-chr6-v1",
+  "release_url": "https://github.com/Zr1311/QHap/releases/tag/benchmark-hg002-chm13v2-20261019",
+  "scope": "MHC overlap subsets for three platforms; complete chr22 BAMs; existing HiFi chr6 release reused",
   "alignments": [
     {
+      "file": "HG002_HiFi_CHM13v2_chr6_MHC.bam",
+      "region": "MHC",
+      "chromosome": "chr6",
+      "bytes": 99691982,
+      "sha256": "182fba616746cbc03d4a5392be5eee0ec25cbaf341031f0c9123b3b2f608e2bf",
+      "parts": [
+        {
+          "name": "HG002_HiFi_CHM13v2_chr6_MHC.bam",
+          "bytes": 99691982,
+          "sha256": "182fba616746cbc03d4a5392be5eee0ec25cbaf341031f0c9123b3b2f608e2bf",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_HiFi_CHM13v2_chr6_MHC.bam"
+        }
+      ],
+      "derivation": {
+        "platform": "HiFi",
+        "region": "MHC",
+        "chromosome": "chr6",
+        "one_based_closed_interval": [
+          28477797,
+          33448354
+        ],
+        "alignment_selection": "all alignments overlapping interval; full alignment records retained; no MAPQ/base-quality filter or subsampling",
+        "source_file": "new_HIFI/chr6.bam",
+        "source_bytes": 3189874315,
+        "source_sha256": "2e7e780985418eefcdafa00e2c4e35f768b00363cf8f963a0562e042e187baba",
+        "output_file": "HG002_HiFi_CHM13v2_chr6_MHC.bam",
+        "output_bytes": 99691982,
+        "output_sha256": "182fba616746cbc03d4a5392be5eee0ec25cbaf341031f0c9123b3b2f608e2bf",
+        "index_file": "HG002_HiFi_CHM13v2_chr6_MHC.bam.bai",
+        "index_sha256": "3ce83e9d04086a5602146f53e1631c7d465f8d0c8a765e9212525e46afc2692d",
+        "alignment_records": 16881,
+        "pysam": "0.24.1"
+      }
+    },
+    {
+      "file": "HG002_HiFi_CHM13v2_chr6_MHC.bam.bai",
+      "region": "MHC",
+      "chromosome": "chr6",
+      "bytes": 56760,
+      "sha256": "3ce83e9d04086a5602146f53e1631c7d465f8d0c8a765e9212525e46afc2692d",
+      "parts": [
+        {
+          "name": "HG002_HiFi_CHM13v2_chr6_MHC.bam.bai",
+          "bytes": 56760,
+          "sha256": "3ce83e9d04086a5602146f53e1631c7d465f8d0c8a765e9212525e46afc2692d",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_HiFi_CHM13v2_chr6_MHC.bam.bai"
+        }
+      ]
+    },
+    {
+      "file": "HG002_ONT_CHM13v2_chr6_MHC.bam",
+      "region": "MHC",
+      "chromosome": "chr6",
+      "bytes": 255107682,
+      "sha256": "a8d28b3f62a2d0603e03ddb7085aef292b76ecd2a6864f611ce2d428c663300c",
+      "parts": [
+        {
+          "name": "HG002_ONT_CHM13v2_chr6_MHC.bam.part01",
+          "bytes": 134217728,
+          "sha256": "29785323e94dfa25570214ec43a27f2ea67c7d52c29190eebd57acf894dacc8f",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr6_MHC.bam.part01"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr6_MHC.bam.part02",
+          "bytes": 120889954,
+          "sha256": "8415f4f693533188a58e503b2db5ad07dcfdf24cf59a832bc90e28e12c3a39c5",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr6_MHC.bam.part02"
+        }
+      ],
+      "derivation": {
+        "platform": "ONT",
+        "region": "MHC",
+        "chromosome": "chr6",
+        "one_based_closed_interval": [
+          28477797,
+          33448354
+        ],
+        "alignment_selection": "all alignments overlapping interval; full alignment records retained; no MAPQ/base-quality filter or subsampling",
+        "source_file": "new_ONT/chr6.bam",
+        "source_bytes": 8488573856,
+        "source_sha256": "0bea0a8997591cea5472bcba15f8d0df4389bbe92c46591561e79d080a732985",
+        "output_file": "HG002_ONT_CHM13v2_chr6_MHC.bam",
+        "output_bytes": 255107682,
+        "output_sha256": "a8d28b3f62a2d0603e03ddb7085aef292b76ecd2a6864f611ce2d428c663300c",
+        "index_file": "HG002_ONT_CHM13v2_chr6_MHC.bam.bai",
+        "index_sha256": "3d155006c944d4d993a78c9a5ced20f8416a9d1adc50fdb33a48d0d14e10d2e6",
+        "alignment_records": 15203,
+        "pysam": "0.24.1"
+      }
+    },
+    {
+      "file": "HG002_ONT_CHM13v2_chr6_MHC.bam.bai",
+      "region": "MHC",
+      "chromosome": "chr6",
+      "bytes": 91720,
+      "sha256": "3d155006c944d4d993a78c9a5ced20f8416a9d1adc50fdb33a48d0d14e10d2e6",
+      "parts": [
+        {
+          "name": "HG002_ONT_CHM13v2_chr6_MHC.bam.bai",
+          "bytes": 91720,
+          "sha256": "3d155006c944d4d993a78c9a5ced20f8416a9d1adc50fdb33a48d0d14e10d2e6",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr6_MHC.bam.bai"
+        }
+      ]
+    },
+    {
+      "file": "HG002_CycloneSEQ_CHM13v2_chr6_MHC.bam",
+      "region": "MHC",
+      "chromosome": "chr6",
+      "bytes": 250153460,
+      "sha256": "36806e2a8f96cd46f3b899e0e8ce7883f46106fde05b425b8ab626334ffdb11a",
+      "parts": [
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr6_MHC.bam.part01",
+          "bytes": 134217728,
+          "sha256": "02558b9e89cd8295677c74cc9e2ffedf357efe59a1da63c4c746f09b7caeac2d",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr6_MHC.bam.part01"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr6_MHC.bam.part02",
+          "bytes": 115935732,
+          "sha256": "9d4b9b81e855d664d714b55b4fa994024f156eca922b8002ce891990b23a60f0",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr6_MHC.bam.part02"
+        }
+      ],
+      "derivation": {
+        "platform": "CycloneSEQ",
+        "region": "MHC",
+        "chromosome": "chr6",
+        "one_based_closed_interval": [
+          28477797,
+          33448354
+        ],
+        "alignment_selection": "all alignments overlapping interval; full alignment records retained; no MAPQ/base-quality filter or subsampling",
+        "source_file": "new_WY/chr6.bam",
+        "source_bytes": 7588781734,
+        "source_sha256": "9b816c8ff6e18acab666559f2d033f88a24f4d7d57987db2c6fc1194ba402e72",
+        "output_file": "HG002_CycloneSEQ_CHM13v2_chr6_MHC.bam",
+        "output_bytes": 250153460,
+        "output_sha256": "36806e2a8f96cd46f3b899e0e8ce7883f46106fde05b425b8ab626334ffdb11a",
+        "index_file": "HG002_CycloneSEQ_CHM13v2_chr6_MHC.bam.bai",
+        "index_sha256": "d7266a56f0babb481083b576a95368626228f47e28a78c5abee11b19096509d0",
+        "alignment_records": 18776,
+        "pysam": "0.24.1"
+      }
+    },
+    {
+      "file": "HG002_CycloneSEQ_CHM13v2_chr6_MHC.bam.bai",
+      "region": "MHC",
+      "chromosome": "chr6",
+      "bytes": 115064,
+      "sha256": "d7266a56f0babb481083b576a95368626228f47e28a78c5abee11b19096509d0",
+      "parts": [
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr6_MHC.bam.bai",
+          "bytes": 115064,
+          "sha256": "d7266a56f0babb481083b576a95368626228f47e28a78c5abee11b19096509d0",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr6_MHC.bam.bai"
+        }
+      ]
+    },
+    {
+      "file": "HG002_HiFi_CHM13v2_chr22.bam",
+      "region": "chr22",
+      "chromosome": "chr22",
+      "bytes": 833121649,
+      "sha256": "ab2a819e6d2aefcd8b6e579122648b4229e85b0aca46ecd29f4cfa5a4568a972",
+      "parts": [
+        {
+          "name": "HG002_HiFi_CHM13v2_chr22.bam",
+          "bytes": 833121649,
+          "sha256": "ab2a819e6d2aefcd8b6e579122648b4229e85b0aca46ecd29f4cfa5a4568a972",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_HiFi_CHM13v2_chr22.bam"
+        }
+      ]
+    },
+    {
+      "file": "HG002_HiFi_CHM13v2_chr22.bam.bai",
+      "region": "chr22",
+      "chromosome": "chr22",
+      "bytes": 392296,
+      "sha256": "c2c7cb81e8eaeadbc64eddd061285f2a356f6b1d0317240ab4ddd30618f69548",
+      "parts": [
+        {
+          "name": "HG002_HiFi_CHM13v2_chr22.bam.bai",
+          "bytes": 392296,
+          "sha256": "c2c7cb81e8eaeadbc64eddd061285f2a356f6b1d0317240ab4ddd30618f69548",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_HiFi_CHM13v2_chr22.bam.bai"
+        }
+      ]
+    },
+    {
+      "file": "HG002_ONT_CHM13v2_chr22.bam",
+      "region": "chr22",
+      "chromosome": "chr22",
+      "bytes": 2476025683,
+      "sha256": "aa62db6351407d272626eaee496625a80259905e3400d6c6d7a36d087f4fc289",
+      "parts": [
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part01",
+          "bytes": 134217728,
+          "sha256": "f2f1479ad5fa9ffbe0860ea35cb063f7d1c5688bd307f482c983f96da3558321",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part01"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part02",
+          "bytes": 134217728,
+          "sha256": "e655352de89f865f0a5c1ac7135bf12e819d1babbc7bbe455b45a4a4c6b7d014",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part02"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part03",
+          "bytes": 134217728,
+          "sha256": "ba4ea934453d9d5254e457f8a1ca9b4c2fb4c96616ae8a1f271a7af73fcae56e",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part03"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part04",
+          "bytes": 134217728,
+          "sha256": "23323b6a8beff4fa779272c809d51215af345a5beca6707a8854fcd91ea2d33f",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part04"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part05",
+          "bytes": 134217728,
+          "sha256": "1153aadf78f6bb15fb38e8b97f462a56dcf4e25153bf3e0791f5564e75d9f946",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part05"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part06",
+          "bytes": 134217728,
+          "sha256": "acae41f3509487486c7fc49f96c21d4cf643767d1afa7405f5a5ea0920b6b0a9",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part06"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part07",
+          "bytes": 134217728,
+          "sha256": "2b297ba49de3c6aa91871c8714d1ba88fa27613ab1d7c18fbc770c6d9d309ef1",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part07"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part08",
+          "bytes": 134217728,
+          "sha256": "1b7ef7623ec0bf01c6f0560dc7bd97b138a2158fee875fa4eca813502d60509a",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part08"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part09",
+          "bytes": 134217728,
+          "sha256": "ffa864d0ad123ff5f55562c0c1fa72daef84fce05a1c4c29fa57a726d82af8da",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part09"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part10",
+          "bytes": 134217728,
+          "sha256": "a390610eca7061e3d9ad3821f2168ec6bc9e236b44b9dd3bd52b0cc503943b46",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part10"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part11",
+          "bytes": 134217728,
+          "sha256": "707930f6e0dee5d437ca21118d22bcde1240467b9b7d09d90b057bf911a1e637",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part11"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part12",
+          "bytes": 134217728,
+          "sha256": "a7d087b4e8e19355078de9d3b974c580a3d543ffa830b78a13a142eb75628a00",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part12"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part13",
+          "bytes": 134217728,
+          "sha256": "1ceb322ee14b838d40d443f173e36f8a11f379c3bc571f8ede6a9f8b076cf170",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part13"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part14",
+          "bytes": 134217728,
+          "sha256": "2ac5a324909bb698087a4e1e83afdd819af236e1272df335cc68070ecfdb4f4a",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part14"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part15",
+          "bytes": 134217728,
+          "sha256": "6467b7ce6ce077ef392f4fbdb11934c121503cd2d9388721c8dfd7590cd1469d",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part15"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part16",
+          "bytes": 134217728,
+          "sha256": "ef82a157df754c6017c0eb6af10d7bacbc3219536002351a3e461dc40f11161f",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part16"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part17",
+          "bytes": 134217728,
+          "sha256": "27f320ec6c958768cd71d4871d6727c1f42d485756009fd5e52b4602f3f8771d",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part17"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part18",
+          "bytes": 134217728,
+          "sha256": "edf0e75566ccef550cc3fc690672f3a48fb7b4383e58214c6332cfba3b3a71ff",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part18"
+        },
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.part19",
+          "bytes": 60106579,
+          "sha256": "f4366514da47d2899ae65847ff00da6ad253493dc0c9404f7ec4abfcc2fbaa8b",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.part19"
+        }
+      ]
+    },
+    {
+      "file": "HG002_ONT_CHM13v2_chr22.bam.bai",
+      "region": "chr22",
+      "chromosome": "chr22",
+      "bytes": 809544,
+      "sha256": "f7aeba1c6bb328c9c70b7da6ad44bb7ea2fc66a1c76810af5832e52f2a9843cf",
+      "parts": [
+        {
+          "name": "HG002_ONT_CHM13v2_chr22.bam.bai",
+          "bytes": 809544,
+          "sha256": "f7aeba1c6bb328c9c70b7da6ad44bb7ea2fc66a1c76810af5832e52f2a9843cf",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_ONT_CHM13v2_chr22.bam.bai"
+        }
+      ]
+    },
+    {
+      "file": "HG002_CycloneSEQ_CHM13v2_chr22.bam",
+      "region": "chr22",
+      "chromosome": "chr22",
+      "bytes": 2334072485,
+      "sha256": "b603792619daa9d0ce512284d0b4bce7e5bac99ba005ec03786b2c3fef9eb602",
+      "parts": [
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part01",
+          "bytes": 134217728,
+          "sha256": "4a20f27879035a2894702ae58acf9a52d62364df65773feee823249c64670d4c",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part01"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part02",
+          "bytes": 134217728,
+          "sha256": "1e3e083dd1c2260ee678d7ee3105bfc75c7871c60dea536f53e79677597ffca0",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part02"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part03",
+          "bytes": 134217728,
+          "sha256": "6a04168bbd485fc559d171f02f9e3d139cf70c9daeaf3e90fc67c88b9caa47ef",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part03"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part04",
+          "bytes": 134217728,
+          "sha256": "6c46c08933d13ea02c6addd4c4bdf90703dd267aafa267fcbda624a630f50889",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part04"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part05",
+          "bytes": 134217728,
+          "sha256": "1212bbf532d8855810dc02ff77f13747565174de4f2b0fe3381edb8965b8e76c",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part05"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part06",
+          "bytes": 134217728,
+          "sha256": "5dfcd1e82a23b3fde0f0f31b297e368210ad1bb314c1e2191f5553f1b2170191",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part06"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part07",
+          "bytes": 134217728,
+          "sha256": "94b53288c8342da2d83ca3cba3570ae3e56989c77e834574983a05dd8e6fe545",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part07"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part08",
+          "bytes": 134217728,
+          "sha256": "5bb3855f5e89e675926978ad4c772df08224f16f1d3f409bffb9948987ed1bb5",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part08"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part09",
+          "bytes": 134217728,
+          "sha256": "60150ad6d9bb4fb1f4b63a29228403c6e0e321d208a2e1faf6569f4407bf2259",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part09"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part10",
+          "bytes": 134217728,
+          "sha256": "293ea857df07db642337fa0be01b16886d6c3ac88fd007d050e7d25950a5edd1",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part10"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part11",
+          "bytes": 134217728,
+          "sha256": "acebb745d0a97b333422461be319b71dc05883967b55c02746d858be8ff2bbbd",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part11"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part12",
+          "bytes": 134217728,
+          "sha256": "a37d94647913fc499c3880b3d20fd1feb790081f5ce0682b3d1793118acad0e1",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part12"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part13",
+          "bytes": 134217728,
+          "sha256": "2373238f1ff3a1bbfa4b1da98be14d7c477e2d79253fc590e89ae184a09a3caa",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part13"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part14",
+          "bytes": 134217728,
+          "sha256": "b6550d66edf560aa94234cbdec23a50a1c703d5bb27b3ef674be3387314b6f7f",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part14"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part15",
+          "bytes": 134217728,
+          "sha256": "21f89fad8be6b89f7a9e351705f4878ac12e043f26c2c8bfe712502778276fe4",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part15"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part16",
+          "bytes": 134217728,
+          "sha256": "8c7fb20c28891f287b226182cda7c2c987ba50e5143be0fefff04e36692e02f1",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part16"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part17",
+          "bytes": 134217728,
+          "sha256": "b17a1da5ce518171c9c913e928d1fcb2f158e81f71c3d5c90cb79d6a39b08670",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part17"
+        },
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.part18",
+          "bytes": 52371109,
+          "sha256": "577c3a217b8cfb9202670e6d50348bd7281c4f6ac65ca2b5b296784f6f267a03",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.part18"
+        }
+      ]
+    },
+    {
+      "file": "HG002_CycloneSEQ_CHM13v2_chr22.bam.bai",
+      "region": "chr22",
+      "chromosome": "chr22",
+      "bytes": 1000816,
+      "sha256": "cc33af8f7f0b90250b7a9d3946777a4c9bde80afecb7114cf379539389840747",
+      "parts": [
+        {
+          "name": "HG002_CycloneSEQ_CHM13v2_chr22.bam.bai",
+          "bytes": 1000816,
+          "sha256": "cc33af8f7f0b90250b7a9d3946777a4c9bde80afecb7114cf379539389840747",
+          "url": "https://github.com/Zr1311/QHap/releases/download/benchmark-hg002-chm13v2-20261019/HG002_CycloneSEQ_CHM13v2_chr22.bam.bai"
+        }
+      ]
+    },
+    {
       "file": "HG002_HiFi_CHM13v2_chr6.bam",
+      "region": "chr6",
+      "chromosome": "chr6",
       "bytes": 3189874315,
       "sha256": "2e7e780985418eefcdafa00e2c4e35f768b00363cf8f963a0562e042e187baba",
       "existing_release": "https://github.com/Zr1311/QHap/releases/tag/demo-chr6-v1",
-      "original_asset_name": "chr6.bam",
       "parts": [
         "chr6.bam.part01",
         "chr6.bam.part02",
         "chr6.bam.part03"
-      ],
-      "region": "chr6",
-      "chromosome": "chr6"
+      ]
     },
     {
       "file": "HG002_HiFi_CHM13v2_chr6.bam.bai",
+      "region": "chr6",
+      "chromosome": "chr6",
       "bytes": 1469760,
       "sha256": "304ec7c91324a9dd50d64350e10d05c788aefa8b12795ad13181845338b5973e",
       "existing_release": "https://github.com/Zr1311/QHap/releases/tag/demo-chr6-v1",
-      "original_asset_name": "chr6.bam.bai",
       "parts": [
         "chr6.bam.bai"
-      ],
-      "region": "chr6",
-      "chromosome": "chr6"
+      ]
     }
-  ],
-  "scope": "Existing public HiFi chr6; three-platform benchmark region alignment release is being verified separately."
+  ]
 }

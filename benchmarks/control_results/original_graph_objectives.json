@@ -1,0 +1,523 @@
+{
+  "definition": "Sum of original signed edge weights crossing final flip parity, relative to the released initial haplotype; undirected edges counted once",
+  "graph": "data_WY_chr22_fast.npz",
+  "interpretation": "Higher cut is a better graph-surrogate value, not a biological accuracy or global-optimality certificate",
+  "runs": [
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "fast",
+      "seed": 20261019,
+      "HE_percent": 27.212451144611947,
+      "HE_errors": 7798,
+      "original_graph_cut": 671794.2243456648,
+      "largest_component_cut": 366143.0629342147,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366143.0629342147
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "fast",
+      "seed": 20261020,
+      "HE_percent": 24.912758235622558,
+      "HE_errors": 7139,
+      "original_graph_cut": 671878.301339249,
+      "largest_component_cut": 366227.1399277989,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366227.1399277989
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "fast",
+      "seed": 20261021,
+      "HE_percent": 27.746370742601897,
+      "HE_errors": 7951,
+      "original_graph_cut": 671928.7994709001,
+      "largest_component_cut": 366277.63805945,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366277.63805945
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "steps2",
+      "seed": 20261019,
+      "HE_percent": 24.45561139028476,
+      "HE_errors": 7008,
+      "original_graph_cut": 671881.4971869783,
+      "largest_component_cut": 366230.3357755282,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366230.3357755282
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "steps2",
+      "seed": 20261020,
+      "HE_percent": 24.993020658849805,
+      "HE_errors": 7162,
+      "original_graph_cut": 671973.7245813421,
+      "largest_component_cut": 366322.56316989195,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366322.56316989195
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "steps2",
+      "seed": 20261021,
+      "HE_percent": 16.101340033500836,
+      "HE_errors": 4614,
+      "original_graph_cut": 671936.4446464473,
+      "largest_component_cut": 366285.2832349972,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366285.2832349972
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "samples2",
+      "seed": 20261019,
+      "HE_percent": 26.43425460636516,
+      "HE_errors": 7575,
+      "original_graph_cut": 671960.9308923861,
+      "largest_component_cut": 366309.769480936,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366309.769480936
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "samples2",
+      "seed": 20261020,
+      "HE_percent": 23.987995533221664,
+      "HE_errors": 6874,
+      "original_graph_cut": 671864.0738557143,
+      "largest_component_cut": 366212.91244426416,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366212.91244426416
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "samples2",
+      "seed": 20261021,
+      "HE_percent": 12.709380234505863,
+      "HE_errors": 3642,
+      "original_graph_cut": 671939.0492583361,
+      "largest_component_cut": 366287.88784688595,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366287.88784688595
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "field",
+      "seed": 20261019,
+      "HE_percent": 22.201284198771635,
+      "HE_errors": 6362,
+      "original_graph_cut": 671947.5405555472,
+      "largest_component_cut": 366296.37914409715,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366296.37914409715
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "field",
+      "seed": 20261020,
+      "HE_percent": 18.85817978782803,
+      "HE_errors": 5404,
+      "original_graph_cut": 671944.2053260657,
+      "largest_component_cut": 366293.0439146155,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366293.0439146155
+        }
+      ]
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "field",
+      "seed": 20261021,
+      "HE_percent": 11.93467336683417,
+      "HE_errors": 3420,
+      "original_graph_cut": 671908.6595837555,
+      "largest_component_cut": 366257.4981723054,
+      "components": [
+        {
+          "nodes": 278,
+          "cut": 6791.993677628985
+        },
+        {
+          "nodes": 420,
+          "cut": 7299.235166691291
+        },
+        {
+          "nodes": 1522,
+          "cut": 38574.26461822571
+        },
+        {
+          "nodes": 2123,
+          "cut": 49775.92926321691
+        },
+        {
+          "nodes": 389,
+          "cut": 10973.293605398638
+        },
+        {
+          "nodes": 3265,
+          "cut": 78862.3968007464
+        },
+        {
+          "nodes": 4612,
+          "cut": 113374.04827954217
+        },
+        {
+          "nodes": 16047,
+          "cut": 366257.4981723054
+        }
+      ]
+    }
+  ]
+}

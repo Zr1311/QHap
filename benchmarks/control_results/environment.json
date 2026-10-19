@@ -11,5 +11,12 @@
     20261020,
     20261021
   ],
-  "scope": "phasing core only; cached fragments and graph; no postprocessing"
+  "scope": "phasing core only; cached fragments and graph; no postprocessing",
+  "graph_source": "Released numeric archives with explicit vertex and edge order",
+  "reason_for_repetition": "Preliminary baseline replay differed; cause not fully isolated. Final series fixes ordered arrays to control seed-to-vertex assignments.",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "cpu_count": 24,
+  "bitwise_replay_guaranteed": false,
+  "deterministic_algorithms_enabled": false,
+  "reported_runs": 21
 }

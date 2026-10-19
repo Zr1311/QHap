@@ -52,13 +52,17 @@ python3 -m unittest discover -s tests -v
 
 These tests cover read conflicts at sparse row indices, component endpoints, overlapping phase blocks, whole-fragment batching, multi-run quality indexing, and the preserved SE/HE convention. The optional MindQuantum source files are retained unchanged; a backend accuracy-parity claim would require separate matched experiments.
 
-## Reproduce the 21 minimal controls
+## Reproduce the 21 parameter controls
 
 ```bash
 python3 benchmarks/reproduce_controls.py reproduction_runs/controls
 ```
 
-This uses `historical_snapshot/`, not the corrected graph code, to keep the new diagnostic experiments tied to the supplied local implementation. It builds four existing graphs once, pairs three technical seeds, and changes steps, candidate count or the field separately on CycloneSEQ chr22. It resumes completed records. The tested environment was Python 3.12.3, PyTorch 2.11.0+cu128, NumPy 2.3.2, SciPy 1.18.1, pandas 3.0.6, pysam 0.24.1 and one RTX 5060 Laptop GPU under WSL. Select a CUDA build compatible with the device. These new versions are not claimed to be the historical table environment. Core timing excludes extraction and graph construction; all post-processing is disabled. Full escalation of the standard backend was not tested by these controls.
+This uses `historical_snapshot/`, not the corrected graph code, to keep the diagnostic experiments tied to the supplied local implementation. By default it loads four numeric graph archives with explicit vertex and edge order, pairs three technical seeds, and varies iterations, samples, or the deformation term h on CycloneSEQ chr22. There are 21 reported runs: three seeds for four base datasets and three seeds for each of three single-factor CycloneSEQ chr22 parameter controls. It resumes completed records. The tested environment was Python 3.12.3, PyTorch 2.11.0+cu128, NumPy 2.3.2, SciPy 1.18.1, pandas 3.0.6, pysam 0.24.1 and one RTX 5060 Laptop GPU under WSL. Select a CUDA build compatible with the device. These new versions are not claimed to be the historical table environment. Core timing excludes extraction and graph construction; all post-processing is disabled. Full escalation of the standard backend was not tested by these controls.
+
+The final series supersedes the preliminary 21-run series in earlier commits. A baseline replay differed, and its specific cause was not isolated. All reported controls were therefore repeated from the released ordered arrays to control seed-to-vertex assignments across combinations. This changes only the newly added controls, not historical manuscript Tables 1–3. `cache_order_sensitivity.json` records the failed replay and the limits of attributing it to ordering. Use the ordered cache for paired reproduction; rebuilding can change worker aggregation order and floating-point results. Identical seeds alone do not guarantee bitwise replay of GPU computations (PyTorch 2.11 reproducibility notes: https://docs.pytorch.org/docs/2.11/notes/randomness.html).
+
+`score_control_objectives.py control_results --output objectives.json` scores final assignments on the unchanged original signed graph, using the archived VCFs. It reports the sum of original weights crossing the final flip parity, with each undirected edge counted once. Intermediate reparameterized-graph cut values are not directly compared. Higher objective values measure this surrogate, not biological phase accuracy or certified global convergence.
 
 The name `historical_snapshot/` denotes the supplied local source preserved during this audit. It is not a claim that its exact revision generated every historical table row: run-specific source revisions and the original runtime environment were not retained. By default the controls load the released numeric graph caches (with checksum verification and `allow_pickle=False`), preserving retained node/edge order and initialization. This avoids silently changing the diagnostic graphs through the historical worker-batching defect. `--rebuild-graphs` instead reruns the historical builder; report the worker count and check the resulting graph against the archive. Recorded cache build times are original observations, not new rebuild measurements. Use `--dataset data_HIFI_chr22 --seed 20261019` for one functional replay.
 
@@ -68,6 +72,17 @@ The original repository extractor defaults to eight workers. To request the 16-w
 
 The original MHC extraction input was the **complete chromosome 6 BAM together with an MHC-region VCF**, not a BAM cropped to MHC. This applies to the original end-to-end timing boundary. Complete chr6 alignment files are distinguished from any convenience `chr6_MHC` subsets in the alignment manifest. Derived subsets contain all alignments overlapping the stated MHC interval, with no quality filtering or downsampling, but their extraction time must not be compared with the historical full-chr6-input timing. Retained fragment files permit inference-only reproduction without substituting an extraction input.
 
+For a new MHC extraction run, decompress the matching `MHC.input.vcf.gz` into a fresh output directory and use the full downloaded chr6 BAM. A current-code template is:
+
+```bash
+python3 extractHAIRS.py --bam full_chr6.bam --vcf MHC.input.vcf \
+  --out MHC.fragments.txt --threads 16
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py --no-post \
+  MHC.input.vcf MHC.fragments.txt
+```
+
+These are new-run commands, not recovered historical invocations. Keep the VCF and fragment index order paired. For historical end-to-end comparison, place both commands in the same WSL `time` scope and record all flags; timing only the second command or using a cropped BAM changes the boundary. Use the read entry point with its explicit reported budget, or the SNP `--fast` option for the fast configuration, as described above.
+
 ## Truth processing
 
 The author-identified original files are CHM13v2.0_HG2-T2TQ100-V1.1_smvar.vcf and its .benchmark.bed. Unfiltered chromosome subsets with original headers are in truth/source/. The full original VCF checksum is in MANIFEST.json. The supplied historical scripts are preserved under truth_original_scripts/; their hardcoded chr1 defaults are not a portable chr6/chr22 protocol.
@@ -76,6 +91,6 @@ Run filter_truth.py with --source, --bed, --chromosome and a fresh --output. It 
 
 ## Read-specific inputs and budgets
 
-ReadBased/{platform}/ contains historical MHC fragments and outputs. HiFi and ONT fragment observations differ from their SNP counterparts; the variant order is identical. CycloneSEQ fragments match in both formulations. The wrapper selects the read-specific inputs and exposes the manuscript's 10,000-step/200-candidate HiFi/CycloneSEQ and 20,000/1,000 ONT budgets. The audited local and original public read files contain the 10,000/200 default; the exact historical ONT source revision was not retained. The optional MindQuantum files are unchanged and retain their own interface. Direct PyTorch read CLI runs accept --steps and --samples; the selected budget is recorded in run_time.txt.
+ReadBased/{platform}/ contains historical MHC fragments and outputs. HiFi and ONT fragment observations differ from their SNP counterparts; the variant order is identical. CycloneSEQ fragments match in both formulations. The wrapper selects the read-specific inputs and exposes the manuscript's 10,000-iteration/200-sample HiFi/CycloneSEQ and 20,000/1,000 ONT budgets. The audited local and original public read files contain the 10,000/200 default; the exact historical ONT source revision was not retained. The optional MindQuantum files are unchanged and retain their own interface. Direct PyTorch read CLI runs accept --steps and --samples; the selected budget is recorded in run_time.txt.
 
 For full-output N50 and completeness use evaluation/other_metrics.py with --phased and region-specific --truth. Do not use whole-chr6 truth as the MHC completeness denominator. The legacy helper's slash/pipe ratio and the phased/all ratio give identical table values at the original precision for these inputs. Standard versus legacy weighted-median tie behavior is reported explicitly.
