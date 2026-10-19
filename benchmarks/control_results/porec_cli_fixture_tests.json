@@ -1,0 +1,18 @@
+{
+  "snp": {
+    "exit_code": 0,
+    "merged_variant_records": 4,
+    "phased_records": 4,
+    "expected_relative_phase": true,
+    "selected_solver_and_budget_logged": true,
+    "scope": "small functional fixture only; not a manuscript experiment"
+  },
+  "read": {
+    "exit_code": 0,
+    "merged_variant_records": 4,
+    "phased_records": 4,
+    "expected_relative_phase": true,
+    "selected_solver_and_budget_logged": true,
+    "scope": "small functional fixture only; not a manuscript experiment"
+  }
+}
