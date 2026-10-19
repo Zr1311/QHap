@@ -1,0 +1,18 @@
+{
+  "data_HIFI_chr22": {
+    "ordered_graph_and_initialization_identical": true,
+    "archive_bytes": 8771330
+  },
+  "data_ONT_chr22": {
+    "ordered_graph_and_initialization_identical": true,
+    "archive_bytes": 15591305
+  },
+  "data_WY_MHC": {
+    "ordered_graph_and_initialization_identical": true,
+    "archive_bytes": 38853488
+  },
+  "data_WY_chr22_fast": {
+    "ordered_graph_and_initialization_identical": true,
+    "archive_bytes": 29484361
+  }
+}

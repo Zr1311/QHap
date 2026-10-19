@@ -1,1 +1,9 @@
-demo/SHA256SUMS text eol=lf
+# Evidence archives retain their recorded bytes on every checkout platform.
+benchmarks/control_results/** -text
+benchmarks/historical_snapshot/** -text
+benchmarks/historical_read_snapshot/** -text
+benchmarks/truth_original_scripts/** -text
+benchmarks/solver_comparison_snapshot/** -text
+benchmarks/legacy_solver_data/** -text
+*.gz -text
+*.npz -text

@@ -6,6 +6,9 @@ from pathlib import Path
 import sys, os, time, json, pickle, contextlib, re, resource, hashlib,argparse
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('output_directory',type=Path,help='New or resumable control output directory')
+parser.add_argument('--rebuild-graphs',action='store_true',help='Rebuild instead of using the released exact graph cache; record worker count and compare the resulting graphs')
+parser.add_argument('--dataset',action='append',choices=['data_WY_MHC','data_HIFI_chr22','data_ONT_chr22','data_WY_chr22_fast'],help='Restrict execution to selected datasets')
+parser.add_argument('--seed',action='append',type=int,choices=[20261019,20261020,20261021],help='Restrict execution to selected technical seeds')
 args=parser.parse_args()
 RUN=Path(__file__).resolve().parent
 PUBLIC_ROOT=RUN.parent
@@ -61,6 +64,9 @@ def prepare(name):
  cached=OUT/(name+'.pickle')
  if cached.exists():return pickle.loads(cached.read_bytes())
  d=BASE/'data/data_snps'/name;inp=next(d.glob('*snp_filter.vcf'));fr=d/'hapcut2_output.txt'
+ if not args.rebuild_graphs:
+  from control_graphs import load_graph
+  return load_graph(name,inp)
  with (OUT/(name+'_graph.log')).open('w') as log,contextlib.redirect_stdout(log):
   t=time.perf_counter();x=get_init_matrix.build_snp_sparse_matrix(str(inp),str(fr));matrix=x['sparse_matrix'];pos=x['position_to_column'];q=x['sparse_correct_rate']
   initial,_=init_haplotype.generate_haplotype_data(str(inp),matrix,pos);w=get_matrix.process_sparse_matrices(matrix,pos,initial,q)
@@ -91,22 +97,22 @@ def run_setting(data,setting,seed):
 
 if __name__=='__main__':
  torch.set_num_threads(1)
- env=dict(torch=torch.__version__,numpy=np.__version__,scipy=scipy.__version__,pandas=pd.__version__,cuda=torch.version.cuda,gpu=torch.cuda.get_device_name(0),device_memory=torch.cuda.get_device_properties(0).total_memory,seeds=[20261019,20261020,20261021],scope='phasing core only; cached fragments and graph; no postprocessing')
+ env=dict(python=sys.version,torch=torch.__version__,numpy=np.__version__,scipy=scipy.__version__,pandas=pd.__version__,cuda=torch.version.cuda,gpu=torch.cuda.get_device_name(0),device_memory=torch.cuda.get_device_properties(0).total_memory,seeds=args.seed or [20261019,20261020,20261021],cpu_count=os.cpu_count(),graph_source='rebuild requested' if args.rebuild_graphs else 'released graph cache',scope='phasing core only; cached fragments and graph; no postprocessing')
  (OUT/'environment.json').write_text(json.dumps(env,indent=2))
  records=json.loads((OUT/'results.json').read_text()) if (OUT/'results.json').exists() else [];stats=[]
- for name in ['data_WY_MHC','data_HIFI_chr22','data_ONT_chr22','data_WY_chr22_fast']:
+ for name in args.dataset or ['data_WY_MHC','data_HIFI_chr22','data_ONT_chr22','data_WY_chr22_fast']:
   data=prepare(name);cs=data['components'];largest=max(cs,key=lambda x:len(x[0]))
   nn=len(largest[0]);ee=len(largest[1]);stats.append(dict(dataset=name,total_components=len(cs),total_nodes=sum(len(c[0]) for c in cs),total_edges=sum(len(c[1]) for c in cs),largest_nodes=nn,largest_edges=ee,csr_bytes_float32_int64=2*ee*(4+8)+(nn+1)*8,spin_and_momentum_bytes_S100=2*nn*100*4,graph_seconds=data['graph_seconds'],prepare_seconds=data['prepare_seconds'],nonzero_observations=data['nonzero_observations'],fragments=data['fragments']))
   print('GRAPH',json.dumps(stats[-1]),flush=True)
   (OUT/'graph_statistics.json').write_text(json.dumps(stats,indent=2))
   # Real existing graph sizes, with the same fast budget to isolate size from escalation.
-  for seed in [20261019,20261020,20261021]:
+  for seed in args.seed or [20261019,20261020,20261021]:
    if any(r['dataset']==name and r['setting']=='fast' and r['seed']==seed for r in records):continue
    r=run_setting(data,'fast',seed);records.append(r);print('RUN',json.dumps(r),flush=True)
    (OUT/'results.json').write_text(json.dumps(records,indent=2))
   if name=='data_WY_chr22_fast':
    for setting in ['steps2','samples2','field']:
-    for seed in [20261019,20261020,20261021]:
+    for seed in args.seed or [20261019,20261020,20261021]:
      if any(r['dataset']==name and r['setting']==setting and r['seed']==seed for r in records):continue
      r=run_setting(data,setting,seed);records.append(r);print('RUN',json.dumps(r),flush=True)
      (OUT/'results.json').write_text(json.dumps(records,indent=2))

@@ -1,0 +1,30 @@
+{
+  "data_HIFI_chr22": {
+    "file": "data_HIFI_chr22.npz",
+    "bytes": 8771330,
+    "sha256": "b5f13cd20ff2acf0b49ae0d6288040b6a214ef46574d028701256471be8df1da",
+    "ordered_graph_sha256": "6a543c715539604bf0f4388f07aff9ecfbcb2ba92fa931bdf1ae33894ef3ee74",
+    "source_cache_sha256": "60aa88b5c27996c54a0464b2767013fb634809130be867606cd07cfdccdf3b56"
+  },
+  "data_ONT_chr22": {
+    "file": "data_ONT_chr22.npz",
+    "bytes": 15591305,
+    "sha256": "b12d5a9206e2a3d418f38c9d31c1d18ecd8010d7f514e4f043c39fcd544903e1",
+    "ordered_graph_sha256": "c52c7d5409d7f4dc77d6c8e238b0c83f6b9ec22bb260c912c9e4d601fdedc1ae",
+    "source_cache_sha256": "c6441c6a1f465e4759f7292aa78906815df2ce1ed9daa25167adb18a742729a7"
+  },
+  "data_WY_MHC": {
+    "file": "data_WY_MHC.npz",
+    "bytes": 38853488,
+    "sha256": "895a1454e1fbdf0de1c43cdf40d9bf7270964f9752d580dab4deaf6b5900028a",
+    "ordered_graph_sha256": "cdfdf3d796603b07621d87d8885f5f1395f37d586858ee74f365662018ec8826",
+    "source_cache_sha256": "c4454b8c12b8fe5e063ff917dfca7f0f69cbf1687f0bd25afe1100d7e02ddf59"
+  },
+  "data_WY_chr22_fast": {
+    "file": "data_WY_chr22_fast.npz",
+    "bytes": 29484361,
+    "sha256": "8a550b85453afdca3805f5b7af39d6d87bc428dab7c318e3595b4b582fe47385",
+    "ordered_graph_sha256": "7ca2c45f87303b7a99d66b71d272a7531c4f80fddee6c63e59cec05d7d298054",
+    "source_cache_sha256": "e8724ed77614ac134f04e9c22b133fbd92e6f7b51dad07d8c99ea63e23099ae7"
+  }
+}

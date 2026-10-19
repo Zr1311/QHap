@@ -2,6 +2,8 @@
   "all_runs.csv": "8cf757f93e5ef07128d65a4f510523f20ec896e506a0c6dad85ebfb27a73aa58",
   "analysis_summary.json": "e3a665ff22c6b258cb9ec0fc20cab28a1f624236664f32ec96211eef68eca5c0",
   "completed_run_outputs.zip": "e01b4d19e06ad9c013497f6ac9283134a0635d511aa8287c55c0845dd25241f5",
+  "control_cache_replay.json": "bfa0e6d0e09f28b8ff885b2cc1db020d1afeeb894c3a1f277789ef97637ab424",
+  "control_graph_export_verification.json": "83eb9f82ab595848374d2f5121cfdcfd2807ecd3521f6fe8c6bf2620ee33ab8e",
   "corrected_read_HiFi_MHC_smoke.json": "14ce85d44231fd2ce1ff23eadc99bc9ad197b50c9bd8410b088e7181439ea049",
   "corrected_read_MHC_smoke.json": "7f2cc5e9f0082f7672a806ce4dec3c37e42244fea13e9fe26ff52cac5f87b941",
   "corrected_read_ONT_MHC_smoke.json": "f8fd4848e7e0c7966eac366f475f9dc5fc543a79be1ef02159c00cb6053b6af8",
@@ -11,5 +13,10 @@
   "graph_statistics.json": "8f2a8873385297c59431f7e6aae1fcf81c834111e5bcf515859e7a03cacab4eb",
   "read_graph_equivalence.json": "b603c76f12d208ce8df8c93d44ef814c11fd46f63c06f1ead892ab01addfb85c",
   "regression_tests.txt": "bb1112cad68f44dc10611b1114cf959327a4e5e4c31e7c0bc6bc33754d450d0d",
-  "results.json": "2dd31b11f6a429a0fc5ecc7c004631e0153210bdd423309c11c4434ed8e71bbd"
+  "results.json": "2dd31b11f6a429a0fc5ecc7c004631e0153210bdd423309c11c4434ed8e71bbd",
+  "graphs/data_HIFI_chr22.npz": "b5f13cd20ff2acf0b49ae0d6288040b6a214ef46574d028701256471be8df1da",
+  "graphs/data_ONT_chr22.npz": "b12d5a9206e2a3d418f38c9d31c1d18ecd8010d7f514e4f043c39fcd544903e1",
+  "graphs/data_WY_chr22_fast.npz": "8a550b85453afdca3805f5b7af39d6d87bc428dab7c318e3595b4b582fe47385",
+  "graphs/data_WY_MHC.npz": "895a1454e1fbdf0de1c43cdf40d9bf7270964f9752d580dab4deaf6b5900028a",
+  "graphs/MANIFEST.json": "b7ce829b9e09fd024a29068bd1a08c20083480bb0285e6d7944e7790bdb68058"
 }

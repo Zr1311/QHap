@@ -1,0 +1,237 @@
+{
+  "files": [
+    {
+      "file": "reads/block1.edges.tsv.gz",
+      "source": "data_reads_block/connected_components/block1.txt",
+      "role": "supplied component edge list; graph size matches Figure 2/3 caption",
+      "source_bytes": 29942024,
+      "source_sha256": "aa71a526ffdb07f80883da27802621be58e4fe207633c0ed3245b7d65077cf27",
+      "compressed_bytes": 1598464,
+      "compressed_sha256": "5c4521ac388b9cfc5fdeb15b8aa128c5b33676877ef70704b1189521c72acff7"
+    },
+    {
+      "file": "reads/block1_checkpoint/asb_checkpoint.txt.gz",
+      "source": "data_reads_block/block1_checkpoint/asb_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5117,
+      "source_sha256": "4db5ccb7658585e492ff5ff344af2d6dbf6f8bdeed4a0e8c18ae386efed08190",
+      "compressed_bytes": 1468,
+      "compressed_sha256": "74f4af908c5b599603d21efedcc7b019e05b1d99acb30381f1d927ada7d9e42b"
+    },
+    {
+      "file": "reads/block1_checkpoint/bsb_checkpoint.txt.gz",
+      "source": "data_reads_block/block1_checkpoint/bsb_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5117,
+      "source_sha256": "3112639df2cbc9ca131d67b1b89031d96c97fbede77aa8386a04bc23ad0b2c98",
+      "compressed_bytes": 1489,
+      "compressed_sha256": "91e29c12c4908c9c0c63f1d9699041814808f13275c903ba046634c9c9be3a76"
+    },
+    {
+      "file": "reads/block1_checkpoint/dsb_checkpoint.txt.gz",
+      "source": "data_reads_block/block1_checkpoint/dsb_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5117,
+      "source_sha256": "20ddce61e68fe414af10b35536d240d0eeb7cfa086484c5ed21c4f5091dbc1b5",
+      "compressed_bytes": 1491,
+      "compressed_sha256": "cd0cf4246942e59b5b6299e896bbfe2ecfde3237672f7ac9fd279e66b2565e4c"
+    },
+    {
+      "file": "reads/block1_checkpoint/nmfa_checkpoint.txt.gz",
+      "source": "data_reads_block/block1_checkpoint/nmfa_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5118,
+      "source_sha256": "bd5a87ec378b65e9961ae3a98c7ae231dcf7fe11109afdf9c9e69c5db0259c9e",
+      "compressed_bytes": 1441,
+      "compressed_sha256": "fa4a95f773795870a60fb013dc0082605b31a8ff3db7a3a5529282fbc2ddb337"
+    },
+    {
+      "file": "reads/block1_checkpoint/sa_checkpoint.txt.gz",
+      "source": "data_reads_block/block1_checkpoint/sa_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5116,
+      "source_sha256": "cb6ca2bbe2b57bbf20359037abb199e0e7b8012a79f46b2962805e4d0ffc51cf",
+      "compressed_bytes": 1415,
+      "compressed_sha256": "4ef3604447d63c9687ca0061aacaa1cbb5587be301e226cac0622b91d82f94d4"
+    },
+    {
+      "file": "reads/block1_checkpoint/simcim_checkpoint.txt.gz",
+      "source": "data_reads_block/block1_checkpoint/simcim_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5120,
+      "source_sha256": "7edf6bf3f33819a1290c8a12cfc35042f6f156ba2156036a88da5121cad4bac1",
+      "compressed_bytes": 1496,
+      "compressed_sha256": "dc66e4d23106a4d9539086b2b99bfaa121155325342df1decca521aca712753c"
+    },
+    {
+      "file": "reads/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/bsb_cpu_energy_tracking.txt.gz",
+      "source": "data_reads_block/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/bsb_cpu_energy_tracking.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 6085,
+      "source_sha256": "082574323454dd09fabf426fbfe9d69ef6b643cd458c1454ee9387cb02ac53c5",
+      "compressed_bytes": 1069,
+      "compressed_sha256": "700854838a3ce812a16c0960fa452ebf10651d6e261f622c441254461b16013b"
+    },
+    {
+      "file": "reads/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/bsb_gpu_energy_tracking.txt.gz",
+      "source": "data_reads_block/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/bsb_gpu_energy_tracking.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 6084,
+      "source_sha256": "b918d8c214c7511fbc9ae7ba74a44854a012101311f8957e041f3b8797af0db6",
+      "compressed_bytes": 1009,
+      "compressed_sha256": "19fcca26488733bde44ac212d56e6d0043a99d7d4929b41cbfbf9897fbc6f6c0"
+    },
+    {
+      "file": "reads/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/dsb_cpu_energy_tracking.txt.gz",
+      "source": "data_reads_block/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/dsb_cpu_energy_tracking.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 6085,
+      "source_sha256": "f5afaa242537ccd28fb128292c9c18b2a5a2fc8cafb9ecf9f3ed9fcd7f8de0a9",
+      "compressed_bytes": 1052,
+      "compressed_sha256": "843eaded734f66f6d0d2065a33a91b352ad98abe1af480ce291e884e455957f3"
+    },
+    {
+      "file": "reads/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/dsb_gpu_energy_tracking.txt.gz",
+      "source": "data_reads_block/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/dsb_gpu_energy_tracking.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 6084,
+      "source_sha256": "46f31ac7dd2fc4b32dfd8b7dada52e2c12db585484082340b4c11647281a56f8",
+      "compressed_bytes": 964,
+      "compressed_sha256": "b0448ae7064615463f92e72484920d1b62da137f3d5884d38b6d58d2e277d2c2"
+    },
+    {
+      "file": "reads/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/sa_energy_tracking.txt.gz",
+      "source": "data_reads_block/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/sa_energy_tracking.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 6077,
+      "source_sha256": "88f3c19f0d5e05f3aa945d88d934c5a8242d0ba48aebe99d8fbc5b907cbea248",
+      "compressed_bytes": 1018,
+      "compressed_sha256": "5785e757b33573274afa1ee5124c0330f6991801f1fed2308aa9db3410f59909"
+    },
+    {
+      "file": "snps/block1.edges.tsv.gz",
+      "source": "data_snps_block/connected_components/block1.txt",
+      "role": "supplied component edge list; graph size matches Figure 2/3 caption",
+      "source_bytes": 120586673,
+      "source_sha256": "5525a33c51344c8a0c1a7d4c99d225e6ab889d84109573156375237d6b34a88c",
+      "compressed_bytes": 34922806,
+      "compressed_sha256": "c4163120203e9208889489d011b1266682e579d9acf10cf5907068f9574d1a05"
+    },
+    {
+      "file": "snps/block1_checkpoint/asb_checkpoint.txt.gz",
+      "source": "data_snps_block/block1_checkpoint/asb_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5117,
+      "source_sha256": "d71557edb2c5e0fedd7e59ffdc3710e65d92cf5e6912aeb4fc166266ebe33cb7",
+      "compressed_bytes": 1714,
+      "compressed_sha256": "b294af5c5b0e1c27498d95ca447d11809750d78781f4c6800a519a4cba8d859f"
+    },
+    {
+      "file": "snps/block1_checkpoint/bsb_checkpoint.txt.gz",
+      "source": "data_snps_block/block1_checkpoint/bsb_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5117,
+      "source_sha256": "fa45fd9353edbbc40528aef38cf8561146a4f70b0a128b0880e9ce3f8216c2fd",
+      "compressed_bytes": 1530,
+      "compressed_sha256": "3d0abd2d3bb4f004e8787b92d7c5f62a450a722608420e66c5a08ab630a013c6"
+    },
+    {
+      "file": "snps/block1_checkpoint/dsb_checkpoint.txt.gz",
+      "source": "data_snps_block/block1_checkpoint/dsb_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5117,
+      "source_sha256": "5d5d9779abd730be1ca8e4cbf2c084adb7c5901749b492e6edea23b72f15b5f5",
+      "compressed_bytes": 1750,
+      "compressed_sha256": "abbcf6e9a2b60d067b805d401448716407496baa8a217f7ffd642575a5ecdc6c"
+    },
+    {
+      "file": "snps/block1_checkpoint/nmfa_checkpoint.txt.gz",
+      "source": "data_snps_block/block1_checkpoint/nmfa_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5118,
+      "source_sha256": "d40d36fdef1c349e1206d00b58d4d67e61e787e3c94a69def140abf7f78c47d9",
+      "compressed_bytes": 1649,
+      "compressed_sha256": "61e2ff650e8c822f550f9da288d4149fd155d5c41d3de985a830f2207539c382"
+    },
+    {
+      "file": "snps/block1_checkpoint/sa_checkpoint.txt.gz",
+      "source": "data_snps_block/block1_checkpoint/sa_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5116,
+      "source_sha256": "4ea8eeb99160ae948ddc8f3b8426efd96534ce9d8baf6c694bfead4fc6200f53",
+      "compressed_bytes": 1568,
+      "compressed_sha256": "11b8d8b4f2031c58c6ba6462d1c1a04e0368bf990d58cd121400573b69a9516e"
+    },
+    {
+      "file": "snps/block1_checkpoint/simcim_checkpoint.txt.gz",
+      "source": "data_snps_block/block1_checkpoint/simcim_checkpoint.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 5120,
+      "source_sha256": "ce83197ceda81eb871f8e40e7a0d2d4d5b903834ba779a8da237c7b1d2b6daac",
+      "compressed_bytes": 1669,
+      "compressed_sha256": "6f271ee0f18122da6f13307d35dcc3cf7b92a5d9a1389a6313d3c36b91554f53"
+    },
+    {
+      "file": "snps/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/bsb_cpu_energy_tracking.txt.gz",
+      "source": "data_snps_block/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/bsb_cpu_energy_tracking.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 6086,
+      "source_sha256": "e930bd155324f90f9e5a0ad34d4816913a0b63d0438190b308755e31dcffceeb",
+      "compressed_bytes": 863,
+      "compressed_sha256": "da47d639a422115387da6585c5076c4124ad4be158dcac365a8ffb96bc678784"
+    },
+    {
+      "file": "snps/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/bsb_gpu_energy_tracking.txt.gz",
+      "source": "data_snps_block/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/bsb_gpu_energy_tracking.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 6084,
+      "source_sha256": "eca5ea252ab2a8eb2545b42e6ae9581e8c80eacedbab1c7faea21060d45b1469",
+      "compressed_bytes": 796,
+      "compressed_sha256": "10698bea3e6153b64a3c15888f21e5868b9f9ead3812cddc10b5e4ceb3d40a33"
+    },
+    {
+      "file": "snps/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/dsb_cpu_energy_tracking.txt.gz",
+      "source": "data_snps_block/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/dsb_cpu_energy_tracking.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 6086,
+      "source_sha256": "f51b685f97c45a41a748a0199dcaaa4813a47e0128d509e922f672380996bac0",
+      "compressed_bytes": 1106,
+      "compressed_sha256": "b54237d6b400529125e0f6fe18e608d2b7fdf7ab7cc4ef57778be8cbe0479d59"
+    },
+    {
+      "file": "snps/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/dsb_gpu_energy_tracking.txt.gz",
+      "source": "data_snps_block/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/dsb_gpu_energy_tracking.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 6084,
+      "source_sha256": "3c012214c46cc5d7cd05f43488624320c33b7e05ca2937237fd3ce07e50e7f9a",
+      "compressed_bytes": 1077,
+      "compressed_sha256": "677db405dc02ab64d3cc142a8a52858c6dbf268f9b6622acb66388a3147be4f8"
+    },
+    {
+      "file": "snps/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/sa_energy_tracking.txt.gz",
+      "source": "data_snps_block/block1_cmp_cpu_gpu/block1_cmp_cpu_gpu.txt/sa_energy_tracking.txt",
+      "role": "retained checkpoint/energy summary; complete run-to-figure association not established",
+      "source_bytes": 6078,
+      "source_sha256": "084098959b51c5faff8149bf072c84c06eb01eddebc401fb968cdd098ff4d195",
+      "compressed_bytes": 1040,
+      "compressed_sha256": "a7b4820e13a88a79518297676eca3c9efa361f7ece622dd9c0688a731141c7d0"
+    }
+  ],
+  "graphs": [
+    {
+      "strategy": "reads",
+      "nodes": 8742,
+      "edges": 259417,
+      "negative_edges": 0,
+      "figure_caption_size_matches": true
+    },
+    {
+      "strategy": "snps",
+      "nodes": 7768,
+      "edges": 3303740,
+      "negative_edges": 1651793,
+      "figure_caption_size_matches": true
+    }
+  ],
+  "scope": "Supplied component graphs and retained summaries; individual repeat seeds and exact plot source association are incomplete."
+}
