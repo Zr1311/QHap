@@ -1,0 +1,33 @@
+{
+  "reference": "CHM13v2",
+  "release_url": "https://github.com/Zr1311/QHap/releases/tag/demo-chr6-v1",
+  "alignments": [
+    {
+      "file": "HG002_HiFi_CHM13v2_chr6.bam",
+      "bytes": 3189874315,
+      "sha256": "2e7e780985418eefcdafa00e2c4e35f768b00363cf8f963a0562e042e187baba",
+      "existing_release": "https://github.com/Zr1311/QHap/releases/tag/demo-chr6-v1",
+      "original_asset_name": "chr6.bam",
+      "parts": [
+        "chr6.bam.part01",
+        "chr6.bam.part02",
+        "chr6.bam.part03"
+      ],
+      "region": "chr6",
+      "chromosome": "chr6"
+    },
+    {
+      "file": "HG002_HiFi_CHM13v2_chr6.bam.bai",
+      "bytes": 1469760,
+      "sha256": "304ec7c91324a9dd50d64350e10d05c788aefa8b12795ad13181845338b5973e",
+      "existing_release": "https://github.com/Zr1311/QHap/releases/tag/demo-chr6-v1",
+      "original_asset_name": "chr6.bam.bai",
+      "parts": [
+        "chr6.bam.bai"
+      ],
+      "region": "chr6",
+      "chromosome": "chr6"
+    }
+  ],
+  "scope": "Existing public HiFi chr6; three-platform benchmark region alignment release is being verified separately."
+}

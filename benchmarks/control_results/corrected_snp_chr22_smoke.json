@@ -1,0 +1,83 @@
+{
+  "convention": "QHap legacy event-based SE and block-oriented HE",
+  "evaluated_sites": 28656,
+  "HE_errors": 7490,
+  "SE_events": 4,
+  "HE_percent": 26.137632607481855,
+  "SE_percent": 0.013959169429418949,
+  "incompatible_allele_sites": [
+    [
+      "chr22",
+      16343275
+    ],
+    [
+      "chr22",
+      23835973
+    ],
+    [
+      "chr22",
+      24395496
+    ]
+  ],
+  "missing_phase_set_sites": [],
+  "evaluation_site_N50_bp": 18342065,
+  "blocks": [
+    {
+      "chromosome": "chr22",
+      "phase_set": "16046190",
+      "evaluated_sites": 278,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "16662963",
+      "evaluated_sites": 420,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "17469623",
+      "evaluated_sites": 1522,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "19426845",
+      "evaluated_sites": 2123,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "21996027",
+      "evaluated_sites": 389,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "23364752",
+      "evaluated_sites": 3265,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "26562932",
+      "evaluated_sites": 4612,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "32896129",
+      "evaluated_sites": 16047,
+      "HE_errors": 7490,
+      "SE_events": 4
+    }
+  ],
+  "note": "N50 here is restricted to evaluated sites; the manuscript N50 uses all phased output sites. Percentages are unrounded; retain historical table precision separately."
+}

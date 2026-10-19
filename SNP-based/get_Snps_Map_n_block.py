@@ -93,8 +93,21 @@ Optional[Set[int]]]:
 
     num_processes = min(cpu_count(), 8)
     optimal_chunk_size = max(1000, len(matrix_data) // (num_processes * 4))
-    chunks = [matrix_data[i:i + optimal_chunk_size]
-              for i in range(0, len(matrix_data), optimal_chunk_size)]
+    # A fragment is one statistical observation. Never split it across workers:
+    # splitting loses cross-chunk pairs and changes the (k_i - 1) denominator.
+    rows = defaultdict(list)
+    for observation in matrix_data:
+        rows[observation[0]].append(observation)
+    chunks = []
+    chunk = []
+    for row in sorted(rows):
+        observations = rows[row]
+        if chunk and len(chunk) + len(observations) > optimal_chunk_size:
+            chunks.append(chunk)
+            chunk = []
+        chunk.extend(observations)
+    if chunk:
+        chunks.append(chunk)
 
     print(f"Split data into {len(chunks)} chunks with ~{optimal_chunk_size} records each")
 

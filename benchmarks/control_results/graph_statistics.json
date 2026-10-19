@@ -1,0 +1,58 @@
+[
+  {
+    "dataset": "data_WY_MHC",
+    "total_components": 2,
+    "total_nodes": 10672,
+    "total_edges": 4563879,
+    "largest_nodes": 7768,
+    "largest_edges": 3303740,
+    "csr_bytes_float32_int64": 79351912,
+    "spin_and_momentum_bytes_S100": 6214400,
+    "graph_seconds": 13.326130896999985,
+    "prepare_seconds": 16.3196557440001,
+    "nonzero_observations": 474390,
+    "fragments": 10985
+  },
+  {
+    "dataset": "data_HIFI_chr22",
+    "total_components": 113,
+    "total_nodes": 29369,
+    "total_edges": 991417,
+    "largest_nodes": 1876,
+    "largest_edges": 58744,
+    "csr_bytes_float32_int64": 1424872,
+    "spin_and_momentum_bytes_S100": 1500800,
+    "graph_seconds": 3.543840850000038,
+    "prepare_seconds": 13.029070085000058,
+    "nonzero_observations": 1314559,
+    "fragments": 73898
+  },
+  {
+    "dataset": "data_ONT_chr22",
+    "total_components": 45,
+    "total_nodes": 28837,
+    "total_edges": 1587985,
+    "largest_nodes": 3697,
+    "largest_edges": 205294,
+    "csr_bytes_float32_int64": 4956640,
+    "spin_and_momentum_bytes_S100": 2957600,
+    "graph_seconds": 4.849660363999988,
+    "prepare_seconds": 13.87608753099994,
+    "nonzero_observations": 1246016,
+    "fragments": 58664
+  },
+  {
+    "dataset": "data_WY_chr22_fast",
+    "total_components": 8,
+    "total_nodes": 28656,
+    "total_edges": 3262421,
+    "largest_nodes": 16047,
+    "largest_edges": 1820341,
+    "csr_bytes_float32_int64": 43816568,
+    "spin_and_momentum_bytes_S100": 12837600,
+    "graph_seconds": 8.698999229000037,
+    "prepare_seconds": 17.792340805000094,
+    "nonzero_observations": 1366826,
+    "fragments": 70710
+  }
+]

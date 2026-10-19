@@ -1,0 +1,496 @@
+{
+  "runs": [
+    {
+      "dataset": "data_WY_MHC",
+      "setting": "fast",
+      "seed": 20261019,
+      "seconds": 10.303761054000006,
+      "peak_allocated_bytes": 618165760,
+      "peak_reserved_bytes": 650117120,
+      "escalations": 0,
+      "solve_calls": 4,
+      "HE_percent": 0.0,
+      "SE_percent": 0.0,
+      "HE_errors": 0,
+      "SE_events": 0,
+      "evaluated_sites": 10672
+    },
+    {
+      "dataset": "data_WY_MHC",
+      "setting": "fast",
+      "seed": 20261020,
+      "seconds": 10.120723923000014,
+      "peak_allocated_bytes": 618165760,
+      "peak_reserved_bytes": 650117120,
+      "escalations": 0,
+      "solve_calls": 4,
+      "HE_percent": 0.0,
+      "SE_percent": 0.0,
+      "HE_errors": 0,
+      "SE_events": 0,
+      "evaluated_sites": 10672
+    },
+    {
+      "dataset": "data_WY_MHC",
+      "setting": "fast",
+      "seed": 20261021,
+      "seconds": 12.787867785000003,
+      "peak_allocated_bytes": 618165760,
+      "peak_reserved_bytes": 650117120,
+      "escalations": 0,
+      "solve_calls": 5,
+      "HE_percent": 0.0,
+      "SE_percent": 0.0,
+      "HE_errors": 0,
+      "SE_events": 0,
+      "evaluated_sites": 10672
+    },
+    {
+      "dataset": "data_HIFI_chr22",
+      "setting": "fast",
+      "seed": 20261019,
+      "seconds": 21.33571281500008,
+      "peak_allocated_bytes": 19150336,
+      "peak_reserved_bytes": 656408576,
+      "escalations": 0,
+      "solve_calls": 230,
+      "n": 29369,
+      "HE_errors": 115,
+      "SE_events": 11,
+      "HE_percent": 0.3915693418230107,
+      "SE_percent": 0.03745573413238899
+    },
+    {
+      "dataset": "data_HIFI_chr22",
+      "setting": "fast",
+      "seed": 20261020,
+      "seconds": 20.981847947000006,
+      "peak_allocated_bytes": 19150336,
+      "peak_reserved_bytes": 658505728,
+      "escalations": 0,
+      "solve_calls": 229,
+      "n": 29369,
+      "HE_errors": 115,
+      "SE_events": 11,
+      "HE_percent": 0.3915693418230107,
+      "SE_percent": 0.03745573413238899
+    },
+    {
+      "dataset": "data_HIFI_chr22",
+      "setting": "fast",
+      "seed": 20261021,
+      "seconds": 19.909123990000012,
+      "peak_allocated_bytes": 19150336,
+      "peak_reserved_bytes": 658505728,
+      "escalations": 0,
+      "solve_calls": 231,
+      "n": 29369,
+      "HE_errors": 115,
+      "SE_events": 11,
+      "HE_percent": 0.3915693418230107,
+      "SE_percent": 0.03745573413238899
+    },
+    {
+      "dataset": "data_ONT_chr22",
+      "setting": "fast",
+      "seed": 20261019,
+      "seconds": 10.550736176999976,
+      "peak_allocated_bytes": 43246080,
+      "peak_reserved_bytes": 658505728,
+      "escalations": 0,
+      "solve_calls": 99,
+      "n": 28837,
+      "HE_errors": 1048,
+      "SE_events": 2,
+      "HE_percent": 3.634219925789784,
+      "SE_percent": 0.006935774726036899
+    },
+    {
+      "dataset": "data_ONT_chr22",
+      "setting": "fast",
+      "seed": 20261020,
+      "seconds": 11.166131430000064,
+      "peak_allocated_bytes": 43246080,
+      "peak_reserved_bytes": 658505728,
+      "escalations": 0,
+      "solve_calls": 103,
+      "n": 28837,
+      "HE_errors": 345,
+      "SE_events": 2,
+      "HE_percent": 1.1963796511426292,
+      "SE_percent": 0.006935774726036899
+    },
+    {
+      "dataset": "data_ONT_chr22",
+      "setting": "fast",
+      "seed": 20261021,
+      "seconds": 11.010437221000075,
+      "peak_allocated_bytes": 43246080,
+      "peak_reserved_bytes": 658505728,
+      "escalations": 0,
+      "solve_calls": 101,
+      "n": 28837,
+      "HE_errors": 85,
+      "SE_events": 1,
+      "HE_percent": 0.29476020390470575,
+      "SE_percent": 0.0034678873630184493
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "fast",
+      "seed": 20261019,
+      "seconds": 12.174290076000034,
+      "peak_allocated_bytes": 354411520,
+      "peak_reserved_bytes": 658505728,
+      "escalations": 0,
+      "solve_calls": 20,
+      "n": 28656,
+      "HE_errors": 7207,
+      "SE_events": 2,
+      "HE_percent": 25.1500558347292,
+      "SE_percent": 0.006979584714709474
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "fast",
+      "seed": 20261020,
+      "seconds": 12.841784060999998,
+      "peak_allocated_bytes": 355134976,
+      "peak_reserved_bytes": 658505728,
+      "escalations": 0,
+      "solve_calls": 22,
+      "n": 28656,
+      "HE_errors": 6932,
+      "SE_events": 4,
+      "HE_percent": 24.19039642657733,
+      "SE_percent": 0.013959169429418949
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "fast",
+      "seed": 20261021,
+      "seconds": 12.915083134000042,
+      "peak_allocated_bytes": 354411520,
+      "peak_reserved_bytes": 658505728,
+      "escalations": 0,
+      "solve_calls": 21,
+      "n": 28656,
+      "HE_errors": 8318,
+      "SE_events": 6,
+      "HE_percent": 29.027079843662758,
+      "SE_percent": 0.020938754144128425
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "steps2",
+      "seed": 20261019,
+      "seconds": 26.05433878200006,
+      "peak_allocated_bytes": 356858880,
+      "peak_reserved_bytes": 432013312,
+      "escalations": 0,
+      "solve_calls": 23,
+      "n": 28656,
+      "HE_errors": 7008,
+      "SE_events": 4,
+      "HE_percent": 24.45561139028476,
+      "SE_percent": 0.013959169429418949
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "steps2",
+      "seed": 20261020,
+      "seconds": 22.445561349000172,
+      "peak_allocated_bytes": 356858880,
+      "peak_reserved_bytes": 432013312,
+      "escalations": 0,
+      "solve_calls": 23,
+      "n": 28656,
+      "HE_errors": 7162,
+      "SE_events": 3,
+      "HE_percent": 24.993020658849805,
+      "SE_percent": 0.010469377072064212
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "steps2",
+      "seed": 20261021,
+      "seconds": 32.571146794000015,
+      "peak_allocated_bytes": 356858880,
+      "peak_reserved_bytes": 432013312,
+      "escalations": 0,
+      "solve_calls": 26,
+      "n": 28656,
+      "HE_errors": 4614,
+      "SE_events": 2,
+      "HE_percent": 16.101340033500836,
+      "SE_percent": 0.006979584714709474
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "samples2",
+      "seed": 20261019,
+      "seconds": 21.406583118999833,
+      "peak_allocated_bytes": 376116736,
+      "peak_reserved_bytes": 432013312,
+      "escalations": 0,
+      "solve_calls": 21,
+      "n": 28656,
+      "HE_errors": 7575,
+      "SE_events": 2,
+      "HE_percent": 26.43425460636516,
+      "SE_percent": 0.006979584714709474
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "samples2",
+      "seed": 20261020,
+      "seconds": 27.91697725200015,
+      "peak_allocated_bytes": 376233984,
+      "peak_reserved_bytes": 432013312,
+      "escalations": 0,
+      "solve_calls": 21,
+      "n": 28656,
+      "HE_errors": 6874,
+      "SE_events": 3,
+      "HE_percent": 23.987995533221664,
+      "SE_percent": 0.010469377072064212
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "samples2",
+      "seed": 20261021,
+      "seconds": 20.40546624600006,
+      "peak_allocated_bytes": 376233984,
+      "peak_reserved_bytes": 432013312,
+      "escalations": 0,
+      "solve_calls": 19,
+      "n": 28656,
+      "HE_errors": 3642,
+      "SE_events": 3,
+      "HE_percent": 12.709380234505863,
+      "SE_percent": 0.010469377072064212
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "field",
+      "seed": 20261019,
+      "seconds": 13.374882777000039,
+      "peak_allocated_bytes": 356858880,
+      "peak_reserved_bytes": 432013312,
+      "escalations": 0,
+      "solve_calls": 21,
+      "n": 28656,
+      "HE_errors": 6362,
+      "SE_events": 4,
+      "HE_percent": 22.201284198771635,
+      "SE_percent": 0.013959169429418949
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "field",
+      "seed": 20261020,
+      "seconds": 18.007146033000026,
+      "peak_allocated_bytes": 356858880,
+      "peak_reserved_bytes": 432013312,
+      "escalations": 0,
+      "solve_calls": 25,
+      "n": 28656,
+      "HE_errors": 5404,
+      "SE_events": 3,
+      "HE_percent": 18.85817978782803,
+      "SE_percent": 0.010469377072064212
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "field",
+      "seed": 20261021,
+      "seconds": 23.00755373900006,
+      "peak_allocated_bytes": 356858880,
+      "peak_reserved_bytes": 432013312,
+      "escalations": 0,
+      "solve_calls": 25,
+      "n": 28656,
+      "HE_errors": 3420,
+      "SE_events": 5,
+      "HE_percent": 11.93467336683417,
+      "SE_percent": 0.017448961786773687
+    }
+  ],
+  "summary": [
+    {
+      "dataset": "data_WY_MHC",
+      "setting": "fast",
+      "n": 3,
+      "seconds": {
+        "mean": 11.070784254000008,
+        "min": 10.120723923000014,
+        "max": 12.787867785000003
+      },
+      "HE_percent": {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "SE_percent": {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "peak_allocated_bytes": {
+        "mean": 618165760,
+        "min": 618165760,
+        "max": 618165760
+      }
+    },
+    {
+      "dataset": "data_HIFI_chr22",
+      "setting": "fast",
+      "n": 3,
+      "seconds": {
+        "mean": 20.7422282506667,
+        "min": 19.909123990000012,
+        "max": 21.33571281500008
+      },
+      "HE_percent": {
+        "mean": 0.3915693418230107,
+        "min": 0.3915693418230107,
+        "max": 0.3915693418230107
+      },
+      "SE_percent": {
+        "mean": 0.03745573413238899,
+        "min": 0.03745573413238899,
+        "max": 0.03745573413238899
+      },
+      "peak_allocated_bytes": {
+        "mean": 19150336,
+        "min": 19150336,
+        "max": 19150336
+      }
+    },
+    {
+      "dataset": "data_ONT_chr22",
+      "setting": "fast",
+      "n": 3,
+      "seconds": {
+        "mean": 10.909101609333371,
+        "min": 10.550736176999976,
+        "max": 11.166131430000064
+      },
+      "HE_percent": {
+        "mean": 1.7084532602790397,
+        "min": 0.29476020390470575,
+        "max": 3.634219925789784
+      },
+      "SE_percent": {
+        "mean": 0.005779812271697415,
+        "min": 0.0034678873630184493,
+        "max": 0.006935774726036899
+      },
+      "peak_allocated_bytes": {
+        "mean": 43246080,
+        "min": 43246080,
+        "max": 43246080
+      }
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "fast",
+      "n": 3,
+      "seconds": {
+        "mean": 12.643719090333358,
+        "min": 12.174290076000034,
+        "max": 12.915083134000042
+      },
+      "HE_percent": {
+        "mean": 26.12251070165643,
+        "min": 24.19039642657733,
+        "max": 29.027079843662758
+      },
+      "SE_percent": {
+        "mean": 0.013959169429418949,
+        "min": 0.006979584714709474,
+        "max": 0.020938754144128425
+      },
+      "peak_allocated_bytes": {
+        "mean": 354652672,
+        "min": 354411520,
+        "max": 355134976
+      }
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "steps2",
+      "n": 3,
+      "seconds": {
+        "mean": 27.023682308333417,
+        "min": 22.445561349000172,
+        "max": 32.571146794000015
+      },
+      "HE_percent": {
+        "mean": 21.8499906942118,
+        "min": 16.101340033500836,
+        "max": 24.993020658849805
+      },
+      "SE_percent": {
+        "mean": 0.010469377072064212,
+        "min": 0.006979584714709474,
+        "max": 0.013959169429418949
+      },
+      "peak_allocated_bytes": {
+        "mean": 356858880,
+        "min": 356858880,
+        "max": 356858880
+      }
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "samples2",
+      "n": 3,
+      "seconds": {
+        "mean": 23.24300887233335,
+        "min": 20.40546624600006,
+        "max": 27.91697725200015
+      },
+      "HE_percent": {
+        "mean": 21.043876791364227,
+        "min": 12.709380234505863,
+        "max": 26.43425460636516
+      },
+      "SE_percent": {
+        "mean": 0.009306112952945967,
+        "min": 0.006979584714709474,
+        "max": 0.010469377072064212
+      },
+      "peak_allocated_bytes": {
+        "mean": 376194901.3333333,
+        "min": 376116736,
+        "max": 376233984
+      }
+    },
+    {
+      "dataset": "data_WY_chr22_fast",
+      "setting": "field",
+      "n": 3,
+      "seconds": {
+        "mean": 18.12986084966671,
+        "min": 13.374882777000039,
+        "max": 23.00755373900006
+      },
+      "HE_percent": {
+        "mean": 17.66471245114461,
+        "min": 11.93467336683417,
+        "max": 22.201284198771635
+      },
+      "SE_percent": {
+        "mean": 0.013959169429418949,
+        "min": 0.010469377072064212,
+        "max": 0.017448961786773687
+      },
+      "peak_allocated_bytes": {
+        "mean": 356858880,
+        "min": 356858880,
+        "max": 356858880
+      }
+    }
+  ]
+}

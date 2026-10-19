@@ -568,3 +568,11 @@ https://github.com/Zr1311/QHap
 QHap is distributed under the **Apache License 2.0**.
 
 See the [`LICENSE`](LICENSE) file for the complete license terms.
+
+## Audited benchmark package and explicit fast solver
+
+The [HG002 reproduction package](benchmarks/README.md) provides three-platform input VCFs, paired fragment files, Pore-C evidence, filtered phased truth, retained historical outputs, checksums, and a portable evaluator. Alignment downloads are described by the release manifest. Historical results and newly corrected code are explicitly distinguished.
+
+Use `--fast --no-post` with the SNP-based entry point to select the ten-round fast PyTorch configuration used for the CycloneSEQ chr22 benchmark. It starts at 500/1,000 steps and 100 candidates and stops after three negative cuts; it does not perform the standard budget/deformation escalation. `--fast` and `--mindquantum` are mutually exclusive. The original MindQuantum implementation remains available.
+
+The audited release also fixes SNP fragment batching and quality indexing, makes read-graph ordering deterministic, and checks component boundaries. See the benchmark documentation for the preserved event-based SE convention and the limits of historical timing reproducibility.

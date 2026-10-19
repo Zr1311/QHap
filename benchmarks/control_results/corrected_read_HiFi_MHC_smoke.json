@@ -1,0 +1,161 @@
+{
+  "convention": "QHap legacy event-based SE and block-oriented HE",
+  "evaluated_sites": 10881,
+  "HE_errors": 0,
+  "SE_events": 0,
+  "HE_percent": 0.0,
+  "SE_percent": 0.0,
+  "incompatible_allele_sites": [],
+  "missing_phase_set_sites": [],
+  "evaluation_site_N50_bp": 583591,
+  "blocks": [
+    {
+      "chromosome": "chr6",
+      "phase_set": "28478232",
+      "evaluated_sites": 943,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "29329465",
+      "evaluated_sites": 2,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "29363534",
+      "evaluated_sites": 6,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "29451729",
+      "evaluated_sites": 6,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "29510505",
+      "evaluated_sites": 2278,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "30120754",
+      "evaluated_sites": 522,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "30429677",
+      "evaluated_sites": 38,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "30662751",
+      "evaluated_sites": 149,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "30829420",
+      "evaluated_sites": 3220,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "31513475",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "31547757",
+      "evaluated_sites": 5,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "31615278",
+      "evaluated_sites": 9,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "31696845",
+      "evaluated_sites": 11,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "31845081",
+      "evaluated_sites": 102,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "32038617",
+      "evaluated_sites": 2,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "32064740",
+      "evaluated_sites": 580,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "32438545",
+      "evaluated_sites": 617,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "32490410",
+      "evaluated_sites": 375,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "32510746",
+      "evaluated_sites": 1721,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "33110238",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr6",
+      "phase_set": "33154554",
+      "evaluated_sites": 289,
+      "HE_errors": 0,
+      "SE_events": 0
+    }
+  ],
+  "note": "N50 here is restricted to evaluated sites; the manuscript N50 uses all phased output sites. Percentages are unrounded; retain historical table precision separately."
+}

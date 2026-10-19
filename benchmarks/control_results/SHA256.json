@@ -1,0 +1,15 @@
+{
+  "all_runs.csv": "8cf757f93e5ef07128d65a4f510523f20ec896e506a0c6dad85ebfb27a73aa58",
+  "analysis_summary.json": "e3a665ff22c6b258cb9ec0fc20cab28a1f624236664f32ec96211eef68eca5c0",
+  "completed_run_outputs.zip": "e01b4d19e06ad9c013497f6ac9283134a0635d511aa8287c55c0845dd25241f5",
+  "corrected_read_HiFi_MHC_smoke.json": "14ce85d44231fd2ce1ff23eadc99bc9ad197b50c9bd8410b088e7181439ea049",
+  "corrected_read_MHC_smoke.json": "7f2cc5e9f0082f7672a806ce4dec3c37e42244fea13e9fe26ff52cac5f87b941",
+  "corrected_read_ONT_MHC_smoke.json": "f8fd4848e7e0c7966eac366f475f9dc5fc543a79be1ef02159c00cb6053b6af8",
+  "corrected_snp_chr22_smoke.json": "66125b236f754bf50ca0b97cd0fc74ef5e15e359c1c9ae4481a7ada378fb8aa1",
+  "corrected_snp_HiFi_standard_smoke.json": "6b3ecf7fe6d32bca2d10bf5e11db6ed3c7784a41a4606fcd8d00d9232d984c52",
+  "environment.json": "75d068f898b681fc429fb84234c0f7cd9c85a95983ebbed065dd2f2070f7fa4e",
+  "graph_statistics.json": "8f2a8873385297c59431f7e6aae1fcf81c834111e5bcf515859e7a03cacab4eb",
+  "read_graph_equivalence.json": "b603c76f12d208ce8df8c93d44ef814c11fd46f63c06f1ead892ab01addfb85c",
+  "regression_tests.txt": "bb1112cad68f44dc10611b1114cf959327a4e5e4c31e7c0bc6bc33754d450d0d",
+  "results.json": "2dd31b11f6a429a0fc5ecc7c004631e0153210bdd423309c11c4434ed8e71bbd"
+}

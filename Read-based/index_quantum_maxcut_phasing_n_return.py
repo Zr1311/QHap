@@ -49,7 +49,8 @@ main_get_Snps_Map_reads_block = time_function(get_Snps_Map_reads_block.main)
 merge_files = time_function(merge_phasing_files.merge_files)
 
 
-def process_phasing(vcf_file, fragment_reads_file, overall_start_time=None, use_mindquantum=False):
+def process_phasing(vcf_file, fragment_reads_file, overall_start_time=None,
+                    use_mindquantum=False, n_iter=10000, sample_size=200):
     matrix_file_dir = os.path.join(os.path.dirname(vcf_file))
 
     if overall_start_time is None:
@@ -85,13 +86,16 @@ def process_phasing(vcf_file, fragment_reads_file, overall_start_time=None, use_
     components_graphs, graph_time = main_get_Snps_Map_reads_block(matrix_triple, fragment_map, all_nodes)
     function_times["get_Snps_Map_reads_block.main"] = graph_time
 
+    get_Snps_Map_reads_block.validate_component_variant_sets(components_graphs, matrix_triple, fragment_map)
+
     haplotype_output_dir = os.path.join(os.path.dirname(vcf_file), 'phasing_output')
     save_output_dir = os.path.join(os.path.dirname(vcf_file), 'connected_components')
 
     print("Processing blocks...")
+    budget={} if use_mindquantum else dict(n_iter=n_iter,sample_size=sample_size)
     _, process_blocks_time = _process_blocks_timed(
         components_graphs, init_haplotype, matrix_triple, pos_map, fragment_map,
-        haplotype_output_dir, vcf_file=vcf_file
+        haplotype_output_dir, vcf_file=vcf_file, **budget
     )
     function_times["process_blocks"] = process_blocks_time
 
@@ -105,6 +109,20 @@ def main():
     if '--mindquantum' in argv:
         use_mindquantum = True
         argv.remove('--mindquantum')
+    n_iter,sample_size=10000,200
+    supplied_budget=False
+    for flag in ['--steps','--samples']:
+        if flag not in argv:continue
+        supplied_budget=True;index=argv.index(flag)
+        try:value=int(argv[index+1])
+        except (IndexError,ValueError):sys.exit(flag+' requires a positive integer')
+        if value<=0:sys.exit(flag+' requires a positive integer')
+        del argv[index:index+2]
+        if flag=='--steps':n_iter=value
+        else:sample_size=value
+    if use_mindquantum and supplied_budget:
+        sys.exit('Read --steps/--samples options apply to the PyTorch solver; the optional MindQuantum implementation is unchanged')
+    print(f'Read solver budget: steps={n_iter}, candidates={sample_size}')
 
     if len(argv) > 1 and argv[1] == '--porec':
         if len(argv) != 6:
@@ -144,7 +162,7 @@ def main():
             print("Processing merged files...")
             phasing_times = process_phasing(
                 merged_vcf, merged_fragment_reads, overall_start_time,
-                use_mindquantum=use_mindquantum
+                use_mindquantum=use_mindquantum,n_iter=n_iter,sample_size=sample_size
             )
             function_times.update(phasing_times)
 
@@ -157,6 +175,7 @@ def main():
         run_time_file = os.path.join(output_dir, 'run_time.txt')
         with open(run_time_file, 'w') as f:
             f.write(f"Total runtime from merging to completion: {overall_run_time:.2f} seconds\n")
+            if not use_mindquantum:f.write(f"PyTorch bSB: steps={n_iter}, candidates={sample_size}\n")
             if use_mindquantum:
                 f.write("Solver: MindQuantum BSB\n")
             f.write("\nFunction runtimes:\n")
@@ -177,7 +196,7 @@ def main():
         overall_start_time = time.time()
         function_times = process_phasing(
             vcf_file, fragment_reads_file, overall_start_time,
-            use_mindquantum=use_mindquantum
+            use_mindquantum=use_mindquantum,n_iter=n_iter,sample_size=sample_size
         )
         overall_end_time = time.time()
         overall_run_time = overall_end_time - overall_start_time
@@ -185,6 +204,7 @@ def main():
         run_time_file = os.path.join(os.path.dirname(vcf_file), 'run_time.txt')
         with open(run_time_file, 'w') as f:
             f.write(f"Total runtime from filtering to completion: {overall_run_time:.2f} seconds\n")
+            if not use_mindquantum:f.write(f"PyTorch bSB: steps={n_iter}, candidates={sample_size}\n")
             if use_mindquantum:
                 f.write("Solver: MindQuantum BSB\n")
             f.write("\nFunction runtimes:\n")
