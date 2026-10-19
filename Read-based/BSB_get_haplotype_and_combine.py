@@ -60,7 +60,7 @@ def parse_vcf_data_line(line):
 
 def process_single_block(component_graph, init_haplotype_data, sparse_matrix,
                          pos_map, fragment_map, block_number,
-                         haplotype_output_dir):
+                         haplotype_output_dir, n_iter=10000, sample_size=200):
     nodes = component_graph['nodes']
     edges = component_graph['edges']
 
@@ -101,7 +101,7 @@ def process_single_block(component_graph, init_haplotype_data, sparse_matrix,
     xi = 1 / torch.abs(row_sum).max()
 
     G = G.to_sparse_csr()
-    s = tabu_SB_gpu.SB(G, n_iter=10000, xi=xi, dt=1., batch_size=200, device=device)
+    s = tabu_SB_gpu.SB(G, n_iter=n_iter, xi=xi, dt=1., batch_size=sample_size, device=device)
     s.update_b()
 
     best_sample = torch.sign(s.x).clone()
@@ -365,7 +365,8 @@ def write_vcf_output(vcf_headers, vcf_data_lines, haplotype_results, output_file
 
 
 def process_blocks(components_graphs, init_haplotype, matrix_triple,
-                   pos_map, fragment_map, haplotype_output_dir, vcf_file=None):
+                   pos_map, fragment_map, haplotype_output_dir, vcf_file=None,
+                   n_iter=10000, sample_size=200):
     total_start_time = time.time()
 
     if not os.path.exists(haplotype_output_dir):
@@ -411,7 +412,8 @@ def process_blocks(components_graphs, init_haplotype, matrix_triple,
                 pos_map=pos_map,
                 fragment_map=fragment_map,
                 block_number=block_number,
-                haplotype_output_dir=haplotype_output_dir
+                haplotype_output_dir=haplotype_output_dir,
+                n_iter=n_iter, sample_size=sample_size
             )
             block_process_time = time.time() - block_start_time
             max_cut_total_time += block_process_time

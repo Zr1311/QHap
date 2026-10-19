@@ -1,0 +1,11 @@
+{
+  "BSB_get_haplotype_and_combine.py": "fba1a143f336ae2f0daf891e979ba51493b982ff1c4ee32bdb38e975465142ab",
+  "extractHAIRS.py": "52d3196387392372f824f50f27ecaabaf60ab19f1b24ef16d7100f5490c8500b",
+  "get_init_matrix.py": "c480c736de86c7dc663143fc791d87414ff6efb8afb92770c0fd8ca4ee0653cf",
+  "get_matrix.py": "340e51713eca8efc3bc74168be32d326dfd70f208829a4129a47ee19477cd201",
+  "get_Snps_Map_reads_block.py": "52607d6c31d176eb6b0d79ff6b9f9dc8f25fe42e04603a0e2aa62c0f3ad0544f",
+  "index_quantum_maxcut_phasing_n_return.py": "aa8842b5fe0e9b35cf0e48bcde06c8e0cbe0cf6397ae1204846bef2ec7dc0889",
+  "init_haplotype.py": "46e502a77bf668613656c9d6e2c585f813386f1f4c1ae2674fdd573b7bf90031",
+  "merge_vcf_extractHAIRS.py": "4038c3f47f9e0f6060657aa6c5ad3e5bb2489dfad86ad46986289ff3bfba7709",
+  "tabu_SB_gpu.py": "6277de4aea243d88ac1cc50f46c10707bda769486454672ea553d0aac5b1828f"
+}

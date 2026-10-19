@@ -1,0 +1,17 @@
+{
+  "dataset": "HiFi chr22",
+  "seed": 20261019,
+  "source": "portable public control wrapper plus numeric archive",
+  "phased_vcf_byte_identical": false,
+  "original_vcf_sha256": "ecef110e9d5a9b465106de94434997fcdd393ab7cfc4263efaad2810fc0df4ea",
+  "replayed_vcf_sha256": "a6469edf2d2d51216f35e3440da3513d077b2937f88ac0f944cd7880738c921c",
+  "timing_scope": "functional verification only; replay timing is not added to the 21 controls",
+  "data_record_count_equal": true,
+  "different_data_rows": 3101,
+  "GT_PS_identical": false,
+  "non_orientation_differences": 0,
+  "mixed_orientation_blocks": 0,
+  "phase_equivalent_up_to_whole_block_flips": true,
+  "globally_flipped_blocks": 5,
+  "note": "Unlabelled haplotypes allow whole-PS orientation swaps; original results and 21-run statistics are unchanged."
+}

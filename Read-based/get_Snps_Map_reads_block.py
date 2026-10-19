@@ -71,33 +71,14 @@ def initialize_globals_shared(data, mapping):
     row_mapping = mapping
 
 
-def process_column(column_index, spans):
-    start_row, end_row = spans[column_index]
-    if start_row is None:
-        return {}
-
-    col_data = snp_data.getcol(column_index).tocsr()
-    non_zero_rows = col_data.nonzero()[0]
-    values = col_data.data
-
-    row_to_value = dict(zip(non_zero_rows, values))
-    diff_counts = defaultdict(int)
-
-    for row1 in range(start_row, end_row + 1):
-        val1 = row_to_value.get(row1)
-        if val1 is None:
-            continue
-
-        for row2 in range(row1 + 1, end_row + 1):
-            val2 = row_to_value.get(row2)
-            if val2 is None:
-                continue
-
-            if val1 != val2:
-                pair = (row1, row2) if row1 < row2 else (row2, row1)
-                diff_counts[pair] += 1
-
-    return diff_counts
+def process_column(column_index, spans=None):
+    """Count the same non-negative allele-conflict edges using sparse rows only."""
+    column = snp_data.getcol(column_index).tocoo()
+    positive = column.row[column.data == 1]
+    negative = column.row[column.data == -1]
+    # Same-allele overlaps have zero weight under the published objective.
+    return {(min(int(a), int(b)), max(int(a), int(b))): 1
+            for a in positive for b in negative}
 
 
 def create_snp_graph(sparse_data, mapping, spans):
@@ -123,7 +104,7 @@ def create_snp_graph(sparse_data, mapping, spans):
                 edge_counts[pair] += count
 
     edges = []
-    for (row1, row2), weight in edge_counts.items():
+    for (row1, row2), weight in sorted(edge_counts.items()):
         if weight > 0:
             node1 = row_mapping.get(row1, str(row1))
             node2 = row_mapping.get(row2, str(row2))
@@ -138,15 +119,15 @@ def create_snp_graph(sparse_data, mapping, spans):
 
 def build_graph(edges, all_nodes):
     G = nx.Graph()
-    for node in all_nodes:
-        G.add_node(str(node))
+    for node in sorted(map(str, all_nodes)):
+        G.add_node(node)
     for node1, node2, weight in edges:
         G.add_edge(str(node1), str(node2), weight=weight)
     return G
 
 
 def find_connected_components(G):
-    return list(nx.connected_components(G))
+    return sorted(nx.connected_components(G), key=lambda component: min(component))
 
 
 def create_component_graphs(G, components, edges):
@@ -169,7 +150,7 @@ def create_component_graphs(G, components, edges):
     component_graphs = {}
     for new_idx, (orig_idx, component) in enumerate(multi_node_components):
         component_graphs[new_idx] = {
-            'nodes': list(component),
+            'nodes': sorted(component),
             'edges': []
         }
 
@@ -179,7 +160,9 @@ def create_component_graphs(G, components, edges):
         comp_idx = node_to_component.get(node1_str)
 
         if comp_idx is not None:
-            component_graphs[comp_idx]['edges'].append((node1, node2, weight))
+            if node_to_component.get(node2_str) != comp_idx:
+                raise ValueError('An edge crosses the supplied component partition')
+            component_graphs[comp_idx]['edges'].append((node1_str, node2_str, weight))
 
     end_time = time.time()
     elapsed_time = end_time - start_time
@@ -244,6 +227,37 @@ def main(matrix_triple, fragment_to_idx, all_nodes):
     print("\n===== Processing completed =====")
 
     return component_graphs
+
+
+def validate_component_variant_sets(components, matrix_triple, fragment_to_idx):
+    """Reject overlapping output blocks instead of silently overwriting one SNP.
+
+    Conflict-graph components can share agreeing observations at a locus without
+    sharing a non-zero conflict edge. Their relative spin orientation is not fixed.
+    A consensus reconciliation model would change the algorithm, so fail explicitly.
+    """
+    row_to_component = {}
+    for block, component in components.items():
+        for read in component['nodes']:
+            row = fragment_to_idx.get(read)
+            if row is not None:
+                row_to_component[row] = block
+    owner = {}
+    conflicts = set()
+    for row, col, value in matrix_triple:
+        block = row_to_component.get(row)
+        if not value or block is None:
+            continue
+        if col in owner and owner[col] != block:
+            conflicts.add(col)
+        else:
+            owner[col] = block
+    if conflicts:
+        raise ValueError(
+            f'{len(conflicts)} variant columns occur in independent conflict-graph '
+            'components. Their relative orientation is unresolved; use SNP-based '
+            'phasing. Refusing to overwrite phase sets silently.')
+    return True
 
 
 def get_Snps_Map_reads_block(matrix_triple, row_mapping, all_nodes):

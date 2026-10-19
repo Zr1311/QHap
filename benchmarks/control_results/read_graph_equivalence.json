@@ -1,0 +1,11 @@
+{
+  "dataset": "CycloneSEQ MHC",
+  "component_and_weight_equivalence": true,
+  "components": 2,
+  "largest_nodes": 8742,
+  "total_edges": 329212,
+  "old_graph_seconds": 4.5806369700000005,
+  "new_graph_seconds": 4.792877433000001,
+  "overlap_guard": "none",
+  "scope": "one CPU construction measurement per version; not a replacement for original pipeline timing"
+}

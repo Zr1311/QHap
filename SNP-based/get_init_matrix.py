@@ -40,6 +40,7 @@ def process_phasing_file(phasing_path, pos_info_list, sorted_pos, pos_to_col_idx
             blocks = parts[2: 2 + 2 * n]
             quality_str = parts[-1]
 
+            quality_offset = 0
             for i in range(n):
                 k = int(blocks[2 * i])
                 s = blocks[2 * i + 1]
@@ -57,13 +58,14 @@ def process_phasing_file(phasing_path, pos_info_list, sorted_pos, pos_to_col_idx
                     if base != '-':
                         sparse_matrix_data.append((row_idx, col_idx, base))
 
-                    if j < len(quality_str):
-                        quality = ord(quality_str[j]) - 33
+                    if quality_offset + j < len(quality_str):
+                        quality = ord(quality_str[quality_offset + j]) - 33
                         error_rate = 10 ** (-quality / 10)
                         correct_rate = 1 - error_rate
                         if correct_rate > 0:
                             sparse_correct_rate_data.append((row_idx, col_idx, correct_rate))
 
+                quality_offset += len(s)
             row_idx += 1
 
     return {

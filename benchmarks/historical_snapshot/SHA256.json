@@ -1,0 +1,16 @@
+{
+  "BSB_get_haplotype.py": "6c4cf18e9a147d22bd987717b61916d63f91f350958d41bed7f1af68b790ae71",
+  "BSB_get_haplotype_aver.py": "3d0f780a93b460e1777bf8da029c15b13de811ded86fe200a8bc61c84853acf0",
+  "BSB_get_haplotype_fast.py": "c503ead217aae551c6be9659bbab6b3013104c2783177f47bf2968ba19f3940d",
+  "extractHAIRS.py": "f38609b36e54a1be755149b80be38b63719c933f46fd7f95e220aba20fc1f477",
+  "get_init_matrix.py": "e3a82261b41818f2ed7e6ff85dd292745a74ea75da51bfa61cba96e165e92732",
+  "get_matrix.py": "6721b1730c5f740b3d8a6118c65d1be4305c27b34615ee7f1fd0fef3ae21f893",
+  "get_Snps_Map_n_block.py": "993d01478e9c9322b428ea273c0232f6609a7f9cfb2ef5d1cb0b953d14d0de83",
+  "hamming_error_rate_test/3_he_rate.py": "a4a7ddb321aed461d52273b2b1b4d9e3d6456681b1ff3fa4dc085405d2d1d486",
+  "hapcut2_post_processing.py": "4afed85d1cfabd6604bca1a8fa1bbdbeb27a37389e34cf39c1379ff541027e8a",
+  "index_quantum_maxcut_phasing_n_return.py": "8abdda5a89ff77cc6557aadd16c89ad1710c7a460cbefc098bf59b737725283c",
+  "init_haplotype.py": "9e0b8561fd0c09d7b01990e792ed6e7091b4e1e5cee030f398fd2d233de396db",
+  "merge_vcf_extractHAIRS.py": "f2d0fd0249870912116132d4e826e93b3283dab4b59b04b7fcd65c51f8ca76de",
+  "switch error_test/3_long_short_se.py": "b260bf16be617ce7c954b0e72d0ef68863287d2e712adadb7cb07f1b0e40824b",
+  "tabu_SB_gpu.py": "a6e1f95d717146befa33e2b388734a617eff16581c7c7cf30da4651a352479a3"
+}

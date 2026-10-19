@@ -1,0 +1,893 @@
+{
+  "sample": "HG002",
+  "reference": "CHM13v2",
+  "files": [
+    {
+      "file": "HiFi/chr6.calls.vcf.gz",
+      "kind": "caller-filtered input; not necessarily the historical region-specific phasing subset",
+      "compressed_bytes": 1570309,
+      "compressed_sha256": "af6d344df531e3f441e964af97610d9b578b51229691e7a5aac43472d3a8c6d4",
+      "uncompressed_bytes": 11038435,
+      "uncompressed_sha256": "5bab352a9b53e0e92307f6dbb420a30ef4a2e3798fd95abfbbad8780870a9213"
+    },
+    {
+      "file": "HiFi/chr22.calls.vcf.gz",
+      "kind": "caller-filtered input; not necessarily the historical region-specific phasing subset",
+      "compressed_bytes": 768320,
+      "compressed_sha256": "6afe115142c8cd813d27e9027b2a1a49b40b6f7c7e2fbedd0f0c24e72516bb37",
+      "uncompressed_bytes": 5102053,
+      "uncompressed_sha256": "53b15294b3677b49ed5d3e4cf0eefda48778b8fd44b01a19f59cdc48897cf441"
+    },
+    {
+      "file": "HiFi/MHC.input.vcf.gz",
+      "kind": "historical phasing subset, exact VCF order paired to fragments",
+      "compressed_bytes": 105811,
+      "compressed_sha256": "a41c3a0c4570f4e85fdc022c1cff3eeeba25e58a9a3132e08099850042f4771a",
+      "uncompressed_bytes": 775691,
+      "uncompressed_sha256": "f11688ac4296d9131d1db2e59e698727e7242adac2cf718f9624c94aa736f51c"
+    },
+    {
+      "file": "HiFi/MHC.fragments.txt.gz",
+      "kind": "haplotype-informative fragments; filenames formerly called hapcut2_output are not HapCUT2 phase solutions",
+      "compressed_bytes": 257447,
+      "compressed_sha256": "6791aa826b9fd69eb77f8852353162dec2ea221845723963fd5a0c4c73988489",
+      "uncompressed_bytes": 1707384,
+      "uncompressed_sha256": "9912126c3a9aaf80abbe64ed9fc60a8f4e9698939d2f2c5fb57533096959aaf2"
+    },
+    {
+      "file": "HiFi/MHC.original.phased.vcf.gz",
+      "kind": "retained historical output; not regenerated with corrected code",
+      "compressed_bytes": 110489,
+      "compressed_sha256": "46b7b139bab93040afe2268d2d81f16d51f9897c25c7364cbb3d22c1dbdfd436",
+      "uncompressed_bytes": 895446,
+      "uncompressed_sha256": "3ffd9345c7ec998018771287f784744091b7c5de98430ceee054a87f82874f7e"
+    },
+    {
+      "file": "HiFi/MHC.internal_timing.txt.gz",
+      "kind": "historical second-script timing; not original WSL end-to-end time",
+      "compressed_bytes": 635,
+      "compressed_sha256": "500e644456febf95ab4bca38225af486695ebd61e7acc2ba67cbd2fbc09038ac",
+      "uncompressed_bytes": 1796,
+      "uncompressed_sha256": "74c7ddb683bfea0127091ea3223b02c2e4e6909e40fc3781b7ff5c8e691a1b52"
+    },
+    {
+      "file": "HiFi/chr22.input.vcf.gz",
+      "kind": "historical phasing subset, exact VCF order paired to fragments",
+      "compressed_bytes": 293716,
+      "compressed_sha256": "4ac53162ccbcdf620adddb7386b7b48a6ce1edbd0edc5c4ff5bac7cc2628d92e",
+      "uncompressed_bytes": 2096445,
+      "uncompressed_sha256": "e8b6e8f299adac05a3725daf700dabdbc4a3daccc130e75db4b4e9baf7bb7542"
+    },
+    {
+      "file": "HiFi/chr22.fragments.txt.gz",
+      "kind": "haplotype-informative fragments; filenames formerly called hapcut2_output are not HapCUT2 phase solutions",
+      "compressed_bytes": 1107710,
+      "compressed_sha256": "906d80551e2c718387465b8e2ed5b1ed53fe28f0d09998a74a8b447293818b42",
+      "uncompressed_bytes": 6296443,
+      "uncompressed_sha256": "57f8d2743fad97fb377c23fc4049f8b63bf8b99a85876a8fcd2b58c1ffa4d3cc"
+    },
+    {
+      "file": "HiFi/chr22.original.phased.vcf.gz",
+      "kind": "retained historical output; not regenerated with corrected code",
+      "compressed_bytes": 314413,
+      "compressed_sha256": "b7b39150db26a12d4fb602af04394ee1fa75e1acf5cff71e68080801efa4a450",
+      "uncompressed_bytes": 2419545,
+      "uncompressed_sha256": "130d5272a41f7fa375707391034eb8a0fa75a5d752cbbb21b650b7785fc77024"
+    },
+    {
+      "file": "HiFi/chr22.internal_timing.txt.gz",
+      "kind": "historical second-script timing; not original WSL end-to-end time",
+      "compressed_bytes": 636,
+      "compressed_sha256": "08e2bb1b021aeb2cc010aedf4db910f4c9d64d79a2a4ab35190ee671a58b4c18",
+      "uncompressed_bytes": 1805,
+      "uncompressed_sha256": "6bf3ec9ef463cd45cc3c0afd2c25e385f88b3cb6e4b6601e3715d01e543a6738"
+    },
+    {
+      "file": "PoreC/HiFi/MHC/longread.input.vcf.gz",
+      "kind": "long-read VCF",
+      "compressed_bytes": 105811,
+      "compressed_sha256": "a41c3a0c4570f4e85fdc022c1cff3eeeba25e58a9a3132e08099850042f4771a",
+      "uncompressed_bytes": 775691,
+      "uncompressed_sha256": "f11688ac4296d9131d1db2e59e698727e7242adac2cf718f9624c94aa736f51c"
+    },
+    {
+      "file": "PoreC/HiFi/MHC/longread.fragments.txt.gz",
+      "kind": "long-read fragments",
+      "compressed_bytes": 257447,
+      "compressed_sha256": "6791aa826b9fd69eb77f8852353162dec2ea221845723963fd5a0c4c73988489",
+      "uncompressed_bytes": 1707384,
+      "uncompressed_sha256": "9912126c3a9aaf80abbe64ed9fc60a8f4e9698939d2f2c5fb57533096959aaf2"
+    },
+    {
+      "file": "PoreC/HiFi/MHC/porec.input.vcf.gz",
+      "kind": "Pore-C VCF",
+      "compressed_bytes": 78817,
+      "compressed_sha256": "50f165abf879ae53f20dbd8a6be4e6288509d74058efe202b6d32d8f7c2c5705",
+      "uncompressed_bytes": 511186,
+      "uncompressed_sha256": "58aa95937785d9927a66687845de5103e900e43eeaaf91ea59c0e56d290c11a6"
+    },
+    {
+      "file": "PoreC/HiFi/MHC/porec.fragments.txt.gz",
+      "kind": "Pore-C fragments",
+      "compressed_bytes": 818981,
+      "compressed_sha256": "5861d90118a94b0d4d2aaf028d9e8691f34d08b9affa31e5f8d588f7933fa94c",
+      "uncompressed_bytes": 2904831,
+      "uncompressed_sha256": "02197fedad442fa9b67f6ca6c7e352d71c9be49ce54025307347943cd04e117f"
+    },
+    {
+      "file": "PoreC/HiFi/MHC/original.phased.vcf.gz",
+      "kind": "retained integrated output",
+      "compressed_bytes": 119605,
+      "compressed_sha256": "83f2c63f46bccf96310106115486574508c75f23a157a205213751d8daad4d9b",
+      "uncompressed_bytes": 894479,
+      "uncompressed_sha256": "cc3264d01d18cd77abf458fefa3319e6858936d6ed7ee7a8d15a1788f77c3f95"
+    },
+    {
+      "file": "PoreC/HiFi/chr22/longread.input.vcf.gz",
+      "kind": "long-read VCF",
+      "compressed_bytes": 293716,
+      "compressed_sha256": "4ac53162ccbcdf620adddb7386b7b48a6ce1edbd0edc5c4ff5bac7cc2628d92e",
+      "uncompressed_bytes": 2096445,
+      "uncompressed_sha256": "e8b6e8f299adac05a3725daf700dabdbc4a3daccc130e75db4b4e9baf7bb7542"
+    },
+    {
+      "file": "PoreC/HiFi/chr22/longread.fragments.txt.gz",
+      "kind": "long-read fragments",
+      "compressed_bytes": 1107710,
+      "compressed_sha256": "906d80551e2c718387465b8e2ed5b1ed53fe28f0d09998a74a8b447293818b42",
+      "uncompressed_bytes": 6296443,
+      "uncompressed_sha256": "57f8d2743fad97fb377c23fc4049f8b63bf8b99a85876a8fcd2b58c1ffa4d3cc"
+    },
+    {
+      "file": "PoreC/HiFi/chr22/porec.input.vcf.gz",
+      "kind": "Pore-C VCF",
+      "compressed_bytes": 246470,
+      "compressed_sha256": "4fed574a9d3b9a36731d981d5c085e8ea0b248011660e19e007c07a96a532b4f",
+      "uncompressed_bytes": 1643844,
+      "uncompressed_sha256": "29e384b1e9793030a6c86f7b7bc56d832b6f2f618ba8bae94111c32cc77af320"
+    },
+    {
+      "file": "PoreC/HiFi/chr22/porec.fragments.txt.gz",
+      "kind": "Pore-C fragments",
+      "compressed_bytes": 2435557,
+      "compressed_sha256": "6e9918b047a4f8f6baa9e97fb5c5b98536649a1421744c28dcf4c9cf3a863360",
+      "uncompressed_bytes": 8996112,
+      "uncompressed_sha256": "604a3f5d68d6e2329bc86e84364596fa96bb29fb247770d4dfee9309fe51c9b4"
+    },
+    {
+      "file": "PoreC/HiFi/chr22/original.phased.vcf.gz",
+      "kind": "retained integrated output",
+      "compressed_bytes": 337129,
+      "compressed_sha256": "835c29ae0a038f3700311d0e46e0e98d9cc5a67aa42540d165c70bfb96ed1992",
+      "uncompressed_bytes": 2414663,
+      "uncompressed_sha256": "87a534f13b3cdf3e272e93d77afecec9290e3f22f4e488c64c46fa96ae1b57ed"
+    },
+    {
+      "file": "ONT/chr6.calls.vcf.gz",
+      "kind": "caller-filtered input; not necessarily the historical region-specific phasing subset",
+      "compressed_bytes": 1591974,
+      "compressed_sha256": "897f14de7aa8d037f404802134944b6e398651da0d977be08a3116ad6bf99a29",
+      "uncompressed_bytes": 10828213,
+      "uncompressed_sha256": "2b6340f7cf06445e239ae85e3ad23baf225eca18da49db4f51d9e7102fd8f418"
+    },
+    {
+      "file": "ONT/chr22.calls.vcf.gz",
+      "kind": "caller-filtered input; not necessarily the historical region-specific phasing subset",
+      "compressed_bytes": 954230,
+      "compressed_sha256": "189c48d57e40357198cea8e82da86f358cdccf00aaee9e12962c4d9061010eb1",
+      "uncompressed_bytes": 6227921,
+      "uncompressed_sha256": "fdf484eb475e9e73c8f16c2e3aba8b095da3007b9c092b9baf504037e41b1766"
+    },
+    {
+      "file": "ONT/MHC.input.vcf.gz",
+      "kind": "historical phasing subset, exact VCF order paired to fragments",
+      "compressed_bytes": 111613,
+      "compressed_sha256": "d580a2200b00bd22b9b9bd9eaa97d81cbf9d9b383905177fb580d120c5d234ab",
+      "uncompressed_bytes": 762099,
+      "uncompressed_sha256": "be5b22c90d7f4189924c11c470089cc0f5f5a931ff7caa63d0617498d193f7c2"
+    },
+    {
+      "file": "ONT/MHC.fragments.txt.gz",
+      "kind": "haplotype-informative fragments; filenames formerly called hapcut2_output are not HapCUT2 phase solutions",
+      "compressed_bytes": 755944,
+      "compressed_sha256": "af0bbed4a97054eb60042542168c54585a8f40db433a7f5841ec9c6bf92edb07",
+      "uncompressed_bytes": 1581896,
+      "uncompressed_sha256": "e05a64ae4d1c9a2d0e0b8fb626ab11a5afe9fde05201cd58b57675aeeb464cdb"
+    },
+    {
+      "file": "ONT/MHC.original.phased.vcf.gz",
+      "kind": "retained historical output; not regenerated with corrected code",
+      "compressed_bytes": 116971,
+      "compressed_sha256": "c95093cc0a279cc20bf19023ee89706257adca7cd71f8a0aaa9e4db124aada80",
+      "uncompressed_bytes": 880082,
+      "uncompressed_sha256": "0458fa12f0386d7cc367fae4b991c0260b1527db8e3b89d79e335404e1cb9606"
+    },
+    {
+      "file": "ONT/MHC.internal_timing.txt.gz",
+      "kind": "historical second-script timing; not original WSL end-to-end time",
+      "compressed_bytes": 635,
+      "compressed_sha256": "e0758878eb51e0d99cc7c221da289cba26c979d1d4fa24b785fed672196a9ca4",
+      "uncompressed_bytes": 1790,
+      "uncompressed_sha256": "85736fed6abf1f7fa6512c434c6a5dfc986e79b546eaa05302e5a61c79e6b3c3"
+    },
+    {
+      "file": "ONT/chr22.input.vcf.gz",
+      "kind": "historical phasing subset, exact VCF order paired to fragments",
+      "compressed_bytes": 297532,
+      "compressed_sha256": "d2f532e1f4527ecde4727a5f78e31ec94961a65a7bf193c7650ea21b07d5a135",
+      "uncompressed_bytes": 2050130,
+      "uncompressed_sha256": "3dc258fd6a67a8301bfe4f622d1e85cd27aad403eeafaa6742c9f9f6e1764386"
+    },
+    {
+      "file": "ONT/chr22.fragments.txt.gz",
+      "kind": "haplotype-informative fragments; filenames formerly called hapcut2_output are not HapCUT2 phase solutions",
+      "compressed_bytes": 2979446,
+      "compressed_sha256": "dcb36dc5e6ec05f9346b08c6328513eea310a55027a011d6474e78011c639d5f",
+      "uncompressed_bytes": 5880886,
+      "uncompressed_sha256": "d240eaaa41773c33500115c3eadfd3f017802aed818432d8807a70a72a86fbdc"
+    },
+    {
+      "file": "ONT/chr22.original.phased.vcf.gz",
+      "kind": "retained historical output; not regenerated with corrected code",
+      "compressed_bytes": 318795,
+      "compressed_sha256": "bb251989790b55c8d9104c6c48b651999cfc35e73eb98b71727d891140ec569f",
+      "uncompressed_bytes": 2367396,
+      "uncompressed_sha256": "e6386700f12ea441c9a3771e031f84a4d5458ad31893b8ad9a80d2200cccf847"
+    },
+    {
+      "file": "ONT/chr22.internal_timing.txt.gz",
+      "kind": "historical second-script timing; not original WSL end-to-end time",
+      "compressed_bytes": 633,
+      "compressed_sha256": "c5485229feaab28c9cb0fbe89e364c49bffafe18a1cae0703ff7a08e80fb9903",
+      "uncompressed_bytes": 1799,
+      "uncompressed_sha256": "1dd556d8490d3dd0cdf30d5b3d1dfd70ca7caaf7b396efeed3c5f3371ee7e05e"
+    },
+    {
+      "file": "PoreC/ONT/MHC/longread.input.vcf.gz",
+      "kind": "long-read VCF",
+      "compressed_bytes": 111613,
+      "compressed_sha256": "d580a2200b00bd22b9b9bd9eaa97d81cbf9d9b383905177fb580d120c5d234ab",
+      "uncompressed_bytes": 762099,
+      "uncompressed_sha256": "be5b22c90d7f4189924c11c470089cc0f5f5a931ff7caa63d0617498d193f7c2"
+    },
+    {
+      "file": "PoreC/ONT/MHC/longread.fragments.txt.gz",
+      "kind": "long-read fragments",
+      "compressed_bytes": 755944,
+      "compressed_sha256": "af0bbed4a97054eb60042542168c54585a8f40db433a7f5841ec9c6bf92edb07",
+      "uncompressed_bytes": 1581896,
+      "uncompressed_sha256": "e05a64ae4d1c9a2d0e0b8fb626ab11a5afe9fde05201cd58b57675aeeb464cdb"
+    },
+    {
+      "file": "PoreC/ONT/MHC/porec.input.vcf.gz",
+      "kind": "Pore-C VCF",
+      "compressed_bytes": 78701,
+      "compressed_sha256": "193557616cbe044ec0ea6bee4af5e11bc993973bd0f5a2e53f71e5f01bf6738a",
+      "uncompressed_bytes": 510479,
+      "uncompressed_sha256": "43e0981799e5731645c364a630907b1305c0de9dcfd6912869329631ebc7a4fe"
+    },
+    {
+      "file": "PoreC/ONT/MHC/porec.fragments.txt.gz",
+      "kind": "Pore-C fragments",
+      "compressed_bytes": 818505,
+      "compressed_sha256": "d7a354f79de76c3f9f38036c79814a8c0060acae843c67222ace2b1093fee357",
+      "uncompressed_bytes": 2903976,
+      "uncompressed_sha256": "094a9d210bc02114c2ed4c3d8f0718b3660577c51f0359a08db054e557e06831"
+    },
+    {
+      "file": "PoreC/ONT/MHC/original.phased.vcf.gz",
+      "kind": "retained integrated output",
+      "compressed_bytes": 121796,
+      "compressed_sha256": "3739f4e990f65ba6f5bdf2055a4a74e66a37c2e156d3eb50153e9a7f3ed48441",
+      "uncompressed_bytes": 879555,
+      "uncompressed_sha256": "1bd75d70e1e0cdf26970fde8c67cceaffd85a12ff30d9b2f25d72d0f00056d64"
+    },
+    {
+      "file": "PoreC/ONT/chr22/longread.input.vcf.gz",
+      "kind": "long-read VCF",
+      "compressed_bytes": 297532,
+      "compressed_sha256": "d2f532e1f4527ecde4727a5f78e31ec94961a65a7bf193c7650ea21b07d5a135",
+      "uncompressed_bytes": 2050130,
+      "uncompressed_sha256": "3dc258fd6a67a8301bfe4f622d1e85cd27aad403eeafaa6742c9f9f6e1764386"
+    },
+    {
+      "file": "PoreC/ONT/chr22/longread.fragments.txt.gz",
+      "kind": "long-read fragments",
+      "compressed_bytes": 2979446,
+      "compressed_sha256": "dcb36dc5e6ec05f9346b08c6328513eea310a55027a011d6474e78011c639d5f",
+      "uncompressed_bytes": 5880886,
+      "uncompressed_sha256": "d240eaaa41773c33500115c3eadfd3f017802aed818432d8807a70a72a86fbdc"
+    },
+    {
+      "file": "PoreC/ONT/chr22/porec.input.vcf.gz",
+      "kind": "Pore-C VCF",
+      "compressed_bytes": 245500,
+      "compressed_sha256": "145859f5aae319a6c61cb9172bb086e230257de4327ee2ed090530e562d9f92b",
+      "uncompressed_bytes": 1638374,
+      "uncompressed_sha256": "4f5a8b7edef8e2a3a7323101bca46ea49009737b0e2660666b265be5ba0a4288"
+    },
+    {
+      "file": "PoreC/ONT/chr22/porec.fragments.txt.gz",
+      "kind": "Pore-C fragments",
+      "compressed_bytes": 2428396,
+      "compressed_sha256": "df135df16ca07255c6f3bf3d271c7aed7134e7b604b15442d6f701ec7d537bf9",
+      "uncompressed_bytes": 8971313,
+      "uncompressed_sha256": "23feba4f2fe03fb91663c233ecddee587759b42cf8c44a1181a2600f47ad7ca1"
+    },
+    {
+      "file": "PoreC/ONT/chr22/original.phased.vcf.gz",
+      "kind": "retained integrated output",
+      "compressed_bytes": 329625,
+      "compressed_sha256": "ea6779b9cb0f60cd946806b2807d1fae6735f7807528dbffc4e4886d8942f735",
+      "uncompressed_bytes": 2366859,
+      "uncompressed_sha256": "3ea4404dd3ce48f46be905c94a9d7f21a64f60c0400058fdb4689c55808374f5"
+    },
+    {
+      "file": "CycloneSEQ/chr6.calls.vcf.gz",
+      "kind": "caller-filtered input; not necessarily the historical region-specific phasing subset",
+      "compressed_bytes": 1649705,
+      "compressed_sha256": "d830ca66060433e71b11bfb8d4c5f7111bfb39ccc379b24cc9568551b59fc266",
+      "uncompressed_bytes": 10800698,
+      "uncompressed_sha256": "c5eb3d57deb2e0b7c7d70a42467e9847593d27f7ba94844af19b4d9e981cf07a"
+    },
+    {
+      "file": "CycloneSEQ/chr22.calls.vcf.gz",
+      "kind": "caller-filtered input; not necessarily the historical region-specific phasing subset",
+      "compressed_bytes": 683061,
+      "compressed_sha256": "0a6e955080af001bf1ebe9c235368a0a8a3eb7d99dfba265a6f516f7db79a6d4",
+      "uncompressed_bytes": 4203740,
+      "uncompressed_sha256": "02ce3ca081b110254a56d58be9f04961d036cee11e90c1f974fee9736bb735ce"
+    },
+    {
+      "file": "CycloneSEQ/MHC.input.vcf.gz",
+      "kind": "historical phasing subset, exact VCF order paired to fragments",
+      "compressed_bytes": 118347,
+      "compressed_sha256": "d53cd954d89e7b1f2db288fcfe2b1cf6b6e7afca3540ab1aa41b82c34321a14d",
+      "uncompressed_bytes": 776583,
+      "uncompressed_sha256": "e7671f54f5e91076a57c5288103395579b94d03acfbbeb140f78d09c3a3d6df1"
+    },
+    {
+      "file": "CycloneSEQ/MHC.fragments.txt.gz",
+      "kind": "haplotype-informative fragments; filenames formerly called hapcut2_output are not HapCUT2 phase solutions",
+      "compressed_bytes": 799099,
+      "compressed_sha256": "3d579c9d64c6fd70ed46674118edefb56c5501bc80fc15ace83a6deb4584326e",
+      "uncompressed_bytes": 1980323,
+      "uncompressed_sha256": "8a97099019c7636ea04592cae47d98ef9d49ae050172d490c0c4f1a07c9b838f"
+    },
+    {
+      "file": "CycloneSEQ/MHC.original.phased.vcf.gz",
+      "kind": "retained historical output; not regenerated with corrected code",
+      "compressed_bytes": 123501,
+      "compressed_sha256": "8610dbdaaa786bbbebd24849e85eb47bfc048f746c4d4536af0f815c44bc6da8",
+      "uncompressed_bytes": 894010,
+      "uncompressed_sha256": "8c2fabf232c5d956e15919959e0e810a2a3ae64dfa37a67fb52e7ca2e48efee4"
+    },
+    {
+      "file": "CycloneSEQ/MHC.internal_timing.txt.gz",
+      "kind": "historical second-script timing; not original WSL end-to-end time",
+      "compressed_bytes": 569,
+      "compressed_sha256": "640c3b71f280987e8eca5cde49d999958e353ac606ea087c56ca228e814f260f",
+      "uncompressed_bytes": 1348,
+      "uncompressed_sha256": "9897e05126c41ddef7c49df2c02e9220ab99472543dd64180fdf871fa9698a32"
+    },
+    {
+      "file": "CycloneSEQ/chr22.input.vcf.gz",
+      "kind": "historical phasing subset, exact VCF order paired to fragments",
+      "compressed_bytes": 326405,
+      "compressed_sha256": "4fc1190356a06bb73d0bb6bad72d7fef7a931cfa4a3e289635ae09bc98cfbe5c",
+      "uncompressed_bytes": 2091516,
+      "uncompressed_sha256": "8d2d59b16675c24b67fd41f675d53cc41aa081e4dbc77ab2868fe6e60366d45a"
+    },
+    {
+      "file": "CycloneSEQ/chr22.fragments.txt.gz",
+      "kind": "haplotype-informative fragments; filenames formerly called hapcut2_output are not HapCUT2 phase solutions",
+      "compressed_bytes": 3226771,
+      "compressed_sha256": "15339ed281e79a340860fd47287dbab27cd1c3d847b5cbc557a005aedbe8c066",
+      "uncompressed_bytes": 8274509,
+      "uncompressed_sha256": "ba2251241045479204bb16e1dd96dbc4b34214a5a453d9d9b49ba9fa396aa9ec"
+    },
+    {
+      "file": "CycloneSEQ/chr22.original.phased.vcf.gz",
+      "kind": "retained historical output; not regenerated with corrected code",
+      "compressed_bytes": 346942,
+      "compressed_sha256": "c0d7a113763cf4bf57d2881b30e8ab044844535db3ccfb91375f0ca661205d0f",
+      "uncompressed_bytes": 2406766,
+      "uncompressed_sha256": "1a4eab072e6f2b776fbf3adb94458f6a022bc12a46439bde0d8454eb5fe94e4d"
+    },
+    {
+      "file": "CycloneSEQ/chr22.internal_timing.txt.gz",
+      "kind": "historical second-script timing; not original WSL end-to-end time",
+      "compressed_bytes": 578,
+      "compressed_sha256": "39d11e2b4204e7f930cdcd78e0db628ac021e8b9b960ae67408a47bae817311e",
+      "uncompressed_bytes": 1366,
+      "uncompressed_sha256": "7aaddf6befba75ab8e8d740a063db7af97b30d1abca429fa6748fa8e765eb6b8"
+    },
+    {
+      "file": "PoreC/CycloneSEQ/MHC/longread.input.vcf.gz",
+      "kind": "long-read VCF",
+      "compressed_bytes": 118347,
+      "compressed_sha256": "d53cd954d89e7b1f2db288fcfe2b1cf6b6e7afca3540ab1aa41b82c34321a14d",
+      "uncompressed_bytes": 776583,
+      "uncompressed_sha256": "e7671f54f5e91076a57c5288103395579b94d03acfbbeb140f78d09c3a3d6df1"
+    },
+    {
+      "file": "PoreC/CycloneSEQ/MHC/longread.fragments.txt.gz",
+      "kind": "long-read fragments",
+      "compressed_bytes": 799099,
+      "compressed_sha256": "3d579c9d64c6fd70ed46674118edefb56c5501bc80fc15ace83a6deb4584326e",
+      "uncompressed_bytes": 1980323,
+      "uncompressed_sha256": "8a97099019c7636ea04592cae47d98ef9d49ae050172d490c0c4f1a07c9b838f"
+    },
+    {
+      "file": "PoreC/CycloneSEQ/MHC/porec.input.vcf.gz",
+      "kind": "Pore-C VCF",
+      "compressed_bytes": 78561,
+      "compressed_sha256": "4aebb2d59dc46d421548afa5800bb2e77984110382cff97e4db9840fb77f506b",
+      "uncompressed_bytes": 509817,
+      "uncompressed_sha256": "5b0ca1af4084b345387c8592264ab64de62481a721e5df9daf91c7e0887c04e7"
+    },
+    {
+      "file": "PoreC/CycloneSEQ/MHC/porec.fragments.txt.gz",
+      "kind": "Pore-C fragments",
+      "compressed_bytes": 816221,
+      "compressed_sha256": "29936721bcee8b9339e4ddfd01517fa259a7e0235f1822565a862515a3d3f394",
+      "uncompressed_bytes": 2895745,
+      "uncompressed_sha256": "d8e73a2e832f92291d17c993048b88cc0b00633623b0da9346de054d79c6d731"
+    },
+    {
+      "file": "PoreC/CycloneSEQ/MHC/original.phased.vcf.gz",
+      "kind": "retained integrated output",
+      "compressed_bytes": 129230,
+      "compressed_sha256": "9bedc3c1a8ad506d95806cdff11493ab76fb1d0fefce09e4d56114300c80e851",
+      "uncompressed_bytes": 893169,
+      "uncompressed_sha256": "9488f5b93b1c8d14cdeba1596bc671de7c8237a020bca607549668ea34649e36"
+    },
+    {
+      "file": "PoreC/CycloneSEQ/chr22/longread.input.vcf.gz",
+      "kind": "long-read VCF",
+      "compressed_bytes": 326405,
+      "compressed_sha256": "4fc1190356a06bb73d0bb6bad72d7fef7a931cfa4a3e289635ae09bc98cfbe5c",
+      "uncompressed_bytes": 2091516,
+      "uncompressed_sha256": "8d2d59b16675c24b67fd41f675d53cc41aa081e4dbc77ab2868fe6e60366d45a"
+    },
+    {
+      "file": "PoreC/CycloneSEQ/chr22/longread.fragments.txt.gz",
+      "kind": "long-read fragments",
+      "compressed_bytes": 3226771,
+      "compressed_sha256": "15339ed281e79a340860fd47287dbab27cd1c3d847b5cbc557a005aedbe8c066",
+      "uncompressed_bytes": 8274509,
+      "uncompressed_sha256": "ba2251241045479204bb16e1dd96dbc4b34214a5a453d9d9b49ba9fa396aa9ec"
+    },
+    {
+      "file": "PoreC/CycloneSEQ/chr22/porec.input.vcf.gz",
+      "kind": "Pore-C VCF",
+      "compressed_bytes": 245359,
+      "compressed_sha256": "ca53543afdc444fe8dd77c7ff8fffa1a9183ee31ea8a5ace9a1f0c74a5c5c13d",
+      "uncompressed_bytes": 1637115,
+      "uncompressed_sha256": "27948380df9d32f36dcf9d800e5a2a8e65b87cb82a0ce66fb00d2f5a9c90dfad"
+    },
+    {
+      "file": "PoreC/CycloneSEQ/chr22/porec.fragments.txt.gz",
+      "kind": "Pore-C fragments",
+      "compressed_bytes": 2426593,
+      "compressed_sha256": "5265ad9f0fc260e3e27c6975ad65b5233702f73ee0742e418b3c844be4c906b8",
+      "uncompressed_bytes": 8963792,
+      "uncompressed_sha256": "853ba07dc6f5d7fe109ee2b6a5bed8f95458cac47d11c21085ee7f0fb20525fe"
+    },
+    {
+      "file": "PoreC/CycloneSEQ/chr22/original.phased.vcf.gz",
+      "kind": "retained integrated output",
+      "compressed_bytes": 364028,
+      "compressed_sha256": "2cf4d481555c43c0bb0c1c92adf78b4e0bd829779488ded3ffc2e0a6a5f0a2bb",
+      "uncompressed_bytes": 2401917,
+      "uncompressed_sha256": "0d2350873645da97c55ce58d0d5a114ef3ad5d7f1e0611bb9fa5d24fc1af8485"
+    },
+    {
+      "file": "truth/chr6.phased_snps.vcf.gz",
+      "kind": "filtered truth used by original evaluator",
+      "compressed_bytes": 751119,
+      "compressed_sha256": "c16c65af86ba1065c4dc91cd1a4c4dd39736be435bf50ba5f13a20b2fb45ce95",
+      "uncompressed_bytes": 6146873,
+      "uncompressed_sha256": "6b3f07c8fdcfbdfaa0f7a363c2224c17f261a10cc7edfb4e06256c1a36b95937"
+    },
+    {
+      "file": "truth/chr22.phased_snps.vcf.gz",
+      "kind": "filtered truth used by original evaluator",
+      "compressed_bytes": 154528,
+      "compressed_sha256": "b6815c8f7d147ae7448f136c11b7d7a9983e7d026aa16b9cb7f50e8994f926ab",
+      "uncompressed_bytes": 1282460,
+      "uncompressed_sha256": "dcef7918e5a512cc6d0df0ad66bfe7d6cdd237093969902f9c893977ef6303b0"
+    },
+    {
+      "file": "truth/benchmark.bed.gz",
+      "kind": "benchmark region file retained locally",
+      "compressed_bytes": 225391,
+      "compressed_sha256": "e3f5a157357a036dd3b48ff4185efffe6662788275ce65becf4ac760d6e77eaf",
+      "uncompressed_bytes": 600728,
+      "uncompressed_sha256": "dfb0df5383a3ffa231171468687f96f66725ab4e78f6554194f5a96dca4e8da1"
+    },
+    {
+      "file": "competitors/hapcut2/HiFi/MHC.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 101554,
+      "compressed_sha256": "7373f72dd1669b3f676982abf1e9d737ec344d8e52195ed4c91a609ef4c75253",
+      "uncompressed_bytes": 877475,
+      "uncompressed_sha256": "dc07266bf77a9acce9314f9a791694e70cb081670de6cff07454fb9b8fae2bac"
+    },
+    {
+      "file": "competitors/hapcut2/HiFi/MHC.normalized.phased.vcf.gz",
+      "kind": "format-only repair of unphased-row continuation; phased genotypes unchanged",
+      "compressed_bytes": 101495,
+      "compressed_sha256": "6adce31926d812ea77c891c3f9fe1a6e3ac194269928bf7432f9704778d2d250",
+      "uncompressed_bytes": 888359,
+      "uncompressed_sha256": "afb81f6186832e2b932b7c033c5a484e6ef5672ac5f4e65a83f97d9f8d4f2de9"
+    },
+    {
+      "file": "competitors/hapcut2/HiFi/MHC.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 102538,
+      "compressed_sha256": "2b5338b982d34954d0ce6be676edb85977016b5dbc957825bb41809a8820079b",
+      "uncompressed_bytes": 775691,
+      "uncompressed_sha256": "f11688ac4296d9131d1db2e59e698727e7242adac2cf718f9624c94aa736f51c"
+    },
+    {
+      "file": "competitors/hapcut2/HiFi/MHC.fragments.txt.gz",
+      "kind": "HapCUT2 extractor fragments; distinct from QHap Python extractor",
+      "compressed_bytes": 239585,
+      "compressed_sha256": "10394d1c9f269fb9627d45da876e66d7e9c80ecc388d60945997473115ffb6e5",
+      "uncompressed_bytes": 1687785,
+      "uncompressed_sha256": "04843cbaebf2e4ba5221af48382040abd17127ee77a39657680fe2c162a5e878"
+    },
+    {
+      "file": "competitors/whatshap/HiFi/MHC.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 106136,
+      "compressed_sha256": "f50e60b43c951b0fa0be7e48ec01a4cb7f0fa1b78c36f3747612c93161f62709",
+      "uncompressed_bytes": 895860,
+      "uncompressed_sha256": "155d2a779af2f6b5b10d59f9d1798df1dffc58b56f484bd7abe77f168b7d0e51"
+    },
+    {
+      "file": "competitors/whatshap/HiFi/MHC.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 102538,
+      "compressed_sha256": "2b5338b982d34954d0ce6be676edb85977016b5dbc957825bb41809a8820079b",
+      "uncompressed_bytes": 775691,
+      "uncompressed_sha256": "f11688ac4296d9131d1db2e59e698727e7242adac2cf718f9624c94aa736f51c"
+    },
+    {
+      "file": "competitors/hapcut2/HiFi/chr22.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 287622,
+      "compressed_sha256": "a315a9607fe927df06b8a7dcd07fdfdd4fc50a23fa9aba6014b44ad48208ca1c",
+      "uncompressed_bytes": 2387612,
+      "uncompressed_sha256": "4332bd0d3a0be8333ba57eb0d4e65b9ddd9fa8a5680e3397666451660d22c812"
+    },
+    {
+      "file": "competitors/hapcut2/HiFi/chr22.normalized.phased.vcf.gz",
+      "kind": "format-only repair of unphased-row continuation; phased genotypes unchanged",
+      "compressed_bytes": 287735,
+      "compressed_sha256": "c8ef320412554db91d9cf74c22975b9129ecd6e42703abf008a5a0239b3c6e0e",
+      "uncompressed_bytes": 2416984,
+      "uncompressed_sha256": "d66125c63c7b7fcb689e35a5d90db46a6c35ed4b079441c608fc5bf84d92de86"
+    },
+    {
+      "file": "competitors/hapcut2/HiFi/chr22.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 285324,
+      "compressed_sha256": "30bfa997849c05055fde6100a2fd18f25b373d2c1d57500b2fa724e8dee1b929",
+      "uncompressed_bytes": 2096445,
+      "uncompressed_sha256": "e8b6e8f299adac05a3725daf700dabdbc4a3daccc130e75db4b4e9baf7bb7542"
+    },
+    {
+      "file": "competitors/hapcut2/HiFi/chr22.fragments.txt.gz",
+      "kind": "HapCUT2 extractor fragments; distinct from QHap Python extractor",
+      "compressed_bytes": 1044047,
+      "compressed_sha256": "accc6b6f03bbb19f8da1566372f498d2512fc6f3316a10c5e4bc2c08f7a5a8ab",
+      "uncompressed_bytes": 6196808,
+      "uncompressed_sha256": "4d81b094d1e0536aff900c8be7047c00c01adb4131c0477fbf3aac0f803fb14d"
+    },
+    {
+      "file": "competitors/whatshap/HiFi/chr22.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 299369,
+      "compressed_sha256": "b1c7d228273a36f38070a8283a3f75c44e6706a696e21ccc8c578d1e36f6adb6",
+      "uncompressed_bytes": 2419915,
+      "uncompressed_sha256": "3055394f61470e313a4f52863fe3a7a0eaa1adaa2ac525a3ae2599a078590b0a"
+    },
+    {
+      "file": "competitors/whatshap/HiFi/chr22.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 285324,
+      "compressed_sha256": "30bfa997849c05055fde6100a2fd18f25b373d2c1d57500b2fa724e8dee1b929",
+      "uncompressed_bytes": 2096445,
+      "uncompressed_sha256": "e8b6e8f299adac05a3725daf700dabdbc4a3daccc130e75db4b4e9baf7bb7542"
+    },
+    {
+      "file": "competitors/hapcut2/ONT/MHC.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 108751,
+      "compressed_sha256": "982ef440259e98f1cb1aaff06df3eb344db3f7ce04dd7944941197c75a659795",
+      "uncompressed_bytes": 863492,
+      "uncompressed_sha256": "3240c66031e75c985f739566ccc884037128880ad7e6868f879de26b23f3d427"
+    },
+    {
+      "file": "competitors/hapcut2/ONT/MHC.normalized.phased.vcf.gz",
+      "kind": "format-only repair of unphased-row continuation; phased genotypes unchanged",
+      "compressed_bytes": 108850,
+      "compressed_sha256": "c75f2336be767ac2a26a5585fa8d8572ee19faf0c9f999e6d9fd6f80f5625ee4",
+      "uncompressed_bytes": 874215,
+      "uncompressed_sha256": "801b95ebb53ec0e29b51a8cdc3e71a882e946d6f662291356274436f1e70bbf7"
+    },
+    {
+      "file": "competitors/hapcut2/ONT/MHC.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 108346,
+      "compressed_sha256": "ec9aadf6d2b54199324f90fb0a869b3277df2bb7c079b27cbc78eb2d8216db76",
+      "uncompressed_bytes": 762099,
+      "uncompressed_sha256": "be5b22c90d7f4189924c11c470089cc0f5f5a931ff7caa63d0617498d193f7c2"
+    },
+    {
+      "file": "competitors/hapcut2/ONT/MHC.fragments.txt.gz",
+      "kind": "HapCUT2 extractor fragments; distinct from QHap Python extractor",
+      "compressed_bytes": 737805,
+      "compressed_sha256": "1a4e7dd055765ab934cd9b786c905adf423b24dd4520ca422ba413aeb88a1f95",
+      "uncompressed_bytes": 1556615,
+      "uncompressed_sha256": "04738374606161694dcfaa04d31dec19fee9565362e46054597fbc756857dd9a"
+    },
+    {
+      "file": "competitors/whatshap/ONT/MHC.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 112389,
+      "compressed_sha256": "ad44222d3b8998ce5c3beac3244bf68be4a2441bc639b3749df76e0690d9d6a0",
+      "uncompressed_bytes": 880529,
+      "uncompressed_sha256": "3c1c7dc289af5b88fbfe9b321a5e51b7ed38dda66d8faeac8314b85581f3d039"
+    },
+    {
+      "file": "competitors/whatshap/ONT/MHC.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 108346,
+      "compressed_sha256": "ec9aadf6d2b54199324f90fb0a869b3277df2bb7c079b27cbc78eb2d8216db76",
+      "uncompressed_bytes": 762099,
+      "uncompressed_sha256": "be5b22c90d7f4189924c11c470089cc0f5f5a931ff7caa63d0617498d193f7c2"
+    },
+    {
+      "file": "competitors/hapcut2/ONT/chr22.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 296266,
+      "compressed_sha256": "b4549f5f4b9ce647561fbcce3e9754dc26fc536d7ce293f274a0f5367f943d51",
+      "uncompressed_bytes": 2340377,
+      "uncompressed_sha256": "e5c4a2dc36cbcf3ecae594174660f98a549aacd987a94611219c435a98632021"
+    },
+    {
+      "file": "competitors/hapcut2/ONT/chr22.normalized.phased.vcf.gz",
+      "kind": "format-only repair of unphased-row continuation; phased genotypes unchanged",
+      "compressed_bytes": 296608,
+      "compressed_sha256": "151bfc28994b301c922528336d784fe12069c18086ccad4c5a11b7dab86f9612",
+      "uncompressed_bytes": 2369217,
+      "uncompressed_sha256": "97ee7cb0bf3a8559cc4b3956fa186613ba141dc806c0bd3edc8816bb280f5083"
+    },
+    {
+      "file": "competitors/hapcut2/ONT/chr22.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 287914,
+      "compressed_sha256": "86e8c6fdcc50c8fbbcc5dd8af7620367d1ec71bfe1af6d907a5342805d0424b5",
+      "uncompressed_bytes": 2050130,
+      "uncompressed_sha256": "3dc258fd6a67a8301bfe4f622d1e85cd27aad403eeafaa6742c9f9f6e1764386"
+    },
+    {
+      "file": "competitors/hapcut2/ONT/chr22.fragments.txt.gz",
+      "kind": "HapCUT2 extractor fragments; distinct from QHap Python extractor",
+      "compressed_bytes": 2900794,
+      "compressed_sha256": "d6a5f33801736b458037de162e8d30172e192f256f0d49c15b82a622481d173a",
+      "uncompressed_bytes": 5733779,
+      "uncompressed_sha256": "7bb7c14b3826db97157a80192208dcca2dc865735263a10f4f63007ce329388b"
+    },
+    {
+      "file": "competitors/whatshap/ONT/chr22.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 302592,
+      "compressed_sha256": "f79982e9243eb6090d72fbfcbfc9296d03c8ea7504653ec1b2ab1726e3808e8e",
+      "uncompressed_bytes": 2367727,
+      "uncompressed_sha256": "d6401d4ba5cbec96d0d35ea080ffa69445e25ac87b99eac5056627c2c07f6f34"
+    },
+    {
+      "file": "competitors/whatshap/ONT/chr22.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 287914,
+      "compressed_sha256": "86e8c6fdcc50c8fbbcc5dd8af7620367d1ec71bfe1af6d907a5342805d0424b5",
+      "uncompressed_bytes": 2050130,
+      "uncompressed_sha256": "3dc258fd6a67a8301bfe4f622d1e85cd27aad403eeafaa6742c9f9f6e1764386"
+    },
+    {
+      "file": "competitors/hapcut2/CycloneSEQ/MHC.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 113467,
+      "compressed_sha256": "42a5031f3f2841f938c378d805d061e5f18c50787a9998e3ab6dcc33a6e46669",
+      "uncompressed_bytes": 865393,
+      "uncompressed_sha256": "da12ce3a2fe6c5a73d5016e589344874926ea533fdbef8e4d668dff09b790575"
+    },
+    {
+      "file": "competitors/hapcut2/CycloneSEQ/MHC.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 115865,
+      "compressed_sha256": "d682871b16cfda63d351dbaf0130c6f6962f37e7cd081e3bad2225ecbdda0cae",
+      "uncompressed_bytes": 776583,
+      "uncompressed_sha256": "e7671f54f5e91076a57c5288103395579b94d03acfbbeb140f78d09c3a3d6df1"
+    },
+    {
+      "file": "competitors/hapcut2/CycloneSEQ/MHC.fragments.txt.gz",
+      "kind": "HapCUT2 extractor fragments; distinct from QHap Python extractor",
+      "compressed_bytes": 761875,
+      "compressed_sha256": "cb37ed3712c341f068638c1212bc1b121e3b30704b13a30e49d91cbe1ac9f4e5",
+      "uncompressed_bytes": 1917365,
+      "uncompressed_sha256": "8ba99b04e766f4cd66dab57341dd93ea04b324a74514585b58a058a45503d0b7"
+    },
+    {
+      "file": "competitors/whatshap/CycloneSEQ/MHC.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 119279,
+      "compressed_sha256": "893fa64fcc0c9823d4ca1aeaa861aa4acfcf6a432456b6613208655586b543ff",
+      "uncompressed_bytes": 894481,
+      "uncompressed_sha256": "931a593dc2c3fd3f755a8a3edcccec810baa298ca3cb85fe84c19767b0489101"
+    },
+    {
+      "file": "competitors/whatshap/CycloneSEQ/MHC.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 115865,
+      "compressed_sha256": "d682871b16cfda63d351dbaf0130c6f6962f37e7cd081e3bad2225ecbdda0cae",
+      "uncompressed_bytes": 776583,
+      "uncompressed_sha256": "e7671f54f5e91076a57c5288103395579b94d03acfbbeb140f78d09c3a3d6df1"
+    },
+    {
+      "file": "competitors/hapcut2/CycloneSEQ/chr22.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 309875,
+      "compressed_sha256": "81c0933fa9156ff18ea4395d14d9172b3013189b801c14ba29a23379ed60c78d",
+      "uncompressed_bytes": 2341346,
+      "uncompressed_sha256": "d966cef3d0092b42599ef9bc12f5e9d25bd8bfdda356da2a11b7ab8e491bab61"
+    },
+    {
+      "file": "competitors/hapcut2/CycloneSEQ/chr22.normalized.phased.vcf.gz",
+      "kind": "format-only repair of unphased-row continuation; phased genotypes unchanged",
+      "compressed_bytes": 310245,
+      "compressed_sha256": "068b84cdfd2e95df04788244b91a7dabe376c35b617d5efe579b9029e7545f11",
+      "uncompressed_bytes": 2370005,
+      "uncompressed_sha256": "ce4c61a7514272f71473ead7ae736a155cf6ca566ea1cd8124cf466253039def"
+    },
+    {
+      "file": "competitors/hapcut2/CycloneSEQ/chr22.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 318814,
+      "compressed_sha256": "475f5a4dfb9c3940c20e338bf10db3b58f616f027e393f6ff8374011db29a606",
+      "uncompressed_bytes": 2091516,
+      "uncompressed_sha256": "8d2d59b16675c24b67fd41f675d53cc41aa081e4dbc77ab2868fe6e60366d45a"
+    },
+    {
+      "file": "competitors/hapcut2/CycloneSEQ/chr22.fragments.txt.gz",
+      "kind": "HapCUT2 extractor fragments; distinct from QHap Python extractor",
+      "compressed_bytes": 3075742,
+      "compressed_sha256": "207fe0a93c84aaba4757b26d8f669dcab33e8f1f918cba014ee4f747553db3aa",
+      "uncompressed_bytes": 8002704,
+      "uncompressed_sha256": "4c3212919e49ded9bd58217d59806ba9d2a9ba2eda3291a9644da8989ec33485"
+    },
+    {
+      "file": "competitors/whatshap/CycloneSEQ/chr22.original.phased.vcf.gz",
+      "kind": "retained competitor output; not regenerated",
+      "compressed_bytes": 331624,
+      "compressed_sha256": "73052ba216df8986f94b1c1aad305eab4b82d2f300dfb0b7071989bdc48a2f79",
+      "uncompressed_bytes": 2407229,
+      "uncompressed_sha256": "1117b93e5bad7aa10fa27ecffce788dd48d18845025cd3bb8ee1c0ada05e8c64"
+    },
+    {
+      "file": "competitors/whatshap/CycloneSEQ/chr22.input.vcf.gz",
+      "kind": "retained competitor ordered variant input",
+      "compressed_bytes": 318814,
+      "compressed_sha256": "475f5a4dfb9c3940c20e338bf10db3b58f616f027e393f6ff8374011db29a606",
+      "uncompressed_bytes": 2091516,
+      "uncompressed_sha256": "8d2d59b16675c24b67fd41f675d53cc41aa081e4dbc77ab2868fe6e60366d45a"
+    },
+    {
+      "file": "truth/MHC.phased_snps.vcf.gz",
+      "kind": "region-specific truth for original MHC completeness denominator",
+      "compressed_bytes": 48429,
+      "compressed_sha256": "d7ddae7bfa5fe1115d19741d83f27c137a3f7789a8b0ae5c549f8587e96842b8",
+      "uncompressed_bytes": 459662,
+      "uncompressed_sha256": "83a077b8a795b008a32b19a3518b0456a88d30bd3249d22f669f4d328b276572"
+    },
+    {
+      "file": "ReadBased/HiFi/MHC.fragments.txt.gz",
+      "kind": "read-based historical fragments; not necessarily identical to SNP preprocessing",
+      "compressed_bytes": 241070,
+      "compressed_sha256": "a50a955c62c1ba60cfbc2949b7a7682d1775ff30250f9fd2c63c7f9b3fa14d71",
+      "uncompressed_bytes": 1707384,
+      "uncompressed_sha256": "0d00e8f7563a3f4cd914ad2251654f9ab22c8bc6aa08bb1628eaf5453ff7cc1a"
+    },
+    {
+      "file": "ReadBased/HiFi/MHC.original.phased.vcf.gz",
+      "kind": "retained read-based output",
+      "compressed_bytes": 105870,
+      "compressed_sha256": "144f828a1a2ccf0adb5fb04e75fda6e7bec319f83c99b6980f4828684bb9eeac",
+      "uncompressed_bytes": 895415,
+      "uncompressed_sha256": "486e644873d26c4f1e955d533fa0549af80c86e2ea30c430e8ea9816f14a1e32"
+    },
+    {
+      "file": "ReadBased/HiFi/MHC.internal_timing.txt.gz",
+      "kind": "second-script timing only",
+      "compressed_bytes": 227,
+      "compressed_sha256": "12b65534021f6bae99a938455ecc73452934619dd401e42828c4f1ecc6c0c58b",
+      "uncompressed_bytes": 256,
+      "uncompressed_sha256": "f62ff271870f4f0a042521030ae8d0ebb0ec833c06ee420ed0eae53cec5cd559"
+    },
+    {
+      "file": "ReadBased/ONT/MHC.fragments.txt.gz",
+      "kind": "read-based historical fragments; not necessarily identical to SNP preprocessing",
+      "compressed_bytes": 750262,
+      "compressed_sha256": "ffeced9e8c71ebea9e87ca0af9013da84f5ec98e7c74a40e397ae29801fb3e9b",
+      "uncompressed_bytes": 1581896,
+      "uncompressed_sha256": "1905b1fd64879ada624e312c20a899b470cdaaa49baab0771d4deee16fa74142"
+    },
+    {
+      "file": "ReadBased/ONT/MHC.original.phased.vcf.gz",
+      "kind": "retained read-based output",
+      "compressed_bytes": 112044,
+      "compressed_sha256": "e33495697d6d075c8775b254b0a3347b4e1678020ac6ab87a31a21c4a7989313",
+      "uncompressed_bytes": 880051,
+      "uncompressed_sha256": "e051a3272e1c2dda41b4ac3a35f2e96efe1ad2624f9956ae4b8ec81fb42ba532"
+    },
+    {
+      "file": "ReadBased/ONT/MHC.internal_timing.txt.gz",
+      "kind": "second-script timing only",
+      "compressed_bytes": 231,
+      "compressed_sha256": "6f276c33463a5174152ac0b883e5da26d648703f7da39c49cb5bc3fa10c36207",
+      "uncompressed_bytes": 256,
+      "uncompressed_sha256": "659d7995b10f70dd3719e354ffc5adf8911df148722f351ee4175ced6deadd7f"
+    },
+    {
+      "file": "ReadBased/CycloneSEQ/MHC.fragments.txt.gz",
+      "kind": "read-based historical fragments; not necessarily identical to SNP preprocessing",
+      "compressed_bytes": 782922,
+      "compressed_sha256": "156a6bb5c184f512e788e24e1835e5d9b7f315920091b7f1be63a750e7834f59",
+      "uncompressed_bytes": 1980323,
+      "uncompressed_sha256": "8a97099019c7636ea04592cae47d98ef9d49ae050172d490c0c4f1a07c9b838f"
+    },
+    {
+      "file": "ReadBased/CycloneSEQ/MHC.original.phased.vcf.gz",
+      "kind": "retained read-based output",
+      "compressed_bytes": 119013,
+      "compressed_sha256": "74d25af72df63de0062b2d4d6efa515a70979a42353f14cfdc65df78ff96d9de",
+      "uncompressed_bytes": 894010,
+      "uncompressed_sha256": "8c2fabf232c5d956e15919959e0e810a2a3ae64dfa37a67fb52e7ca2e48efee4"
+    },
+    {
+      "file": "ReadBased/CycloneSEQ/MHC.internal_timing.txt.gz",
+      "kind": "second-script timing only",
+      "compressed_bytes": 229,
+      "compressed_sha256": "a91b9b2dff69da254c60cb7770d5e2774563871d57466c76f0ea0cc02b5ee5ca",
+      "uncompressed_bytes": 255,
+      "uncompressed_sha256": "172216993d41c65a30cf96abde06f32de836801ec55c1d4fdc18423539321766"
+    },
+    {
+      "file": "truth/source/chr22.raw.vcf.gz",
+      "kind": "unfiltered chromosome subset of author-identified original truth VCF; source headers retained",
+      "compressed_bytes": 1441849,
+      "compressed_sha256": "4b3207a21f2e4665af6c2870388f287f8c5cf9379a826a07e90a1e360afcb670",
+      "uncompressed_bytes": 13323381,
+      "uncompressed_sha256": "8e10ce45dc1f8798007b36493934c9771a6e7811142bb3c23a53fcec69543918"
+    },
+    {
+      "file": "truth/source/chr6.raw.vcf.gz",
+      "kind": "unfiltered chromosome subset of author-identified original truth VCF; source headers retained",
+      "compressed_bytes": 2068557,
+      "compressed_sha256": "e0b9c84a403735a02dbe5a9f5385b4e1046e8e47b38c6e8b3d9ae108bad8d749",
+      "uncompressed_bytes": 14897837,
+      "uncompressed_sha256": "f7a7e0fbb407316499f26264c04f551d3b56a84381de255b9ebf1520dbc0c920"
+    }
+  ],
+  "truth_source": {
+    "file": "CHM13v2.0_HG2-T2TQ100-V1.1_smvar.vcf",
+    "bytes": 324085358,
+    "sha256": "ba99650c54fa277c1f3fa3c7f7a2590c7533655eeac8a0bf14a50814bba89d57",
+    "bed": "CHM13v2.0_HG2-T2TQ100-V1.1_smvar.benchmark.bed",
+    "bed_sha256": "dfb0df5383a3ffa231171468687f96f66725ab4e78f6554194f5a96dca4e8da1"
+  }
+}

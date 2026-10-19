@@ -1,0 +1,15 @@
+test_alignment_subset_preserves_all_overlapping_records (test_reproducibility.ReproducibilityTests.test_alignment_subset_preserves_all_overlapping_records) ... ok
+test_component_edges_never_cross_partition (test_reproducibility.ReproducibilityTests.test_component_edges_never_cross_partition) ... ok
+test_fragment_chunk_boundary_keeps_distant_pair_and_normalization (test_reproducibility.ReproducibilityTests.test_fragment_chunk_boundary_keeps_distant_pair_and_normalization) ... ok
+test_full_output_spans_and_completeness_on_known_vcf (test_reproducibility.ReproducibilityTests.test_full_output_spans_and_completeness_on_known_vcf) ... ok
+test_legacy_format_repair_does_not_change_phased_calls (test_reproducibility.ReproducibilityTests.test_legacy_format_repair_does_not_change_phased_calls) ... ok
+test_legacy_metric_keeps_event_definition_and_block_orientation (test_reproducibility.ReproducibilityTests.test_legacy_metric_keeps_event_definition_and_block_orientation) ... ok
+test_overlapping_read_blocks_are_not_overwritten (test_reproducibility.ReproducibilityTests.test_overlapping_read_blocks_are_not_overwritten) ... ok
+test_quality_string_advances_across_fragment_runs (test_reproducibility.ReproducibilityTests.test_quality_string_advances_across_fragment_runs) ... ok
+test_read_edges_with_gaps_and_agreement (test_reproducibility.ReproducibilityTests.test_read_edges_with_gaps_and_agreement) ... ok
+test_truth_coordinates_preserve_the_recorded_legacy_rule (test_reproducibility.ReproducibilityTests.test_truth_coordinates_preserve_the_recorded_legacy_rule) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.764s
+
+OK

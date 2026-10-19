@@ -1,0 +1,38 @@
+{
+  "dataset": "data_WY_chr22_fast",
+  "seed": 20261019,
+  "preliminary": {
+    "dataset": "data_WY_chr22_fast",
+    "setting": "fast",
+    "seed": 20261019,
+    "seconds": 12.174290076000034,
+    "peak_allocated_bytes": 354411520,
+    "peak_reserved_bytes": 658505728,
+    "escalations": 0,
+    "solve_calls": 20,
+    "n": 28656,
+    "HE_errors": 7207,
+    "SE_events": 2,
+    "HE_percent": 25.1500558347292,
+    "SE_percent": 0.006979584714709474
+  },
+  "replay": {
+    "dataset": "data_WY_chr22_fast",
+    "setting": "fast",
+    "seed": 20261019,
+    "seconds": 15.092969092999999,
+    "peak_allocated_bytes": 358701056,
+    "peak_reserved_bytes": 432013312,
+    "escalations": 0,
+    "solve_calls": 24,
+    "n": 28656,
+    "HE_errors": 7798,
+    "SE_events": 5,
+    "HE_percent": 27.212451144611947,
+    "SE_percent": 0.017448961786773687
+  },
+  "phase_equivalent": false,
+  "interpretation": "Baseline replay differed. The specific cause was not isolated; ordering must not be asserted as a proven sole cause. All final 24 controls were repeated using ordered arrays.",
+  "final_series": "ordered_controls",
+  "pytorch_reproducibility": "https://docs.pytorch.org/docs/2.11/notes/randomness.html"
+}

@@ -1,0 +1,818 @@
+{
+  "convention": "QHap legacy event-based SE and block-oriented HE",
+  "evaluated_sites": 29369,
+  "HE_errors": 162,
+  "SE_events": 16,
+  "HE_percent": 0.5516020293506759,
+  "SE_percent": 0.05448106782892945,
+  "incompatible_allele_sites": [
+    [
+      "chr22",
+      16343275
+    ],
+    [
+      "chr22",
+      24395496
+    ],
+    [
+      "chr22",
+      33050121
+    ]
+  ],
+  "missing_phase_set_sites": [],
+  "evaluation_site_N50_bp": 684430,
+  "blocks": [
+    {
+      "chromosome": "chr22",
+      "phase_set": "16046190",
+      "evaluated_sites": 429,
+      "HE_errors": 124,
+      "SE_events": 15
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "16662963",
+      "evaluated_sites": 418,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "17469623",
+      "evaluated_sites": 224,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "17631071",
+      "evaluated_sites": 9,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "17736238",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "17768835",
+      "evaluated_sites": 76,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "17865003",
+      "evaluated_sites": 1235,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "19426845",
+      "evaluated_sites": 1021,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "20338677",
+      "evaluated_sites": 971,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "21190295",
+      "evaluated_sites": 27,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "21355968",
+      "evaluated_sites": 146,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "21996027",
+      "evaluated_sites": 398,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "23411923",
+      "evaluated_sites": 5,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "23501743",
+      "evaluated_sites": 1453,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "24462956",
+      "evaluated_sites": 14,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "24503862",
+      "evaluated_sites": 166,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "24957004",
+      "evaluated_sites": 25,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "25027355",
+      "evaluated_sites": 1207,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "26069538",
+      "evaluated_sites": 10,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "26143026",
+      "evaluated_sites": 469,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "26562932",
+      "evaluated_sites": 2,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "26601072",
+      "evaluated_sites": 6,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "26694127",
+      "evaluated_sites": 612,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "27254583",
+      "evaluated_sites": 585,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "27636580",
+      "evaluated_sites": 1103,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "28670007",
+      "evaluated_sites": 46,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "28896144",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "28958419",
+      "evaluated_sites": 5,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "29011001",
+      "evaluated_sites": 9,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "29110098",
+      "evaluated_sites": 6,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "29192870",
+      "evaluated_sites": 1408,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "30864861",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "30899333",
+      "evaluated_sites": 133,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "31282897",
+      "evaluated_sites": 782,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "32477124",
+      "evaluated_sites": 5,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "32645031",
+      "evaluated_sites": 8,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "32761556",
+      "evaluated_sites": 5,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "32816494",
+      "evaluated_sites": 2,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "32896129",
+      "evaluated_sites": 1096,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "33747892",
+      "evaluated_sites": 63,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "33887480",
+      "evaluated_sites": 157,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "34109016",
+      "evaluated_sites": 65,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "34255671",
+      "evaluated_sites": 403,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "34815898",
+      "evaluated_sites": 90,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "34912168",
+      "evaluated_sites": 13,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "35005072",
+      "evaluated_sites": 8,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "35157144",
+      "evaluated_sites": 4,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "35209894",
+      "evaluated_sites": 2,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "35250680",
+      "evaluated_sites": 35,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "35397736",
+      "evaluated_sites": 22,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "35465358",
+      "evaluated_sites": 152,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "35696316",
+      "evaluated_sites": 6,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "35755626",
+      "evaluated_sites": 6,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "35903602",
+      "evaluated_sites": 439,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "36269392",
+      "evaluated_sites": 5,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "36349370",
+      "evaluated_sites": 12,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "36446115",
+      "evaluated_sites": 11,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "36530228",
+      "evaluated_sites": 606,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "37097429",
+      "evaluated_sites": 348,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "37461744",
+      "evaluated_sites": 143,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "37608128",
+      "evaluated_sites": 896,
+      "HE_errors": 38,
+      "SE_events": 1
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "38635987",
+      "evaluated_sites": 2,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "38724253",
+      "evaluated_sites": 45,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "38784939",
+      "evaluated_sites": 123,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "38967069",
+      "evaluated_sites": 5,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "39047494",
+      "evaluated_sites": 10,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "39128629",
+      "evaluated_sites": 235,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "39483852",
+      "evaluated_sites": 431,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "39816414",
+      "evaluated_sites": 9,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "39865321",
+      "evaluated_sites": 249,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "40208224",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "40267463",
+      "evaluated_sites": 4,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "40404686",
+      "evaluated_sites": 66,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "40536979",
+      "evaluated_sites": 347,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "41101719",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "41149097",
+      "evaluated_sites": 4,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "41208004",
+      "evaluated_sites": 8,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "41318204",
+      "evaluated_sites": 4,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "41420701",
+      "evaluated_sites": 2,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "41478461",
+      "evaluated_sites": 299,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "41822746",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "41887534",
+      "evaluated_sites": 2,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "41940304",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "41991861",
+      "evaluated_sites": 2,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "42094380",
+      "evaluated_sites": 6,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "42153350",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "42227120",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "42336351",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "42403012",
+      "evaluated_sites": 607,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "43109275",
+      "evaluated_sites": 45,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "43169012",
+      "evaluated_sites": 1876,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "44690879",
+      "evaluated_sites": 203,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "45013903",
+      "evaluated_sites": 3,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "45060771",
+      "evaluated_sites": 1381,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "46060143",
+      "evaluated_sites": 635,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "46836610",
+      "evaluated_sites": 746,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "47464605",
+      "evaluated_sites": 38,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "47515627",
+      "evaluated_sites": 671,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "48020443",
+      "evaluated_sites": 71,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "48202923",
+      "evaluated_sites": 193,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "48432064",
+      "evaluated_sites": 25,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "48535034",
+      "evaluated_sites": 80,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "48621919",
+      "evaluated_sites": 124,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "48839393",
+      "evaluated_sites": 24,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "48894015",
+      "evaluated_sites": 72,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "48989578",
+      "evaluated_sites": 148,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "49160096",
+      "evaluated_sites": 225,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "49279511",
+      "evaluated_sites": 1588,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "49993301",
+      "evaluated_sites": 2,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "50021614",
+      "evaluated_sites": 267,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "50255297",
+      "evaluated_sites": 11,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "50443337",
+      "evaluated_sites": 420,
+      "HE_errors": 0,
+      "SE_events": 0
+    },
+    {
+      "chromosome": "chr22",
+      "phase_set": "50849425",
+      "evaluated_sites": 429,
+      "HE_errors": 0,
+      "SE_events": 0
+    }
+  ],
+  "note": "N50 here is restricted to evaluated sites; the manuscript N50 uses all phased output sites. Percentages are unrounded; retain historical table precision separately."
+}
