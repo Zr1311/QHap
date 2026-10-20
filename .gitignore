@@ -14,3 +14,6 @@
 /data/**/*.vcf
 /data/**/*.txt
 **/__pycache__/
+
+# Outputs from the data/README.md examples.
+/results/
