@@ -589,4 +589,3 @@ python3 SNP-based/index_quantum_maxcut_phasing_n_return.py --fast \
 
 Uncompress the inputs first. This backend uses 500–1,000 iterations and 100 samples per base solver call, with at most 10 outer refinement rounds and no adaptive budget escalation. It implements the fast solver used for the CycloneSEQ chromosome 22 experiment. The standard solver remains the default; `--fast` and `--mindquantum` are mutually exclusive.
 
-The code on `nc-reproducibility-20261019` includes additional graph-construction fixes. Those changes passed small regression and functional tests, but were not shown to reproduce every historical output; they have not been merged into the default algorithms here.
