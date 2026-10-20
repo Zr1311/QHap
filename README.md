@@ -9,6 +9,8 @@ QHap provides two complementary phasing strategies:
 
 Both strategies support optional **Pore-C integration** to improve long-range haplotype block contiguity.
 
+Data used in the QHap manuscript's HG002 phasing experiments, with download instructions, running examples and evaluation code, are available in [data/](data/).
+
 QHap provides a GPU-accelerated PyTorch implementation of simulated bifurcation and optionally supports the BSB solver provided by `mindquantum.algorithm.qaia` through the `--mindquantum` option.
 
 ---
@@ -574,7 +576,7 @@ See the [`LICENSE`](LICENSE) file for the complete license terms.
 
 ## Data
 
-[data/](data/) provides WY (CycloneSEQ), HiFi, ONT and Pore-C inputs, together with HG002 truth on CHM13v2. Each folder lists its VCFs and gives a short command for downloading its BAMs.
+[data/](data/) contains inputs for the manuscript's HG002 phasing experiments: WY (CycloneSEQ), HiFi, ONT and Pore-C data, together with truth on CHM13v2. Its README gives download and running examples. [data/evaluate.py](data/evaluate.py) computes SE, HE and the other evaluation metrics using the original scripts' conventions.
 
 ## Optional fast SNP solver
 

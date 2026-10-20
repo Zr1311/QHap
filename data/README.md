@@ -106,4 +106,35 @@ Use each `*.fragments.txt.gz` with the matching `*.input.vcf.gz`: fragment indic
 
 Each example writes `phasing_output/phased.vcf` beside its input VCF. Inspect the `GT` and `PS` fields for phased genotypes and phase-set membership. [HG002_CHM13v2](HG002_CHM13v2/) contains the matching evaluation truth and benchmark regions.
 
+## Evaluate the phased result
+
+[evaluate.py](evaluate.py) combines the original read-based `switch error_test/`, `hamming_error_rate_test/` and `other_test/` calculations into one command. It uses only the Python standard library and accepts plain or gzip-compressed VCF files.
+
+For the HiFi chromosome 22 example:
+
+```bash
+python3 data/evaluate.py \
+    --phased results/HiFi_chr22/phasing_output/phased.vcf \
+    --truth data/HG002_CHM13v2/chr22.phased_snps.vcf.gz \
+    --chrom chr22 \
+    --output results/HiFi_chr22/metrics.json
+```
+
+For MHC, use the corresponding phased output, `--chrom chr6` and `data/HG002_CHM13v2/MHC.phased_snps.vcf.gz`. Evaluate one chromosome at a time with truth for the same region. The phased input uses QHap's sample-field convention: GT first and PS last.
+
+The JSON contains totals and per-block errors and positions:
+
+| Result | Original calculation retained |
+| --- | --- |
+| `switch_error_n_minus_one` | Short and long disagreement runs, choosing the better orientation per block; pooled denominator `N−1` (or 1 when `N≤1`). |
+| `switch_error_n` | The older SE script's disagreement-run count with denominator `N`. |
+| `hamming_error` | Allele disagreements, choosing the better orientation per block, divided by `N`. |
+| `unphased_to_phased_ratio` | Number of sample columns containing `/`, divided by the number containing `\|`. |
+| `truth_site_completeness_fraction` | Retained unique positions divided by distinct column-2 values in the truth file, as in `complement.py`. |
+| `n50_bp`, `n50_sites`, `n50_site_bp` | The three original N50 calculations on truth-matched blocks, retaining ascending accumulation and their original length conventions. |
+
+`N` is the number of unique evaluated positions for that metric. Rates are fractions; `percent` gives the percentage and `rate_4dp` preserves the original four-decimal rate formatting. The original SE counts disagreement runs rather than adjacent phase transitions. The N50 bp span is `last−first`; the site-weighted bp span is `last−first+1`. Site-count ties retain block-filename order. These definitions are preserved for comparison with the supplied scripts.
+
+The HE parser now reads GT from truth fields such as `0|1:1,1`, so the supplied `GT:AD` truth files work directly. Its scoring formula is unchanged. To reproduce the old GT-only parsing behavior, add `--truth-gt-mode legacy`; that mode yields no matched HE sites for `GT:AD` input. Results with `evaluated_sites = 0` are explicitly marked `no_matched_sites` and do not establish zero phasing error.
+
 [Detailed experimental records and retained outputs](https://github.com/Zr1311/QHap/tree/a4c5d01b0266949b0ca84a2c41f89a99b6f7de63/benchmarks) remain available in the archived revision. File checksums are in [SHA256SUMS](SHA256SUMS). The repository's software licence does not assign new reuse rights to third-party sequencing data.
