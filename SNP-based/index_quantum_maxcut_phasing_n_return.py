@@ -32,8 +32,8 @@ def save_connected_components(components_graphs, output_dir):
 def main():
     if len(sys.argv) < 3:
         sys.exit(
-            'Usage: python3 %s [--mindquantum] [--no-post] <vcf.tab> <fragment_reads.txt>\n'
-            'OR: python3 %s [--mindquantum] [--no-post] --porec <vcf.tab> <fragment_reads.txt> '
+            'Usage: python3 %s [--mindquantum | --fast] [--no-post] <vcf.tab> <fragment_reads.txt>\n'
+            'OR: python3 %s [--mindquantum | --fast] [--no-post] --porec <vcf.tab> <fragment_reads.txt> '
             '<porec_vcf.tab> <porec_fragment_reads.txt> a=<value>' % (
                 sys.argv[0], sys.argv[0]))
 
@@ -52,16 +52,24 @@ def main():
         argv.remove('--no-post')
         print("Note: Post-processing disabled")
 
+    use_fast = '--fast' in argv
+    if use_fast:
+        argv.remove('--fast')
+    if use_fast and use_mindquantum:
+        sys.exit('--fast cannot be combined with --mindquantum')
+
     # ── Select process_blocks implementation ──
     if use_mindquantum:
         from mindquantum_BSB_get_haplotype import process_blocks
+    elif use_fast:
+        from BSB_get_haplotype_fast import process_blocks
     else:
         from BSB_get_haplotype import process_blocks
 
     if len(argv) > 1 and argv[1] == '--porec':
         if len(argv) != 7:
             sys.exit(
-                'Usage: python3 %s [--mindquantum] --porec <vcf.tab> <fragment_reads.txt> '
+                'Usage: python3 %s [--mindquantum | --fast] --porec <vcf.tab> <fragment_reads.txt> '
                 '<porec_vcf.tab> <porec_fragment_reads.txt> a=<value>' % argv[0])
 
         vcf1_file = argv[2]
@@ -99,7 +107,7 @@ def main():
         fragment_reads_file = merged_phasing_file
     else:
         if len(argv) != 3:
-            sys.exit('Usage: python3 %s [--mindquantum] [--no-post] <vcf.tab> <fragment_reads.txt>' % argv[0])
+            sys.exit('Usage: python3 %s [--mindquantum | --fast] [--no-post] <vcf.tab> <fragment_reads.txt>' % argv[0])
         vcf_file = argv[1]
         fragment_reads_file = argv[2]
         merge_time = 0
@@ -109,7 +117,7 @@ def main():
     output_dir = os.path.dirname(vcf_file)
     print(f"Output directory: {output_dir}")
     print(f"Post-processing: {'Enabled' if enable_post_processing else 'Disabled'}")
-    print(f"Solver: {'MindQuantum BSB' if use_mindquantum else 'tabu_SB_gpu'}")
+    print(f"Solver: {'MindQuantum BSB' if use_mindquantum else ('PyTorch fast bSB' if use_fast else 'tabu_SB_gpu')}")
 
     start_time = time.time()
     timing_results = []
@@ -166,11 +174,11 @@ def main():
     with open(run_time_file, 'w') as f:
         f.write(f"Runtime statistics\n")
         f.write("=" * 60 + "\n")
-        f.write(f"Solver: {'MindQuantum BSB' if use_mindquantum else 'tabu_SB_gpu'}\n")
-        if '--porec' in sys.argv:
+        f.write(f"Solver: {'MindQuantum BSB' if use_mindquantum else ('PyTorch fast bSB' if use_fast else 'tabu_SB_gpu')}\n")
+        if '--porec' in argv:
             f.write("Input (merged mode):\n")
             f.write(
-                f"  VCF1: {sys.argv[2]}\n  Reads1: {sys.argv[3]}\n  VCF2: {sys.argv[4]}\n  Reads2: {sys.argv[5]}\n  a: {a}\n")
+                f"  VCF1: {argv[2]}\n  Reads1: {argv[3]}\n  VCF2: {argv[4]}\n  Reads2: {argv[5]}\n  a: {a}\n")
             f.write(f"  Merged VCF: {vcf_file}\n  Merged reads: {fragment_reads_file}\n")
         else:
             f.write("Input:\n")

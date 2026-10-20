@@ -1,1 +1,3 @@
 demo/SHA256SUMS text eol=lf
+data/SHA256SUMS text eol=lf
+data/**/*.gz binary

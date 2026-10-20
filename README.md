@@ -19,7 +19,9 @@ QHap provides a GPU-accelerated PyTorch implementation of simulated bifurcation 
 * [System Requirements](#system-requirements)
 * [Installation Guide](#installation-guide)
 * [Input Data](#input-data)
+* [Data Download](data/)
 * [Usage](#usage)
+* [Optional Fast SNP Solver](#optional-fast-snp-solver)
 * [Demo](#demo)
 * [Output Files](#output-files)
 * [HLA Typing](#hla-typing)
@@ -568,3 +570,21 @@ https://github.com/Zr1311/QHap
 QHap is distributed under the **Apache License 2.0**.
 
 See the [`LICENSE`](LICENSE) file for the complete license terms.
+
+
+## Data
+
+[data/](data/) provides WY (CycloneSEQ), HiFi, ONT and Pore-C inputs, together with HG002 truth on CHM13v2. Each folder lists its VCFs and gives a short command for downloading its BAMs.
+
+## Optional fast SNP solver
+
+Add `--fast` to select `SNP-based/BSB_get_haplotype_fast.py`:
+
+```bash
+python3 SNP-based/index_quantum_maxcut_phasing_n_return.py --fast \
+    data/WY/chr22.input.vcf data/WY/chr22.fragments.txt
+```
+
+Uncompress the inputs first. This backend uses 500–1,000 iterations and 100 samples per base solver call, with at most 10 outer refinement rounds and no adaptive budget escalation. It implements the fast solver used for the CycloneSEQ chromosome 22 experiment. The standard solver remains the default; `--fast` and `--mindquantum` are mutually exclusive.
+
+The code on `nc-reproducibility-20261019` includes additional graph-construction fixes. Those changes passed small regression and functional tests, but were not shown to reproduce every historical output; they have not been merged into the default algorithms here. See [test scope and results](tests/README.md).

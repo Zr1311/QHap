@@ -4,3 +4,13 @@
 /demo/chr6.bam.part[0-9][0-9]
 /demo/*.partial
 /demo/__pycache__/
+
+# Large alignment inputs are restored from release assets.
+/data/**/*.bam
+/data/**/*.bai
+/data/**/.downloads/
+/data/**/*.partial
+/data/**/*.restoring
+/data/**/*.vcf
+/data/**/*.txt
+**/__pycache__/
